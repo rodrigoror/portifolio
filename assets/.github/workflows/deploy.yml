@@ -1,0 +1,22 @@
+name: Deploy Portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Executa o pipeline quando houver push na branch main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Passo 1: Baixa o código do repositório
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Passo 2: Faz o deploy no GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Diretório onde estão os arquivos do site (raiz do repositório)
