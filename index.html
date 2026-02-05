@@ -12,6 +12,56 @@
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="assets/css/meyawo.css">
+    <style>
+        /* Maintain static look: Disable hover movement and shadow */
+        #service .service-card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            border: 1px solid #dee2e6 !important;
+            /* Ensure border width/color doesn't change */
+            padding: 40px 30px !important;
+            /* Force fixed padding */
+            margin: 0 !important;
+            /* Force fixed margin */
+        }
+
+        #service .service-card {
+            transition: none !important;
+            box-shadow: none !important;
+            border: 1px solid #dee2e6 !important;
+            /* Add subtle border since shadow is gone */
+            padding: 40px 30px !important;
+            /* Define standard padding explicitly */
+            margin: 0 !important;
+        }
+
+        /* Force static layout: ensure content doesn't overlap */
+        #service .service-card .subtitle {
+            opacity: 1 !important;
+            visibility: visible !important;
+            position: relative !important;
+            /* Stop specific positioning */
+            transform: none !important;
+            display: block !important;
+            height: auto !important;
+            background: transparent !important;
+            margin-bottom: 20px !important;
+        }
+
+        #service .service-card .body {
+            position: relative !important;
+            top: 0 !important;
+            transform: none !important;
+        }
+
+        #service .service-card .btn {
+            position: relative !important;
+            z-index: 10 !important;
+            /* Ensure button is on top */
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -96,62 +146,35 @@
         </div><!-- end of container -->
     </section> <!-- end of about section -->
 
-    <!-- service section -->
+    <!-- comic section -->
     <section class="section" id="service">
         <div class="container text-center">
-            <p class="section-subtitle">What I Do ?</p>
-            <h6 class="section-title mb-6">Service</h6>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
+            <p class="section-subtitle">Visualizing Complexity</p>
+            <h6 class="section-title mb-6">Architectural Design Comics</h6>
+
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
                     <div class="service-card">
                         <div class="body">
-                            <img src="assets/imgs/pencil-case.svg" alt="IT Lessons icon" class="icon">
-                            <h6 class="title">Mentorship & AI-Driven Productivity</h6>
-                            <p class="subtitle">I foster high-performing teams, mentoring developers and leads in agile
-                                practices. By embedding AI tools like Cursor and LLM Agents, I've driven an 80%
-                                improvement in developer productivity and accelerated project delivery.</p>
+                            <img src="assets/imgs/pencil-case.svg" alt="Architecture Comic Icon" class="icon">
+                            <h6 class="title">System Versus Solution Architecture</h6>
+                            <p class="subtitle">
+                                Architecture isn't just about boxes and arrows; it's about storytelling.
+                                In this exclusive comic, I explore the nuanced differences between
+                                <strong>System Architecture</strong> and <strong>Solution Architecture</strong>.
+                                Dive into a visual journey that demystifies complex concepts, making them accessible
+                                and engaging for engineers, stakeholders, and curious minds alike.
+                            </p>
+                            <a href="assets/comic/System_Versus_Solution_Architecture.pdf" target="_blank"
+                                class="btn btn-primary mt-4">
+                                Read the Comic (PDF)
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/responsive.svg" alt="Responsive web design icon" class="icon">
-                            <h6 class="title">Fullstack Development & Microservices</h6>
-                            <p class="subtitle">Expert in crafting robust fullstack solutions across mobile (Flutter,
-                                Android) and web (Vue.js, Java frameworks, Coldfusion, jQuery). I design and implement
-                                scalable microservices using Node.js, TypeScript, MongoDB, and GraphQL, ensuring
-                                seamless API integrations and optimal performance.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/toolbox.svg" alt="Site reliability and assessment icon" class="icon">
-                            <h6 class="title">DevSecOps, Quality & Observability</h6>
-                            <p class="subtitle">Boosting code quality and CI/CD with DevSecOps and TDD, implementing
-                                SonarQube for 80% code coverage. I ensure end-to-end observability using tools like
-                                OpenTracing, Prometheus, and Grafana for robust site reliability.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/analytics.svg" alt="Data analysis icon" class="icon">
-                            <h6 class="title">Data-Driven Solutions & Architecture</h6>
-                            <p class="subtitle">Experienced in designing and implementing business intelligence
-                                dashboards, managing high-volume data (400k+ daily records in MongoDB), and applying
-                                Domain-Driven Design (DDD) to align software architecture with strategic business
-                                domains for impactful financial and analytics tools.</p>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end of row -->
+            </div>
         </div>
-    </section><!-- end of service section -->
+    </section><!-- end of comic section -->
 
     <!-- portfolio section -->
     <section class="section" id="portfolio">
