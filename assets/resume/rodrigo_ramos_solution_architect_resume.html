@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Ramos - Solution Architect Resume</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0.5cm;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            font-size: 10pt;
+            margin: 0;
+            padding: 20px;
+            max-width: 210mm;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 22pt;
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 3px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 11pt;
+            color: #2980b9;
+            margin: 10px 0 2px 0;
+            font-weight: 700;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .contact-info {
+            font-size: 9pt;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .contact-info span {
+            margin: 0 8px;
+        }
+
+        .contact-info a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .summary p {
+            margin: 0;
+            text-align: justify;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .skill-category {
+            margin-bottom: 5px;
+        }
+
+        .skill-category strong {
+            display: block;
+            font-size: 9.5pt;
+            color: #444;
+            margin-bottom: 2px;
+            text-decoration: underline;
+        }
+
+        .skill-category span {
+            font-size: 9pt;
+            color: #555;
+        }
+
+        .experience-item {
+            margin-bottom: 10px;
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .company-loc {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .date {
+            font-size: 9pt;
+            color: #777;
+            font-style: italic;
+        }
+
+        .experience-item ul {
+            margin: 4px 0;
+            padding-left: 18px;
+        }
+
+        .experience-item li {
+            margin-bottom: 3px;
+            font-size: 9.5pt;
+        }
+
+        .compact-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0;
+            margin: 5px 0;
+            list-style: none;
+        }
+
+        .compact-list li {
+            font-size: 9pt;
+            background: #f8f9fa;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .edu-item h3 {
+            margin: 0;
+            font-size: 10pt;
+        }
+
+        .edu-item p {
+            margin: 0;
+            font-size: 9pt;
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                padding: 0;
+                font-size: 9.5pt;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Rodrigo Ramos</h1>
+        <div style="font-size: 12pt; font-weight: bold; color: #555; margin-bottom: 5px;">
+            Solution Architect | Core Banking Expert
+        </div>
+        <div class="contact-info">
+            <span>Brazil / Spain (Open to Relocation)</span> |
+            <span>+34 622 933 051</span> |
+            <span><a href="mailto:rodrigoror@gmail.com">rodrigoror@gmail.com</a></span> |
+            <span><a href="https://linkedin.com/in/rodrigo-oliveira-ramos"
+                    target="_blank">linkedin.com/in/rodrigo-oliveira-ramos</a></span>
+        </div>
+    </div>
+
+    <section class="section summary">
+        <h2>Executive Summary</h2>
+        <p>
+            Senior Solution Architect with over 20 years of experience driving strategic transformation in the banking
+            and fintech sectors.
+            Deep expertise in designing scalable, future-proof Core Banking architectures (Lending, Deposits, Account
+            Management)
+            and leading legacy modernization initiatives. Proven track record of translating complex business
+            requirements into
+            robust technical realities using Cloud-Native stacks (AWS), Microservices, and AI-driven development.
+            Recognized for bridging the gap between stakeholders and engineering teams to deliver operational excellence
+            and tangible business value.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Core Competencies & Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <strong>Solution Architecture & Banking</strong>
+                <span>Core Banking Systems (Credit, Debit, Lending), Legacy Modernization, Cloud Transformation,
+                    Microservices, Event-Driven Architecture, Regulatory Compliance, System Design & Strategy.</span>
+            </div>
+            <div class="skill-category">
+                <strong>Technology Stack</strong>
+                <span>Java (Spring Boot, Quarkus), Node.js/TypeScript, AWS (Lambda, SQS, SNS, RDS), MongoDB, PostgreSQL,
+                    API Design (Rest/GraphQL), Integration Patterns.</span>
+            </div>
+            <div class="skill-category">
+                <strong>Leadership & Strategy</strong>
+                <span>Strategic Planning, Tech Transformation, Stakeholder Management, Team Coaching,
+                    Agile/Scrum/Kanban, DevSecOps, Vendor Management, Cost Optimization.</span>
+            </div>
+            <div class="skill-category">
+                <strong>Innovation & Tools</strong>
+                <span>AI-Assisted Development (LLMs, Agents), CI/CD (SonarQube, Github Actions), Clean Architecture,
+                    Domain-Driven Design (DDD), Quality Assurance.</span>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <h2>Education & Key Certifications</h2>
+        <div class="education-grid">
+            <div class="edu-item">
+                <h3>Executive MBA - Software Architecture & Design</h3>
+                <p>XP Educação (2023 - 2024) | <em>Capstone: Clean Architecture Reference Guide</em></p>
+            </div>
+            <div class="edu-item">
+                <h3>Technologist in Systems Analysis & Development</h3>
+                <p>IBTA (2004 - 2006)</p>
+            </div>
+        </div>
+        <div style="margin-top: 10px;">
+            <ul class="compact-list">
+                <li>Santander Cybersecurity (2025)</li>
+                <li>AI Agents for Product Leaders (2025)</li>
+                <li>Product Roadmapping (Product School, 2024)</li>
+                <li>Java Project Architecture (Alura, 2024)</li>
+                <li>Scrum Master (2017)</li>
+                <li>Secure Android App Dev (Southampton, 2017)</li>
+                <li>ITIL V2 Fundamentals</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section experience">
+        <h2>Professional Experience</h2>
+
+        <div class="experience-item">
+            <div class="role-header">
+                <h3>Tech Manager & Solution Architect (Core Banking / B2B)</h3>
+                <span class="date">Dec 2023 - Present</span>
+            </div>
+            <div class="company-loc">alt.bank | São Paulo, Brazil</div>
+            <ul>
+                <li><strong>Strategic Core Banking Transformation:</strong> Led the architectural design and expansion
+                    of the "Wolfe" collection platform from a B2C product to a scalable B2B Core Banking module,
+                    projected to triple revenue by Q1 2026.</li>
+                <li><strong>Architecture & Scalability:</strong> Designed a high-performance microservices architecture
+                    handling 400k+ daily financial records using Node.js, MongoDB, and AWS; ensured compliance with
+                    strict banking regulations and data consistency.</li>
+                <li><strong>Operational Excellence:</strong> Spearheaded AI-native engineering workflows, delivering an
+                    80% boost in team productivity and reducing "war-room" incidents by 80% through rigorous TDD/BDD and
+                    automated architectural validation.</li>
+                <li><strong>Stakeholder Collaboration:</strong> Acted as the primary architectural advisor, translating
+                    strategic business goals into concrete technical roadmaps and ensuring alignment between product,
+                    engineering, and external partners.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="role-header">
+                <h3>Senior Technical Lead (Banking Integrations)</h3>
+                <span class="date">Sep 2021 - Dec 2023</span>
+            </div>
+            <div class="company-loc">alt.bank | São Paulo, Brazil</div>
+            <ul>
+                <li><strong>Integration Architecture:</strong> Oversaw mission-critical third-party banking integrations
+                    (Payment Gateways, Credit Bureaus), maintaining 99.9% uptime and ensuring seamless financial
+                    transaction flows.</li>
+                <li><strong>Quality & Modernization:</strong> Elevated code quality standards across Java and Node.js
+                    ecosystems; implemented AI-assisted review processes that reduced technical debt and ensured
+                    "future-proof" deliverable quality.</li>
+                <li><strong>Team Leadership:</strong> Mentored cross-functional teams, fostering a culture of knowledge
+                    sharing and technical excellence imperative for complex banking domain challenges.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="role-header">
+                <h3>Full Stack Engineer (Mobile & Backend Financial Services)</h3>
+                <span class="date">Dec 2018 - Sep 2021</span>
+            </div>
+            <div class="company-loc">alt.bank | São Paulo, Brazil</div>
+            <ul>
+                <li><strong>Product Engine Development:</strong> Architected scalable backend services using Java
+                    (Quarkus/Jooby) to support rapid deposit and lending feature rollouts.</li>
+                <li><strong>Reliability Engineering:</strong> Implemented comprehensive QA automation and CI/CD
+                    pipelines (SonarQube), achieving 80% code coverage and ensuring stability for critical financial
+                    apps.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="role-header">
+                <h3>Senior Developer (Industry 4.0 & Legacy Modernization)</h3>
+                <span class="date">Aug 2016 - Aug 2018</span>
+            </div>
+            <div class="company-loc">As2 Group | São José dos Campos, Brazil</div>
+            <ul>
+                <li><strong>Legacy Systems Modernization:</strong> Successfully migrated and integrated legacy VB6/MSSQL
+                    manufacturing systems into modern web infrastructures, ensuring zero downtime and extended
+                    operational lifespan.</li>
+                <li><strong>Solution Design:</strong> Architected advanced Industry 4.0 traceability solutions (GS1
+                    labeling), bridging the gap between physical production lines and digital ERP systems.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section class="section">
+        <h2>Previous Professional Experience (Summary)</h2>
+        <ul style="margin: 5px 0 15px 18px; font-size: 9.5pt;">
+            <li><strong>Full Stack Engineer (Freelancer) | RRLabs (2012-2018):</strong> Delivered custom B2B SaaS
+                solutions and mobile apps using Clean Architecture principles; achieved 100% on-time delivery for
+                diverse clients.</li>
+            <li><strong>System Analyst | Urbanizadora Municipal S.A. (2011-2016):</strong> Optimized enterprise Java
+                applications (JBoss/Oracle) and pioneered mobile field solutions, improving operational efficiency by
+                30%.</li>
+            <li><strong>Web Developer Leader | FCCR (2008-2011):</strong> Led digital transformation projects
+                (Portals/Intranets) using Agile/Kanban, reducing operational costs by 45%.</li>
+            <li><strong>Co-Founder | Rich Solutions (2005-2007):</strong> Built a startup from the ground up; automated
+                notary and aerospace manufacturing workflows using custom software solutions.</li>
+        </ul>
+    </section>
+
+
+</body>
+
+</html>
