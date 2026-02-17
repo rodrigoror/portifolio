@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/css/meyawo.css">
     <style>
         /* Maintain static look: Disable hover movement and shadow */
-        #service .service-card:hover {
+        #comic .service-card:hover {
             transform: none !important;
             box-shadow: none !important;
             border: 1px solid #dee2e6 !important;
@@ -25,7 +25,7 @@
             /* Force fixed margin */
         }
 
-        #service .service-card {
+        #comic .service-card {
             transition: none !important;
             box-shadow: none !important;
             border: 1px solid #dee2e6 !important;
@@ -36,7 +36,7 @@
         }
 
         /* Force static layout: ensure content doesn't overlap */
-        #service .service-card .subtitle {
+        #comic .service-card .subtitle {
             opacity: 1 !important;
             visibility: visible !important;
             position: relative !important;
@@ -48,13 +48,13 @@
             margin-bottom: 20px !important;
         }
 
-        #service .service-card .body {
+        #comic .service-card .body {
             position: relative !important;
             top: 0 !important;
             transform: none !important;
         }
 
-        #service .service-card .btn {
+        #comic .service-card .btn {
             position: relative !important;
             z-index: 10 !important;
             /* Ensure button is on top */
@@ -79,6 +79,9 @@
                 </li>
                 <li class="item">
                     <a class="link" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#comic">Comics</a>
                 </li>
                 <li class="item">
                     <a class="link" href="#testimonial">Testimonial</a>
@@ -146,7 +149,7 @@
     </section> <!-- end of about section -->
 
     <!-- comic section -->
-    <section class="section" id="service">
+    <section class="section" id="comic">
         <div class="container text-center">
             <p class="section-subtitle">Visualizing Complexity</p>
             <h6 class="section-title mb-6">Architectural Design Comics</h6>
@@ -419,24 +422,7 @@
             <p class="section-subtitle">How can you communicate?</p>
             <h6 class="section-title mb-5">Contact Me</h6>
             <!-- contact form -->
-            <form action="#" class="contact-form col-md-10 col-lg-8 m-auto">
-                <!-- TODO: Replace '#' with a backend endpoint to handle form submissions -->
-                <div class="form-row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="email" class="form-control" placeholder="Enter Email" required>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <textarea name="comment" id="comment" rows="6" class="form-control"
-                            placeholder="Write Something"></textarea>
-                    </div>
-                    <div class="form-group col-sm-12 mt-3">
-                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
-                    </div>
-                </div>
-            </form><!-- end of contact form -->
+            <a href="mailto:rodrigoror@gmail.com" class="btn btn-outline-primary rounded btn-lg">Send me an email</a>
         </div><!-- end of container -->
     </section><!-- end of contact section -->
 
