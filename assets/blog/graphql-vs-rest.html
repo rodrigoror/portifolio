@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL vs REST: When I Choose Which (And Why) - Rodrigo Ramos</title>
+    <link rel="stylesheet" href="../css/meyawo.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 35px;
+            border-bottom: 2px solid #e9e9e9;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            background: #e8f4fd;
+            border-left: 4px solid #0056b3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #0056b3;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .toc {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+        }
+
+        .toc ol {
+            margin-bottom: 0;
+        }
+
+        .toc a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>GraphQL vs REST: When I Choose Which (And Why)</h1>
+            <p class="text-center"><em>By: Rodrigo Ramos, March 2026</em></p>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: It's About Results, Not Religion</a></li>
+                <li><a href="#rest-problems">The Real Problems with REST</a></li>
+                <li><a href="#graphql-solutions">How GraphQL Solves These Problems</a></li>
+                <li><a href="#b2b-integration">B2B Partner Integration: Where GraphQL Really Shines</a></li>
+                <li><a href="#cost-reduction">Transaction I/O and Cost Reduction at Scale</a></li>
+                <li><a href="#pitfalls">The Pitfalls: What Can Go Wrong with GraphQL</a></li>
+                <li><a href="#decision-framework">My Decision Framework: When to Use Which</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ol>
+        </div>
+
+        <!-- Section 1: Introduction -->
+        <section id="intro">
+            <h2>1. Introduction: It's About Results, Not Religion</h2>
+
+            <p>The tech community loves a good debate. REST vs GraphQL is one of those debates that can get very heated.
+                People pick sides and defend their choice like it's a personal belief. I've been on both sides of this
+                conversation across 20+ years in software engineering, and I've learned one thing above all: <strong>the
+                    right answer is always the one that delivers business results.</strong></p>
+
+            <p>In my career, from building banking MVPs and scaling fintech platforms that handle hundreds of thousands
+                of daily transactions, to building B2B collection systems, I've used both REST and GraphQL in production
+                at scale. This article is not about which one is "better." It's about sharing real experience on when
+                each one makes sense. More importantly, it's about when switching from one to the other actually helped
+                us increase revenue, reduce costs, and onboard partners faster.</p>
+
+            <div class="highlight-box">
+                <strong>Key Takeaway:</strong> Technology choices are business decisions. The question is not "Which is
+                more elegant?" but "Which one delivers results faster, cheaper, and more reliably for this specific
+                situation?"
+            </div>
+        </section>
+
+        <!-- Section 2: REST Problems -->
+        <section id="rest-problems">
+            <h2>2. The Real Problems with REST</h2>
+
+            <p>REST is the backbone of the modern web. It's reliable, well-documented, and understood by almost every
+                developer. I've built many systems on REST APIs, from Java/Spring Boot backends to Node.js
+                microservices. REST works. But at scale, some problems become impossible to ignore.</p>
+
+            <h3>2.1 Over-Fetching: Paying for Data Nobody Reads</h3>
+
+            <p>This is the most discussed problem, but few teams measure the actual impact. Let me give you a real
+                example:</p>
+
+            <p>Imagine a collections platform that manages debit records. The REST endpoint
+                <code>GET /api/debts/{id}</code> returns a full debt object:
+            </p>
+
+            <pre>{
+  "id": "abc123",
+  "debtor_name": "John Doe",
+  "debtor_cpf": "123.456.789-00",
+  "debtor_email": "john@email.com",
+  "debtor_phone": "+55 11 99999-0000",
+  "debtor_address": { "street": "...", "city": "...", "state": "..." },
+  "original_amount": 1500.00,
+  "current_amount": 1650.75,
+  "interest_rate": 0.033,
+  "penalty_rate": 0.02,
+  "due_date": "2025-06-15",
+  "status": "overdue",
+  "creditor_id": "xyz789",
+  "creditor_name": "FinCorp",
+  "creditor_cnpj": "12.345.678/0001-00",
+  "portfolio_id": "port-001",
+  "last_contact_date": "2025-11-20",
+  "contact_attempts": 7,
+  "payment_history": [...],
+  "negotiation_history": [...],
+  "internal_notes": "...",
+  "created_at": "2025-01-10T10:30:00Z",
+  "updated_at": "2025-12-01T14:22:00Z"
+  // ... 20+ more fields
+}</pre>
+
+            <p>But the frontend dashboard showing the overview list only needs: <code>debtor_name</code>,
+                <code>current_amount</code>, <code>status</code>, <code>due_date</code>, and <code>creditor_name</code>.
+                That's <strong>5 fields out of 40+</strong>.
+            </p>
+
+            <p>Now multiply that by <strong>400,000+ records processed daily</strong>. Every single API call sends about
+                35 unnecessary fields per record. That's not just a design problem you discuss on a whiteboard. That's a
+                real cost on your AWS bill and real latency on your user's screen.</p>
+
+            <h3>2.2 Under-Fetching: Too Many API Calls</h3>
+
+            <p>The opposite problem is also painful. Consider a mobile app that needs to show a debtor's profile screen
+                with their debt details, payment history, and the creditor's contact information. In REST, this usually
+                requires:</p>
+
+            <ol>
+                <li><code>GET /api/debtors/{id}</code> to get debtor info</li>
+                <li><code>GET /api/debtors/{id}/debts</code> to get their debts</li>
+                <li><code>GET /api/debts/{debtId}/payments</code> to get payment history for each debt</li>
+                <li><code>GET /api/creditors/{creditorId}</code> to get creditor info</li>
+            </ol>
+
+            <p>That's <strong>4 HTTP calls minimum</strong>. If the debtor has multiple debts, the payments call
+                multiplies. On a mobile network in Brazil with unstable 4G, this means slower screens, higher drop-off
+                rates, and lower user engagement.</p>
+
+            <h3>2.3 Too Many Endpoints: Hard to Maintain</h3>
+
+            <p>As your product grows, REST APIs tend to multiply. You start with clean resources:</p>
+            <ul>
+                <li><code>/api/debts</code></li>
+                <li><code>/api/debtors</code></li>
+                <li><code>/api/creditors</code></li>
+            </ul>
+
+            <p>Then the frontend team needs a "summary" view, so you create <code>/api/debts/summary</code>. Then the
+                mobile team needs a lighter version: <code>/api/debts/mobile</code>. Then a B2B partner needs debts with
+                creditor info included: <code>/api/debts/full</code>. Then another partner needs something different...
+            </p>
+
+            <p>Before you know it, you have <strong>15+ endpoints for the same resource</strong>, each maintained
+                separately, each with its own tests, each with its own documentation. I've seen this happen in every
+                REST-heavy system I've worked on. It's not bad engineering. It's a structural limitation of the pattern.
+            </p>
+
+            <h3>2.4 API Versioning: The Hidden Cost</h3>
+
+            <p>When you need to change your API without breaking existing users, REST forces you into versioning:
+                URL-based (<code>/api/v1/</code>, <code>/api/v2/</code>), header-based, or query parameter-based. Each
+                option has trade-offs, and keeping multiple API versions alive at the same time is one of the most
+                expensive, low-value activities a team can do.</p>
+
+            <div class="warning-box">
+                <strong>Real-World Impact:</strong> In one project, our team spent about 30% of sprint capacity keeping
+                compatibility between API v1 and v2 during a 6-month migration window. That's engineering time not spent
+                building features.
+            </div>
+        </section>
+
+        <!-- Section 3: How GraphQL Solves These -->
+        <section id="graphql-solutions">
+            <h2>3. How GraphQL Solves These Problems</h2>
+
+            <p>GraphQL changes who is in control. Instead of the server deciding what data to send, the <strong>client
+                    says exactly what it needs</strong>. This simple change fixes the main problems listed above.</p>
+
+            <h3>3.1 Ask Only for What You Need</h3>
+
+            <p>Using the same debt example, the client now sends:</p>
+
+            <pre>query {
+  debts(status: "overdue", limit: 50) {
+    debtor_name
+    current_amount
+    status
+    due_date
+    creditor {
+      name
+    }
+  }
+}</pre>
+
+            <p>The response contains <strong>exactly</strong> those 5 fields. Nothing more, nothing less. For 400,000+
+                daily records, the payload size drops a lot. We measured about a <strong>60-70% reduction in average
+                    response size</strong> compared to the same REST endpoints.</p>
+
+            <h3>3.2 One Request, All the Data</h3>
+
+            <p>That 4-call problem for the debtor profile screen? With GraphQL, it becomes one request:</p>
+
+            <pre>query DebtorProfile($id: ID!) {
+  debtor(id: $id) {
+    name
+    email
+    phone
+    debts {
+      current_amount
+      status
+      due_date
+      payments(last: 5) {
+        amount
+        date
+        method
+      }
+      creditor {
+        name
+        contact_email
+      }
+    }
+  }
+}</pre>
+
+            <p><strong>One HTTP call. One response. All the data the screen needs.</strong> On mobile networks, the
+                difference is clear and easy to measure.</p>
+
+            <h3>3.3 Schema as a Contract</h3>
+
+            <p>GraphQL uses a strongly typed schema. Every field, every type, every relationship is clearly defined.
+                This schema works as:</p>
+            <ul>
+                <li><strong>Living documentation</strong> that is always up-to-date, because the code IS the
+                    documentation</li>
+                <li><strong>Agreement between frontend and backend</strong> where breaking changes are caught at build
+                    time, not in production</li>
+                <li><strong>Self-service API explorer</strong> where tools like GraphiQL or Apollo Studio let users
+                    explore the API without reading docs</li>
+            </ul>
+
+            <h3>3.4 No More Versioning</h3>
+
+            <p>Need to add a new field? Just add it to the schema. Existing queries don't break because they don't ask
+                for it. Need to remove a field? Mark it as <code>@deprecated(reason: "Use newField instead")</code>.
+                Users see the warning and can migrate at their own speed.</p>
+
+            <p>Compare this with the REST approach of keeping <code>/v1</code> and <code>/v2</code> running together for
+                months. In GraphQL, <strong>there is no versioning</strong>, just continuous, backward-compatible
+                growth. In a fast-moving fintech environment, this alone saved us weeks of engineering effort per
+                quarter.</p>
+        </section>
+
+        <!-- Section 4: B2B Integration -->
+        <section id="b2b-integration">
+            <h2>4. B2B Partner Integration: Where GraphQL Really Shines</h2>
+
+            <p>This is where things get interesting, and where I've seen the biggest real-world impact. When you build a
+                platform that serves multiple B2B partners, each partner has different data needs, different systems,
+                and different timelines.</p>
+
+            <h3>4.1 The REST B2B Problem</h3>
+
+            <p>With REST, onboarding a new B2B partner usually looks like this:</p>
+
+            <ol>
+                <li><strong>Partner A</strong> says: "We need debt data with debtor name, amount, and status."</li>
+                <li>You build <code>GET /api/partners/a/debts</code></li>
+                <li><strong>Partner B</strong> says: "We need debt data with debtor name, amount, status, AND full
+                    payment history."</li>
+                <li>You build <code>GET /api/partners/b/debts</code></li>
+                <li><strong>Partner C</strong> says: "We need everything Partner B gets, but grouped by creditor with
+                    creditor details."</li>
+                <li>You build... another custom endpoint.</li>
+            </ol>
+
+            <p>Each partner gets a custom API. Each needs custom backend code, custom tests, custom docs, and custom
+                maintenance. I've lived this, and at some point, <strong>the cost of onboarding a new partner is mostly
+                    engineering time, not business negotiation time</strong>.</p>
+
+            <h3>4.2 The GraphQL B2B Solution</h3>
+
+            <p>With GraphQL, you expose <strong>one schema</strong>. Every partner asks for exactly what they need:</p>
+
+            <p><strong>Partner A's query:</strong></p>
+            <pre>query {
+  debts(portfolio: "partner-a") {
+    debtor_name
+    current_amount
+    status
+  }
+}</pre>
+
+            <p><strong>Partner B's query:</strong></p>
+            <pre>query {
+  debts(portfolio: "partner-b") {
+    debtor_name
+    current_amount
+    status
+    payments {
+      amount
+      date
+      method
+    }
+  }
+}</pre>
+
+            <p><strong>Partner C's query:</strong></p>
+            <pre>query {
+  creditors {
+    name
+    metadata { industry, contact_email }
+    debts(portfolio: "partner-c") {
+      debtor_name
+      current_amount
+      status
+      payments {
+        amount
+        date
+      }
+    }
+  }
+}</pre>
+
+            <p><strong>Zero custom endpoints.</strong> Zero custom backend code. The partners get the data they need
+                from the same schema. When Partner D arrives next month with different requirements, you don't write a
+                single line of backend code. They just write their query.</p>
+
+            <div class="highlight-box">
+                <strong>Real Impact:</strong> Partner onboarding time dropped from weeks of custom API work to days
+                focused on authentication setup, rate limiting, and business contracts. The technical part became almost
+                simple.
+            </div>
+
+            <h3>4.3 Access Control at the Schema Level</h3>
+
+            <p>A key concern with B2B integration is data isolation. With GraphQL, you can add field-level access
+                control in the resolvers:</p>
+
+            <ul>
+                <li>Partner A can only see debts in their portfolio</li>
+                <li>Partner B has access to payment history; Partner A does not</li>
+                <li>Internal dashboards see everything; external partners see a filtered view</li>
+            </ul>
+
+            <p>The access control logic lives in one place (the resolver layer), not spread across many custom REST
+                endpoints. This is cleaner, easier to audit, and much simpler to manage when you need to follow
+                compliance rules in the financial sector.</p>
+        </section>
+
+        <!-- Section 5: Cost Reduction -->
+        <section id="cost-reduction">
+            <h2>5. Transaction I/O and Cost Reduction at Scale</h2>
+
+            <p>This is the section that gets the business team interested. When you process hundreds of thousands of
+                transactions daily in the cloud, <strong>every byte counts</strong>.</p>
+
+            <h3>5.1 The Math Behind Smaller Payloads</h3>
+
+            <p>Let's use conservative, real-world numbers from a collections platform:</p>
+
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>REST</th>
+                    <th>GraphQL</th>
+                </tr>
+                <tr>
+                    <td>Average response size per record</td>
+                    <td>~4 KB</td>
+                    <td>~1.2 KB</td>
+                </tr>
+                <tr>
+                    <td>Daily API calls</td>
+                    <td>400,000</td>
+                    <td>400,000</td>
+                </tr>
+                <tr>
+                    <td>Daily data transferred</td>
+                    <td>~1.6 GB</td>
+                    <td>~0.48 GB</td>
+                </tr>
+                <tr>
+                    <td>Monthly data transferred</td>
+                    <td>~48 GB</td>
+                    <td>~14.4 GB</td>
+                </tr>
+                <tr>
+                    <td>Reduction</td>
+                    <td></td>
+                    <td><strong>~70%</strong></td>
+                </tr>
+            </table>
+
+            <p>A 70% reduction in data transfer directly affects:</p>
+
+            <ul>
+                <li><strong>AWS data transfer costs</strong>, because Data Out charges on EC2, Lambda, and API Gateway
+                    are billed per GB</li>
+                <li><strong>Network I/O on servers</strong>, because less data to send means lower CPU usage per request
+                </li>
+                <li><strong>Client-side performance</strong>, because smaller responses are faster to process in the
+                    browser or mobile app</li>
+                <li><strong>CDN and caching efficiency</strong>, because smaller responses are cached more easily</li>
+            </ul>
+
+            <h3>5.2 MongoDB + GraphQL: A Natural Combination</h3>
+
+            <p>When your database is document-based (MongoDB) and your API layer lets clients ask for only the fields
+                they need (GraphQL), you get a powerful combination:</p>
+
+            <ul>
+                <li><strong>Database-level projection:</strong> GraphQL resolvers can ask MongoDB to return only the
+                    needed fields. This means the database reads less data from disk.</li>
+                <li><strong>Less processing:</strong> Smaller documents from MongoDB means less memory and CPU spent on
+                    converting BSON to JSON.</li>
+                <li><strong>Efficient queries:</strong> Complex requests that would need multiple REST calls and
+                    client-side data joining can be solved with MongoDB aggregation pipelines, all triggered by a single
+                    GraphQL query.</li>
+            </ul>
+
+            <h3>5.3 Impact on Serverless</h3>
+
+            <p>If you run Lambda functions or serverless compute, the impact is even bigger. Serverless pricing is
+                usually based on <strong>execution time x memory</strong>. Smaller payloads mean:</p>
+
+            <ul>
+                <li>Faster execution time, so you pay less per call</li>
+                <li>Less memory used, so you can pick smaller (cheaper) memory settings</li>
+                <li>Fewer cold starts because your API layer stays lighter</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Bottom Line:</strong> In a high-volume production system, moving from REST to GraphQL for
+                client-facing APIs can save real money on cloud costs every month. Not just in theory, but as a line
+                item your finance team can see.
+            </div>
+        </section>
+
+        <!-- Section 6: Pitfalls -->
+        <section id="pitfalls">
+            <h2>6. The Pitfalls: What Can Go Wrong with GraphQL</h2>
+
+            <p>I would not be honest or useful if I said GraphQL is a perfect solution. After running it in production
+                for years, here are the real problems you need to be ready for.</p>
+
+            <h3>6.1 The N+1 Query Problem</h3>
+
+            <p>This is the most important performance trap. Look at this query:</p>
+
+            <pre>query {
+  debts(limit: 100) {
+    debtor_name
+    creditor {
+      name
+    }
+  }
+}</pre>
+
+            <p>A simple implementation will:</p>
+            <ol>
+                <li>Run 1 query to get 100 debts</li>
+                <li>Run <strong>100 separate queries</strong> to get each creditor</li>
+            </ol>
+
+            <p>That's 101 database queries for what should be 2. At 400,000 daily records, this will <strong>kill your
+                    database performance</strong>.</p>
+
+            <p><strong>The fix:</strong> Use DataLoader (or similar batching tools). DataLoader collects all creditor
+                IDs from the first query and gets them all in one batch query. This is not optional. It is essential for
+                any production GraphQL server.</p>
+
+            <div class="warning-box">
+                <strong>Important:</strong> If you use GraphQL without implementing DataLoader or similar batching, you
+                will probably get <em>worse</em> performance than REST. This is the number one reason teams give up on
+                GraphQL. They hit the N+1 problem before they fix it.
+            </div>
+
+            <h3>6.2 Caching Is Not Free Anymore</h3>
+
+            <p>REST has a big advantage here: <strong>HTTP caching works out of the box</strong>. Each URL is a unique
+                cache key. CDNs, browser caches, and reverse proxies all understand REST without extra setup.</p>
+
+            <p>GraphQL sends POST requests to a single endpoint (<code>/graphql</code>). The query is inside the request
+                body. This means:</p>
+            <ul>
+                <li>Standard HTTP caching does not work</li>
+                <li>CDN caching needs custom setup (like persisted queries with GET requests)</li>
+                <li>You need to build application-level caching (Redis, in-memory stores) yourself</li>
+            </ul>
+
+            <p>Solutions exist, like Apollo Server's automatic persisted queries, Redis response caching, and
+                field-level cache hints. But they all require <strong>extra work</strong>. REST gives you caching for
+                free; GraphQL makes you build it.</p>
+
+            <h3>6.3 Query Complexity and Security</h3>
+
+            <p>GraphQL gives the client a lot of power. A bad or careless client can send a very deep nested query:</p>
+
+            <pre>query {
+  debtors {
+    debts {
+      payments {
+        refunds {
+          audits {
+            // ... 10 levels deep
+          }
+        }
+      }
+    }
+  }
+}</pre>
+
+            <p>Without protection, this single query could crash your server. You <strong>must</strong> add:</p>
+            <ul>
+                <li><strong>Query depth limits</strong> to reject queries that go too deep</li>
+                <li><strong>Query cost analysis</strong> to give weights to fields and reject expensive queries</li>
+                <li><strong>Rate limiting by query cost</strong>, not just by number of requests, but by how heavy each
+                    request is</li>
+                <li><strong>Timeouts</strong> to set hard time limits on how long a query can run</li>
+            </ul>
+
+            <h3>6.4 Error Handling Is Different</h3>
+
+            <p>REST uses HTTP status codes: <code>200</code>, <code>404</code>, <code>500</code>. Everyone understands
+                them. GraphQL always returns <code>200 OK</code>, even when there are errors. Errors come inside the
+                response body:</p>
+
+            <pre>{
+  "data": { "debtor": null },
+  "errors": [{
+    "message": "Debtor not found",
+    "path": ["debtor"],
+    "extensions": { "code": "NOT_FOUND" }
+  }]
+}</pre>
+
+            <p>This can confuse monitoring tools and alert systems. Developers used to REST might miss errors because
+                the HTTP status is always 200. You need to plan your error handling carefully. Standard HTTP monitoring
+                will not catch GraphQL errors automatically.</p>
+
+            <h3>6.5 Team Learning Curve</h3>
+
+            <p>This is often underestimated. Moving a team from REST to GraphQL requires learning:</p>
+            <ul>
+                <li>Schema design (types, queries, mutations, subscriptions)</li>
+                <li>Resolver patterns and DataLoader</li>
+                <li>New testing approaches (you can't just test URLs anymore)</li>
+                <li>New tools (Apollo, graphql-codegen, playground environments)</li>
+            </ul>
+
+            <p>In my experience, expect <strong>2-4 weeks of slower delivery</strong> when introducing GraphQL to a team
+                that only knows REST. The investment pays off, but it takes time.</p>
+
+            <h3>6.6 File Uploads</h3>
+
+            <p>GraphQL was designed for structured data queries. File uploads are not its strength. While the
+                <code>graphql-upload</code> package exists, it's not as clean as a simple multipart POST in REST. For
+                file-heavy features, we kept REST endpoints alongside GraphQL, and that works perfectly fine.
+            </p>
+        </section>
+
+        <!-- Section 7: Decision Framework -->
+        <section id="decision-framework">
+            <h2>7. My Decision Framework: When to Use Which</h2>
+
+            <p>After years of running both in production, here is the decision table I use:</p>
+
+            <table>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Recommendation</th>
+                    <th>Why</th>
+                </tr>
+                <tr>
+                    <td>Client-facing APIs with different consumers (web, mobile, partners)</td>
+                    <td><strong>GraphQL</strong></td>
+                    <td>Each consumer gets exactly what they need</td>
+                </tr>
+                <tr>
+                    <td>Internal service-to-service communication</td>
+                    <td><strong>REST</strong> (or gRPC)</td>
+                    <td>Fixed contracts, best performance, simple caching</td>
+                </tr>
+                <tr>
+                    <td>B2B partner integration with different data needs</td>
+                    <td><strong>GraphQL</strong></td>
+                    <td>Self-service queries, no custom endpoints needed</td>
+                </tr>
+                <tr>
+                    <td>Simple CRUD with stable requirements</td>
+                    <td><strong>REST</strong></td>
+                    <td>Less complex, faster to build, easier to cache</td>
+                </tr>
+                <tr>
+                    <td>High-volume data processing (batch jobs, ETL)</td>
+                    <td><strong>REST</strong></td>
+                    <td>Simpler error handling, good for bulk operations</td>
+                </tr>
+                <tr>
+                    <td>Fast-changing product with frequent schema updates</td>
+                    <td><strong>GraphQL</strong></td>
+                    <td>No versioning needed, backward-compatible by design</td>
+                </tr>
+                <tr>
+                    <td>File uploads and binary data</td>
+                    <td><strong>REST</strong></td>
+                    <td>Built-in multipart support, simpler to implement</td>
+                </tr>
+                <tr>
+                    <td>Public API with heavy CDN caching needs</td>
+                    <td><strong>REST</strong></td>
+                    <td>HTTP caching works out of the box; GraphQL needs workarounds</td>
+                </tr>
+            </table>
+
+            <p style="text-align: center; margin: 30px 0;">
+                <img src="../imgs/rest-graphql-spectrum.png"
+                    alt="REST vs GraphQL Decision Spectrum: showing use cases positioned along a spectrum from REST-recommended to GraphQL-recommended"
+                    style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            </p>
+
+            <div class="highlight-box">
+                <strong>My Rule:</strong> Use GraphQL for <strong>client-facing APIs</strong> where flexibility and
+                smaller payloads matter. Use REST for <strong>internal communication</strong>, simple services, and
+                situations where HTTP caching is important. The two work great together in the same architecture.
+            </div>
+        </section>
+
+        <!-- Section 8: Conclusion -->
+        <section id="conclusion">
+            <h2>8. Conclusion</h2>
+
+            <p>GraphQL vs REST is not a yes-or-no choice. It's a spectrum. In my production systems, <strong>both live
+                    side by side</strong>. GraphQL powers the client-facing layer where flexibility and efficiency
+                improve user experience and reduce costs. REST handles internal service communication, batch processing,
+                and file uploads where simplicity and HTTP features are more useful.</p>
+
+            <p>The real skill is not mastering one or the other. It's knowing <strong>when to use which tool</strong>,
+                having the experience to see the problems before they happen, and always measuring the impact against
+                business results:</p>
+
+            <ul>
+                <li>Did partner onboarding get faster?</li>
+                <li>Did infrastructure costs go down?</li>
+                <li>Did user experience improve?</li>
+                <li>Did the team deliver features faster?</li>
+            </ul>
+
+            <p>If the answer to any of those is yes, you made the right choice.</p>
+
+            <p><em>Choose the tool that delivers results. That's always the right architecture.</em></p>
+        </section>
+
+        <footer class="text-center mt-5">
+            <p><a href="../../index.html">Back to Portfolio</a></p>
+        </footer>
+    </div>
+</body>
+
+</html>
