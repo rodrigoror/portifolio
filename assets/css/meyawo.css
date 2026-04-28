@@ -12232,3 +12232,44 @@ pre .code {
 .section-lg {
   padding: 100px 0 !important;
 }
+
+/* Comic Section Overrides */
+#comic .service-card:hover {
+  transform: none;
+  box-shadow: none;
+  border: 1px solid #dee2e6;
+  padding: 40px 30px;
+  margin: 0;
+}
+
+#comic .service-card {
+  transition: none;
+  box-shadow: none;
+  border: 1px solid #dee2e6;
+  padding: 40px 30px;
+  margin: 0;
+}
+
+#comic .service-card .subtitle {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  transform: none;
+  display: block;
+  height: auto;
+  background: transparent;
+  margin-bottom: 20px;
+}
+
+#comic .service-card .body {
+  position: relative;
+  top: 0;
+  transform: none;
+}
+
+#comic .service-card .btn {
+  position: relative;
+  z-index: 10;
+  visibility: visible;
+  opacity: 1;
+}
