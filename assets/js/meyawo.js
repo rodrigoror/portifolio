@@ -46,7 +46,8 @@ $(document).ready(function () {
 
     // navbar mobile toggle
     $('#nav-toggle').on('click', function () {
-        $(this).toggleClass('is-active');
+        var expanded = $(this).attr('aria-expanded') === 'true';
+        $(this).toggleClass('is-active').attr('aria-expanded', !expanded);
         $('ul.nav').toggleClass('show');
     });
 
