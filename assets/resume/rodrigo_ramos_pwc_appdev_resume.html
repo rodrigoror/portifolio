@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Ramos - PwC APPDEV Resume</title>
+    <style>
+        /* General Compact Styling */
+        body { font-family: Arial, sans-serif; line-height: 1.3; margin: 0; color: #333; font-size: 11pt; }
+        .container { max-width: 900px; margin: auto; padding: 15px 30px; }
+        h1, h2, h3 { color: #0056b3; margin: 0; }
+        h1 { text-align: center; font-size: 18pt; margin-bottom: 5px; }
+        h2 { font-size: 13pt; margin-top: 10px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 2px; }
+        h3 { font-size: 11pt; margin-top: 5px; margin-bottom: 2px; }
+        p { margin: 2px 0; }
+        .contact-info { text-align: center; margin-bottom: 10px; font-size: 10pt; }
+        .contact-info p { margin: 2px 0; }
+        .section ul { margin: 5px 0; padding-left: 20px; }
+        .section ul li { margin-bottom: 3px; }
+        .experience-item, .education-item { margin-bottom: 8px; }
+        .experience-item p, .education-item p { font-size: 10pt; margin: 1px 0; }
+        
+        /* Skills section compactness */
+        .skills ul { display: flex; flex-wrap: wrap; gap: 4px; padding: 0; list-style: none; margin-top: 5px; }
+        .skills ul li { background: #e9e9e9; padding: 2px 6px; border-radius: 4px; font-size: 9.5pt; margin: 0; }
+
+        /* Print Specific Styling to enforce 2 pages */
+        @media print {
+            body { font-size: 9.5pt; line-height: 1.2; margin: 0; }
+            .container { padding: 0; width: 100%; max-width: 100%; box-shadow: none; border: none; }
+            h1 { font-size: 16pt; margin-bottom: 2px; }
+            h2 { font-size: 12pt; margin-top: 6px; margin-bottom: 2px; padding-bottom: 1px; }
+            h3 { font-size: 10.5pt; margin-top: 3px; margin-bottom: 1px; }
+            .contact-info { font-size: 9pt; margin-bottom: 4px; }
+            .contact-info p { margin: 1px 0; }
+            .section ul { margin: 2px 0; padding-left: 15px; }
+            .section ul li { margin-bottom: 1px; }
+            .experience-item, .education-item { margin-bottom: 4px; page-break-inside: avoid; }
+            .experience-item p, .education-item p { font-size: 9pt; }
+            .skills ul li { font-size: 8.5pt; border: 1px solid #ccc; background: transparent; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Rodrigo Ramos</h1>
+            <div class="contact-info">
+                <p><strong>Senior Java Developer | Cloud & AI Solutions</strong></p>
+                <p>Email: rodrigoror@gmail.com | Mobile: +34 622 933 051 | Location: Spain (Remote/B2B)</p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/rodrigo-oliveira-ramos" target="_blank">linkedin.com/in/rodrigo-oliveira-ramos</a> | Portfolio: <a href="https://rodrigoror.github.io/portifolio/" target="_blank">rodrigoror.github.io/portifolio/</a></p>
+                <p>Languages: English (Advanced), Portuguese (Native), Spanish</p>
+            </div>
+        </header>
+
+        <section class="section summary">
+            <h2>Professional Summary</h2>
+            <p>Highly accomplished Senior Java Developer and Solutions Architect with over 20 years of software engineering experience, specializing in designing and implementing scalable, distributed, and cloud-native systems. Deeply proficient in Java (SE/EE, Spring Boot, Quarkus) and multi-cloud environments, including Microsoft Azure and AWS. I bring a strong "startup mindset" combined with enterprise-grade rigorousness, having driven innovation at scale in high-growth environments. A recognized expert in AI-assisted development, I leverage tools like Claude, Cursor AI, and Code Rabbit to dramatically accelerate delivery speed, ensure high code quality, and lead system analysis and refactoring efforts. Seeking to leverage my technical expertise and AI integration skills in a dynamic, cross-Atlantic environment at PwC APPDEV.</p>
+        </section>
+
+        <section class="section skills">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li><strong>Core Languages:</strong> Java (11-21+), SQL, JavaScript/TypeScript, Python</li>
+                <li><strong>Frameworks & Architecture:</strong> Spring Framework, Spring Boot, Quarkus, Microservices, Cloud-Native Design, Clean Architecture, DDD, TDD</li>
+                <li><strong>Cloud & DevOps:</strong> Microsoft Azure, AWS, Docker, Kubernetes, CI/CD pipelines, GitLab/GitHub Actions, SonarQube, Terraform</li>
+                <li><strong>AI & LLM Tools:</strong> Cursor AI, Claude, Code Rabbit, LLM Agents, AI-assisted development & refactoring</li>
+                <li><strong>Databases:</strong> PostgreSQL, Oracle, MySQL, MSSQL (SQL), MongoDB, DynamoDB, Redis (NoSQL)</li>
+                <li><strong>Methodologies:</strong> Agile (Scrum, Kanban), System Design, Code Reviews, Observability (Prometheus, Grafana, OpenTelemetry)</li>
+            </ul>
+        </section>
+
+        <section class="section experience">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <h3>Tech Manager & Senior Backend Engineer - AI, QA, Scalability</h3>
+                <p><strong>alt.bank</strong> | Dec 2023 - Present | Remote / Brazil time</p>
+                <ul>
+                    <li><strong>Pioneered AI-native workflows:</strong> Delivered an 80% productivity boost by embedding Cursor AI, Code Rabbit, and Claude-powered LLM Agents into the engineering lifecycle, transforming code reviews, analysis, and refactoring execution across cloud environments.</li>
+                    <li><strong>Architected high-performance distributed systems:</strong> Designed scalable microservices using a backend stack (Java and Node.js) interacting with MongoDB and relational databases to handle 400k+ daily records with zero noticeable downtime.</li>
+                    <li><strong>Enhanced test automation & reliability:</strong> Implemented AI-assisted automated testing pipelines (TDD) and SonarQube CI/CD, achieving 80% code coverage and reducing production war-rooms by 80%.</li>
+                    <li><strong>Led data-driven migrations:</strong> Orchestrated a massive financial processor migration serving 100,000 customers without downtime, overcoming complex data discrepancies through a custom-engineered Java/Python migration solution.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Technical Lead - Java & Cloud Architecture</h3>
+                <p><strong>alt.bank</strong> | Sep 2021 - Dec 2023 | Remote, São Paulo / SP, Brazil</p>
+                <ul>
+                    <li><strong>Drove strategic financial platform pivot:</strong> Orchestrated the architectural transition to a proprietary Credit Card model, leveraging Java, Quarkus, and cloud microservices for real-time transaction processing and continuous risk evaluation.</li>
+                    <li><strong>Elevated code quality across stacks:</strong> Established comprehensive test coverage and AI-assisted code review processes in Java, significantly reducing technical debt and achieving zero critical bugs in production releases.</li>
+                    <li><strong>Managed complex API integrations:</strong> Oversaw external services and third-party API SDK implementations, maintaining 99.9% uptime and ensuring highly reliable B2B external service integrations.</li>
+                    <li><strong>Promoted DevOps best practices:</strong> Led cross-functional teams in maintaining strict architectural standards, leveraging BPMN (Camunda) to optimize complex multi-step delivery flows.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Full Stack Engineer - Java, Quarkus, Microservices</h3>
+                <p><strong>alt.bank</strong> | Dec 2018 - Sep 2021 | São Paulo / SP, Brazil</p>
+                <ul>
+                    <li><strong>Optimized cloud-native microservices:</strong> Leveraged Quarkus and Jooby frameworks for Java development, creating scalable, efficient, and containerized backend services that rapidly accelerated feature delivery.</li>
+                    <li><strong>Accelerated MVP launch:</strong> Spearheaded end-to-end development for a core banking application MVP delivered in just 3 months, employing telemetry and observability data to prioritize robust backend features.</li>
+                    <li><strong>Advanced QA automation:</strong> Integrated CI/CD pipelines using GitLab and SonarQube, establishing rigorous automated testing paradigms that reduced production issues by 30%.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Developer - Enterprise Java Systems</h3>
+                <p><strong>As2 Group</strong> | Aug 2016 - Aug 2018 | São José dos Campos / SP, Brazil</p>
+                <ul>
+                    <li><strong>Delivered scalable Industry 4.0 solutions:</strong> Architected and developed advanced Java/Spring Boot systems for modern production lines, developed into JnJ Medical Brasilian Site, ensuring seamless integration and robust API communication.</li>
+                    <li><strong>Modernized legacy architecture:</strong> Successfully integrated legacy systems into modern cloud-ready infrastructure with zero downtime during migration, effectively reducing maintenance costs.</li>
+                    <li><strong>Database optimization:</strong> Designed relational schemas and complex SQL queries in MySQL and MSSQL to handle high-throughput manufacturing telemetry.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>System Analyst - Java / Spring</h3>
+                <p><strong>Urbam (Urbanizadora Municipal S.A.)</strong> | Feb 2011 - May 2016 | São José dos Campos, Brazil</p>
+                <ul>
+                    <li><strong>Delivered enterprise web solutions:</strong> Maintained and enhanced web Java applications using Spring and Demoiselle Framework with Oracle databases, ensuring high availability and robust performance.</li>
+                    <li><strong>Enhanced application efficiency by 30%:</strong> Optimized Server configurations and performed JVM performance tuning across complex enterprise distributions.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section education">
+            <h2>Education & Certifications</h2>
+            <ul>
+                <li><strong>Executive MBA in Software Architecture Design:</strong> XP Educação (2023 - 2024) - <em>Capstone:</em> Clean Architecture Reference Guide (Java/Quarkus) leveraging <strong>Microsoft Azure</strong>, AWS, Docker, Kubernetes, Prometheus, PostgreSQL.</li>
+                <li><strong>Anthropic - AI Fluency: Framework & Foundations:</strong> Anthropic (2026)</li>
+                <li><strong>Becoming an AI-First Product Leader & AI Agents for Product Leaders:</strong> (2025)</li>
+                <li><strong>Santander - Cybersecurity / Ethical Hacking:</strong> Santander (2025)</li>
+                <li><strong>Scrum Master Certification:</strong> Season Training (2017)</li>
+                <li><strong>Java Professional & Advanced Java (SOLID, TDD, Design Patterns):</strong> Alura (2020-2024)</li>
+                <li><strong>B.Tech. Systems Analysis and Development:</strong> Instituto Brasileiro de Tecnologia Avançado (2004 - 2006)</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

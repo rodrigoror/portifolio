@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Ramos - Backend Developer Resume</title>
+    <style>
+        /* General Compact Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.3;
+            margin: 0;
+            color: #333;
+            font-size: 11pt;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 15px 30px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #0056b3;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 18pt;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 13pt;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2px;
+        }
+
+        h3 {
+            font-size: 11pt;
+            margin-top: 5px;
+            margin-bottom: 2px;
+        }
+
+        p {
+            margin: 2px 0;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 10pt;
+        }
+
+        .contact-info p {
+            margin: 2px 0;
+        }
+
+        .section ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+
+        .section ul li {
+            margin-bottom: 3px;
+        }
+
+        .experience-item,
+        .education-item {
+            margin-bottom: 8px;
+        }
+
+        .experience-item p,
+        .education-item p {
+            font-size: 10pt;
+            margin: 1px 0;
+        }
+
+        /* Skills section compactness */
+        .skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 0;
+            list-style: none;
+            margin-top: 5px;
+        }
+
+        .skills ul li {
+            background: #e9e9e9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            margin: 0;
+        }
+
+        /* Print Specific Styling to enforce 2 pages */
+        @media print {
+            body {
+                font-size: 9.5pt;
+                line-height: 1.2;
+                margin: 0;
+            }
+
+            .container {
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            h1 {
+                font-size: 16pt;
+                margin-bottom: 2px;
+            }
+
+            h2 {
+                font-size: 12pt;
+                margin-top: 6px;
+                margin-bottom: 2px;
+                padding-bottom: 1px;
+            }
+
+            h3 {
+                font-size: 10.5pt;
+                margin-top: 3px;
+                margin-bottom: 1px;
+            }
+
+            .contact-info {
+                font-size: 9pt;
+                margin-bottom: 4px;
+            }
+
+            .contact-info p {
+                margin: 1px 0;
+            }
+
+            .section ul {
+                margin: 2px 0;
+                padding-left: 15px;
+            }
+
+            .section ul li {
+                margin-bottom: 1px;
+            }
+
+            .experience-item,
+            .education-item {
+                margin-bottom: 4px;
+                page-break-inside: avoid;
+            }
+
+            .experience-item p,
+            .education-item p {
+                font-size: 9pt;
+            }
+
+            .skills ul li {
+                font-size: 8.5pt;
+                border: 1px solid #ccc;
+                background: transparent;
+                padding: 1px 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Rodrigo Ramos</h1>
+            <div class="contact-info">
+                <p><strong>Senior Backend Developer | Java & Spring Boot</strong></p>
+                <p>Email: rodrigoror@gmail.com | Mobile: +34 622 933 051 | Location: Spain</p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/rodrigo-oliveira-ramos"
+                        target="_blank">linkedin.com/in/rodrigo-oliveira-ramos</a> | Portfolio: <a
+                        href="https://rodrigoror.github.io/portifolio/"
+                        target="_blank">rodrigoror.github.io/portifolio/</a></p>
+                <p>Languages: English (B2/Advanced), Spanish, Portuguese (Native)</p>
+            </div>
+        </header>
+
+        <section class="section summary">
+            <h2>Professional Summary</h2>
+            <p>Highly accomplished Senior Backend Developer with over 20 years of software engineering experience,
+                specializing in Java, Spring Boot, and cloud-native architecture. Deeply proficient in designing
+                scalable microservices, robust API development, and distributed systems deployed on AWS. I have a strong
+                background in test-driven development (JUnit, Mockito) and adherence to best practices in system
+                architecture and accessibility (WCAG). Throughout my career, I have driven end-to-end B2B
+                transformations and scaled platforms serving hundreds of thousands of concurrent users, combining
+                rigorous DevOps/CI-CD pipelines with an Agile mindset to consistently deliver secure and highly
+                available solutions.</p>
+        </section>
+
+        <section class="section skills">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li><strong>Core Languages:</strong> Java (11-21+), SQL, JavaScript/TypeScript, Python</li>
+                <li><strong>Frameworks & Architecture:</strong> Spring Boot, Spring Framework, Quarkus, Microservices,
+                    API Design, REST, Clean Architecture, DDD, WCAG Accessibility Guidelines</li>
+                <li><strong>Cloud & DevOps:</strong> AWS (EC2, S3, RDS, Lambda, SQS, SNS), Docker, Kubernetes, CI/CD
+                    pipelines, GitLab/GitHub Actions, SonarQube</li>
+                <li><strong>Testing & QA:</strong> JUnit, Mockito, TDD, BDD, Cucumber, Cypress, automated testing
+                    pipelines</li>
+                <li><strong>Databases:</strong> PostgreSQL, MySQL, Oracle, MongoDB, DynamoDB, Redis</li>
+                <li><strong>Methodologies:</strong> Agile (Scrum, Kanban), System Design, Code Reviews, Observability
+                    (Prometheus, Grafana, OpenTelemetry)</li>
+            </ul>
+        </section>
+
+        <section class="section experience">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <h3>Tech Manager & Senior Backend Engineer - API Design & Architecture</h3>
+                <p><strong>alt.bank</strong> | Dec 2023 - Present | Remote</p>
+                <ul>
+                    <li><strong>Architected high-performance distributed systems:</strong> Designed scalable backend
+                        microservices using Java and Node.js, handling 400k+ daily records with rigorous API design
+                        principles ensuring secure, real-time B2B and B2C interactions.</li>
+                    <li><strong>Enhanced test automation & reliability:</strong> Implemented comprehensive automated
+                        testing pipelines using JUnit and Mockito (TDD), integrated with SonarQube CI/CD on AWS,
+                        achieving 80%+ code coverage and drastically reducing production defects.</li>
+                    <li><strong>Led cloud-native data migrations:</strong> Orchestrated a massive financial processor
+                        migration serving 100,000 users with zero downtime, developing resilient backend integrations
+                        running on AWS architecture.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Technical Lead - Java & Cloud Architecture</h3>
+                <p><strong>alt.bank</strong> | Sep 2021 - Dec 2023 | Remote</p>
+                <ul>
+                    <li><strong>Drove strategic platform pivot:</strong> Orchestrated the backend architectural
+                        transition to a proprietary Credit Card model, leveraging Java and cloud microservices for
+                        real-time transaction processing.</li>
+                    <li><strong>Elevated code quality & testing standards:</strong> Established strict Unit and
+                        Integration testing processes (JUnit/Mockito) and AI-assisted code reviews, significantly
+                        reducing technical debt and achieving zero critical bugs in production releases.</li>
+                    <li><strong>Managed complex API integrations:</strong> Designed and oversaw third-party SDK and API
+                        integrations, maintaining 99.9% uptime and ensuring highly reliable B2B service availability.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Full Stack Engineer - Java & Microservices</h3>
+                <p><strong>alt.bank</strong> | Dec 2018 - Sep 2021 | São Paulo / SP, Brazil</p>
+                <ul>
+                    <li><strong>Optimized Java microservices:</strong> Created scalable, efficient backend services
+                        utilizing modern Java frameworks to support rapid feature delivery, heavily relying on CI/CD
+                        deployments and cloud environments.</li>
+                    <li><strong>Accelerated core banking MVP:</strong> Spearheaded backend architecture and RESTful API
+                        development for a core application MVP delivered in just 3 months, employing telemetry and
+                        robust observability data.</li>
+                    <li><strong>Advanced QA automation:</strong> Integrated CI/CD pipelines using GitLab, establishing
+                        rigorous testing paradigms with JUnit and integration tests that reduced production issues by
+                        30%.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Developer - Enterprise Java & Spring Boot</h3>
+                <p><strong>As2 Group</strong> | Aug 2016 - Aug 2018 | São José dos Campos / SP, Brazil</p>
+                <ul>
+                    <li><strong>Delivered scalable Java/Spring Boot solutions:</strong> Architected and developed
+                        advanced backend systems for modern production lines, ensuring seamless B2B integration, robust
+                        API communication, and adherence to WCAG accessibility principles for internal frontends.</li>
+                    <li><strong>Modernized legacy architecture:</strong> Successfully migrated legacy monolithic
+                        platforms to modernized Spring Boot infrastructure with zero downtime, highly optimizing data
+                        processing and overall system architecture.</li>
+                    <li><strong>Database & API optimization:</strong> Designed complex SQL queries in MySQL/MSSQL and
+                        developed secure REST APIs to handle high-throughput manufacturing data streams efficiently.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>System Analyst - Java / Spring Framework</h3>
+                <p><strong>Urbam (Urbanizadora Municipal S.A.)</strong> | Feb 2011 - May 2016 | São José dos Campos,
+                    Brazil</p>
+                <ul>
+                    <li><strong>Delivered robust enterprise backends:</strong> Developed and maintained complex Java
+                        applications using the Spring Framework, connecting to Oracle databases to ensure high
+                        availability for municipal services.</li>
+                    <li><strong>Enhanced application architecture:</strong> Re-architected application workflows and JVM
+                        settings, resulting in a 30% performance increase in high-load enterprise deployments.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section education">
+            <h2>Education & Certifications</h2>
+            <ul>
+                <li><strong>Executive MBA in Software Architecture Design:</strong> XP Educação (2023 - 2024) -
+                    <em>Capstone:</em> Clean Architecture Reference Guide (Java) leveraging AWS, Docker, Kubernetes, and
+                    Observability tools.</li>
+                <li><strong>Java Professional & Advanced Java (SOLID, TDD, Design Patterns, JUnit):</strong> Alura
+                    (2020-2024)</li>
+                <li><strong>Santander - Cybersecurity / Ethical Hacking:</strong> Santander (2025)</li>
+                <li><strong>Scrum Master Certification:</strong> Season Training (2017)</li>
+                <li><strong>B.Tech. Systems Analysis and Development:</strong> Instituto Brasileiro de Tecnologia
+                    Avançado (2004 - 2006)</li>
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>
