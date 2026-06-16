@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact-Driven Engineering: How I Learned to Measure Everything - Rodrigo Ramos</title>
+    <meta name="description"
+        content="A senior engineer's perspective on leading with outcomes. Real stories of how applying the Google XYZ framework — Accomplished X, measured by Y, by doing Z — changed the way I build teams and products.">
+    <link rel="stylesheet" href="../css/meyawo.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 35px;
+            border-bottom: 2px solid #e9e9e9;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: #e8f4fd;
+            border-left: 4px solid #0056b3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .xyz-card {
+            background: #f0f7ff;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .xyz-card .label {
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #0056b3;
+            margin-bottom: 4px;
+        }
+
+        .xyz-card p {
+            margin-bottom: 0;
+        }
+
+        .xyz-tag {
+            display: inline-block;
+            background: #0056b3;
+            color: #fff;
+            font-size: 0.75em;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .xyz-tag.y {
+            background: #17a2b8;
+        }
+
+        .xyz-tag.z {
+            background: #28a745;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #0056b3;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .toc {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+        }
+
+        .toc ol {
+            margin-bottom: 0;
+        }
+
+        .toc a {
+            text-decoration: none;
+        }
+
+        .byline {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Impact-Driven Engineering:<br>How I Learned to Measure Everything</h1>
+            <p class="byline"><em>By Rodrigo Ramos &nbsp;·&nbsp; June 2026</em></p>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Why "I worked on X" is not enough</a></li>
+                <li><a href="#xyz-explained">The Google XYZ Framework, explained simply</a></li>
+                <li><a href="#story1">Story 1 — The credit card processor migration</a></li>
+                <li><a href="#story2">Story 2 — Killing war-rooms with TDD and AI</a></li>
+                <li><a href="#story3">Story 3 — Tripling revenue with a collections platform</a></li>
+                <li><a href="#story4">Story 4 — Building an 80% faster engineering team</a></li>
+                <li><a href="#story5">Story 5 — Shipping a fintech MVP in 3 months</a></li>
+                <li><a href="#apply">How to apply XYZ in your own career</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ol>
+        </div>
+
+        <!-- Section 1 -->
+        <section id="intro">
+            <h2>1. Why "I Worked on X" Is Not Enough</h2>
+
+            <p>Early in my career, I described my work the way most engineers do: "I built a mobile app." "I managed
+                a team of 5." "I led the migration project." Those statements are not wrong. But they are incomplete.
+                They describe activity, not impact.</p>
+
+            <p>The difference between a strong senior engineer and a forgettable one is often not skill. It is the
+                ability to connect technical decisions to business outcomes. To say not just <em>what</em> you did, but
+                <em>what changed because of it</em>.</p>
+
+            <p>Over 20+ years, across startups, enterprise projects, fintech scale-ups, and freelance work, I went
+                through a shift in how I think about my own contributions. The trigger was the <strong>Google XYZ
+                    framework</strong> — a deceptively simple template that forces engineers to stop describing work and
+                start describing results.</p>
+
+            <div class="highlight-box">
+                <strong>The shift:</strong> From "I led the migration" to "I led the migration of 100,000 customers
+                with zero downtime, reducing reconciliation errors by eliminating manual data discrepancies, completing
+                the transition within a single quarter."
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="xyz-explained">
+            <h2>2. The Google XYZ Framework, Explained Simply</h2>
+
+            <p>The Google XYZ formula was popularized by Laszlo Bock, former Senior VP of People Operations at
+                Google. It is designed to help engineers write better resumes, but its real value is deeper than that:
+                it teaches you to <strong>think in outcomes</strong>.</p>
+
+            <div class="xyz-card">
+                <div class="label">The Formula</div>
+                <p>
+                    <span class="xyz-tag">X</span> <strong>Accomplished [X]</strong> —
+                    <span class="xyz-tag y">Y</span> <strong>as measured by [Y]</strong> —
+                    <span class="xyz-tag z">Z</span> <strong>by doing [Z]</strong>
+                </p>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Part</th>
+                    <th>Question it answers</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><strong>X — The result</strong></td>
+                    <td>What improved? What changed?</td>
+                    <td>Reduced production incidents</td>
+                </tr>
+                <tr>
+                    <td><strong>Y — The measure</strong></td>
+                    <td>By how much? How do we know?</td>
+                    <td>War-rooms dropped by 80%</td>
+                </tr>
+                <tr>
+                    <td><strong>Z — The action</strong></td>
+                    <td>How did you do it? What was your specific contribution?</td>
+                    <td>Introduced TDD + SonarQube CI/CD with 80% code coverage</td>
+                </tr>
+            </table>
+
+            <p>Notice that <strong>Y is the hardest part to fill</strong>. Most engineers skip it. But without Y,
+                your statement is just an assertion. With Y, it becomes evidence. The stories below are built entirely
+                around this structure, drawn from real situations across my career.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="story1">
+            <h2>3. Story 1 — The Credit Card Processor Migration</h2>
+
+            <div class="xyz-card">
+                <div class="label">XYZ Statement</div>
+                <p>
+                    <span class="xyz-tag">X</span> Led a seamless credit card processor migration for 100,000 active
+                    customers —
+                    <span class="xyz-tag y">Y</span> with zero noticeable downtime and zero refused transactions —
+                    <span class="xyz-tag z">Z</span> by engineering a custom data migration application that resolved
+                    complex data discrepancies between FIS and Pismo, completing the transition within Q2.
+                </p>
+            </div>
+
+            <h3>The Context</h3>
+
+            <p>At alt.bank, the decision to migrate our credit card processor from FIS to Pismo was a business
+                imperative. The new provider offered better economics and a more flexible integration model. But the
+                technical reality was brutal: two systems with fundamentally different data schemas, 100,000 live
+                customers, and a hard deadline tied to a business partnership agreement.</p>
+
+            <h3>The Problem Nobody Talks About</h3>
+
+            <p>Processor migrations are rarely about moving data from A to B. They are about reconciling the
+                world-view of two systems that represent the same financial reality in completely different ways.
+                Transaction states that mapped cleanly in FIS had no direct equivalent in Pismo. Customer identifiers
+                overlapped in some edge cases and diverged in others. A simple ETL script was never going to be
+                enough.</p>
+
+            <h3>What We Actually Did</h3>
+
+            <p>We built a purpose-built migration application, not a generic tool. It included:</p>
+            <ul>
+                <li>A mapping layer that translated FIS entity structures into Pismo-compatible schemas field by field,
+                    with explicit validation rules for each transformation</li>
+                <li>A reconciliation engine that ran in parallel during a shadow-migration phase, comparing outputs
+                    from both systems in real time and flagging discrepancies before they reached customers</li>
+                <li>A rollback plan at every stage, so at any point we could revert without data loss</li>
+                <li>Exhaustive communication protocols with both processor teams — FIS during sunset, Pismo during
+                    onboarding</li>
+            </ul>
+
+            <h3>The Result</h3>
+
+            <p>The migration completed inside Q2. Not one customer had a refused transaction during the
+                switchover. Not one customer noticed the change. The gains from the more favorable processor economics
+                started appearing in the P&L in the second half of the same year. The business team had expected a
+                3-month risk window. We closed it in weeks.</p>
+
+            <div class="highlight-box">
+                <strong>Lesson:</strong> Migrations are won in the data model, not in the cutover script. Build the
+                reconciliation layer first, run it in shadow mode, and only cut over when you have proof that both
+                systems agree.
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="story2">
+            <h2>4. Story 2 — Killing War-Rooms with TDD and AI</h2>
+
+            <div class="xyz-card">
+                <div class="label">XYZ Statement</div>
+                <p>
+                    <span class="xyz-tag">X</span> Reduced critical production incidents —
+                    <span class="xyz-tag y">Y</span> decreasing unplanned war-rooms by 80% —
+                    <span class="xyz-tag z">Z</span> by establishing TDD practices, implementing SonarQube CI/CD
+                    pipelines with 80% code coverage enforcement, and integrating AI-assisted code review across
+                    frontend and backend.
+                </p>
+            </div>
+
+            <h3>The Problem: War-Rooms as a Way of Life</h3>
+
+            <p>If you have worked in a fast-growing fintech startup, you know what a war-room feels like. It is
+                2 AM, 8 people are on a call, production is down, and nobody knows exactly why. The immediate pain is
+                obvious. The hidden cost is not: developer morale erodes, sprint commitments slip, and engineers start
+                to fear deployments instead of looking forward to them.</p>
+
+            <p>When I moved into the Tech Manager role at alt.bank, this was the environment I inherited. The
+                team was skilled. The product was complex. But the testing culture was weak and the tooling was
+                reactive.</p>
+
+            <h3>The Three-Layer Fix</h3>
+
+            <p><strong>Layer 1 — TDD as a team discipline, not a solo practice.</strong> Test-Driven Development
+                only works if the whole team does it, because the moment one person skips it, the test suite starts to
+                lie. We introduced TDD in planning sessions — not just in code. Before writing a line, the team had to
+                define the expected behavior and the failure conditions. This changed how people thought about features,
+                not just how they coded them.</p>
+
+            <p><strong>Layer 2 — SonarQube as a gate, not a report.</strong> Too many teams use SonarQube as a
+                dashboard they look at after the fact. We wired it into the CI/CD pipeline on GitLab so that a pull
+                request with coverage below 80% or with critical security findings could not be merged. The gate is
+                what makes the number real.</p>
+
+            <p><strong>Layer 3 — AI-assisted code review.</strong> Using tools like Code Rabbit in the review
+                cycle meant that common code smells, missing edge cases, and architectural misalignments were caught
+                before a human reviewer even opened the PR. This freed senior engineers to focus code review on
+                design and business logic, not syntax and boilerplate.</p>
+
+            <h3>The Result</h3>
+
+            <p>Over the following months, unplanned war-rooms dropped by 80%. Deployments became something the
+                team looked forward to, not feared. The 20% of remaining incidents shifted from "unknown production
+                failures" to "known edge cases we are actively improving," which is a completely different, manageable
+                category.</p>
+
+            <div class="warning-box">
+                <strong>What did not work at first:</strong> We tried to enforce TDD before fixing the test
+                infrastructure. Tests were slow, flaky, and gave false negatives. The first investment has to be in
+                test reliability — otherwise engineers lose trust in the suite and start ignoring it.
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="story3">
+            <h2>5. Story 3 — Tripling Revenue with a Collections Platform</h2>
+
+            <div class="xyz-card">
+                <div class="label">XYZ Statement</div>
+                <p>
+                    <span class="xyz-tag">X</span> Achieved a 3x revenue increase on the collections product —
+                    <span class="xyz-tag y">Y</span> scaling from a B2C model to a B2B launch scheduled for Q1 2026
+                    —
+                    <span class="xyz-tag z">Z</span> by leading end-to-end development of the Wolfe platform,
+                    implementing AI-assisted automated testing pipelines, and designing a scalable microservices
+                    architecture that handled 400,000+ daily records.
+                </p>
+            </div>
+
+            <h3>The Architecture That Made It Possible</h3>
+
+            <p>Building a collections platform that can scale from a handful of internal users to dozens of B2B
+                partners with different data requirements is not a feature delivery problem. It is an architecture
+                problem. The wrong foundation will collapse under the weight of the second client.</p>
+
+            <p>The stack we built was deliberate:</p>
+            <ul>
+                <li><strong>Node.js/TypeScript backend</strong> with a GraphQL layer — so each partner could query
+                    exactly the data they needed without requiring custom endpoints for every integration</li>
+                <li><strong>MongoDB handling 400,000+ daily records</strong> — the document model aligned naturally
+                    with the unstructured nature of debt data coming from different creditors</li>
+                <li><strong>Vue.js frontend with AWS Cognito</strong> — enabling secure multi-tenant access from a
+                    single UI layer</li>
+                <li><strong>Python data pipelines</strong> — for the analytics and BI layer that creditors needed to
+                    evaluate portfolio performance</li>
+            </ul>
+
+            <h3>Why the B2B Transition Was Architectural, Not Just Commercial</h3>
+
+            <p>Moving a B2C product to B2B is rarely a matter of adding a new user role. The data isolation
+                model, the access control layer, the API contract structure, the reporting granularity — all of these
+                need to be rebuilt with multi-tenancy in mind. We had anticipated this during the original design,
+                which meant the B2B onboarding process was an evolution, not a rewrite.</p>
+
+            <div class="highlight-box">
+                <strong>Key decision:</strong> We chose GraphQL for the partner integration layer specifically
+                because it allowed new partners to self-define their data queries without requiring backend changes.
+                This directly reduced the engineering cost of each new partner onboarding from weeks to days.
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="story4">
+            <h2>6. Story 4 — Building an 80% Faster Engineering Team</h2>
+
+            <div class="xyz-card">
+                <div class="label">XYZ Statement</div>
+                <p>
+                    <span class="xyz-tag">X</span> Delivered an 80% productivity boost across engineering cycles —
+                    <span class="xyz-tag y">Y</span> measured by delivery velocity and reduced cycle time across
+                    sprints —
+                    <span class="xyz-tag z">Z</span> by pioneering AI-native workflows using Cursor, Code Rabbit,
+                    and LLM Agents as first-class tools in the engineering process.
+                </p>
+            </div>
+
+            <h3>The Honest Starting Point</h3>
+
+            <p>Productivity in software is notoriously hard to measure. Lines of code is a terrible metric.
+                Story points are a proxy, not a truth. What I measured was simpler and more honest: how long did it
+                take from a feature being defined to it being in production? And how often did that feature need a
+                hotfix within 30 days of release?</p>
+
+            <h3>What "AI-Native" Actually Means in Practice</h3>
+
+            <p>AI-native does not mean asking an AI to write all the code. It means redesigning the engineering
+                workflow so that AI tools amplify each stage, not just the typing stage:</p>
+
+            <ul>
+                <li><strong>Specification phase:</strong> Using LLM agents to challenge assumptions in the spec,
+                    generate edge cases, and identify missing requirements before a single line of code is written</li>
+                <li><strong>Development phase:</strong> Using Cursor for context-aware code generation that
+                    understands the project's architecture, conventions, and existing patterns — not generic suggestions
+                </li>
+                <li><strong>Review phase:</strong> Using Code Rabbit to catch issues before human reviewers open
+                    the PR, so senior engineers spend review time on design decisions, not syntax</li>
+                <li><strong>Testing phase:</strong> Generating test cases from the spec, not from the
+                    implementation — which forces the tests to actually validate behavior rather than just exercise
+                    code paths</li>
+            </ul>
+
+            <p>The cumulative effect across the full cycle was significant. Engineers stopped switching context
+                to look up documentation. Code reviews became faster because AI had already caught the obvious issues.
+                Test suites became more comprehensive because they started from requirements, not from post-hoc
+                coverage analysis.</p>
+
+            <div class="highlight-box">
+                <strong>The team dimension:</strong> Productivity tools only work if the team trusts them. We
+                invested time in showing engineers how to use AI as a thought partner, not a replacement. The best
+                results came when engineers started <em>arguing with the AI</em> — using it to stress-test their own
+                assumptions, not just to generate boilerplate.
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="story5">
+            <h2>7. Story 5 — Shipping a Fintech MVP in 3 Months</h2>
+
+            <div class="xyz-card">
+                <div class="label">XYZ Statement</div>
+                <p>
+                    <span class="xyz-tag">X</span> Delivered a high-quality banking application MVP —
+                    <span class="xyz-tag y">Y</span> in just 3 months as a core startup developer —
+                    <span class="xyz-tag z">Z</span> by leveraging telemetry and data-driven prioritization to
+                    focus development effort on features with the highest user impact, and by applying Flutter with
+                    clean architecture (Bloc/MVC) to maximize mobile delivery speed without accumulating technical
+                    debt.
+                </p>
+            </div>
+
+            <h3>The MVP Trap Engineers Fall Into</h3>
+
+            <p>The word "MVP" is often used as a license to cut quality. I have seen too many MVPs that were
+                rushed into production carrying hidden structural debt that took 12 months to untangle. The real
+                challenge of an MVP is not speed. It is choosing what to build fast <em>and</em> what to build
+                right, simultaneously.</p>
+
+            <h3>Data-Driven Prioritization Before There Is User Data</h3>
+
+            <p>In the early days of alt.bank, we had no historical user data. We could not A/B test because
+                there were no users yet. So we instrumented the app from day one — not to analyze behavior, but to
+                <em>prepare to analyze behavior</em>. Every screen, every user flow, every error state was telemetered
+                from the very first commit. This meant that the moment we had users, we had data. We were not waiting
+                weeks to instrument. We were waiting weeks to have enough sample size for statistical confidence.</p>
+
+            <p>That telemetry informed every prioritization decision from the first sprint after launch. Features
+                that users were actually engaging with got more investment. Features that were being ignored were cut
+                or deprioritized before they accumulated more debt.</p>
+
+            <h3>Architecture as a Competitive Advantage in MVPs</h3>
+
+            <p>Using Flutter with Clean Architecture (Bloc pattern) was a deliberate choice to preserve
+                optionality. Clean Architecture's separation of concerns meant that when we needed to swap out a
+                backend integration — and we did, multiple times — we changed the data layer without touching the
+                business logic or the UI. In a startup, that flexibility is not a luxury. It is survival.</p>
+
+            <div class="highlight-box">
+                <strong>Result:</strong> The MVP launched in 3 months. Within the next year, the app scaled through
+                multiple major architectural changes — including a full credit card model integration — without
+                requiring a rewrite of the core application. The 3-month investment in clean architecture paid
+                dividends for the next 3 years.
+            </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="apply">
+            <h2>8. How to Apply XYZ in Your Own Career</h2>
+
+            <p>You do not need to wait for a job search to start thinking in XYZ. The most powerful use of this
+                framework is as a <strong>real-time habit</strong> — a filter you apply to every project and every
+                decision as it happens.</p>
+
+            <h3>The Three Questions to Ask Every Sprint</h3>
+            <ol>
+                <li><strong>What changed because of what we shipped?</strong> (X) — Not what we built, but what
+                    changed in the user experience, system behavior, or business metric.</li>
+                <li><strong>How do we know?</strong> (Y) — What number, what signal, what observable event tells
+                    us the change happened? If you cannot answer this before you ship, you cannot claim the impact
+                    after.</li>
+                <li><strong>What specifically did we do that caused it?</strong> (Z) — This forces you to
+                    distinguish your contribution from the ambient noise of a team working together.</li>
+            </ol>
+
+            <h3>A Practical Template</h3>
+
+            <div class="xyz-card">
+                <div class="label">Before the sprint</div>
+                <p>
+                    "We will accomplish <strong>[X — the business outcome]</strong>, which we will confirm by
+                    measuring <strong>[Y — the metric or signal]</strong>, by doing <strong>[Z — the specific
+                        technical work]</strong>."
+                </p>
+            </div>
+
+            <p>This is also how you write sprint goals that actually mean something. And it is how you
+                retrospective a sprint with honesty — did the thing we shipped move the number we said it would
+                move?</p>
+
+            <h3>What to Do When You Cannot Measure Y</h3>
+
+            <p>Sometimes the impact is real but not yet measurable. The migration is complete but the cost
+                savings show up in next quarter's AWS bill. The architecture improvement pays off when you hire the
+                next engineer and they onboard in 2 weeks instead of 6. In these cases:</p>
+            <ul>
+                <li>Document the expected measure and when you will check it. Then go check it.</li>
+                <li>Use a proxy metric. If you cannot measure the final outcome, measure the closest leading
+                    indicator.</li>
+                <li>Be honest about the horizon. "We expect this to reduce X by Y within 90 days" is a valid XYZ
+                    statement, as long as you revisit it.</li>
+            </ul>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="conclusion">
+            <h2>9. Conclusion</h2>
+
+            <p>The Google XYZ framework is not a resume trick. It is a way of thinking about your work that
+                forces you to close the loop between technical decisions and real-world outcomes. It is also, in my
+                experience, one of the clearest ways to distinguish engineers who grow into leaders from engineers who
+                stay in execution mode.</p>
+
+            <p>The five stories in this article are not exceptional. They are the kind of work that senior
+                engineers do every day in startups and scale-ups. What makes them visible is not the work itself —
+                it is the habit of measuring what changed, and being able to articulate why.</p>
+
+            <p>If I had to distill 20+ years into a single professional habit, it would be this: <strong>always
+                    know what number your work is trying to move, and always go back to see if it moved.</strong> The
+                rest — the architecture choices, the tools, the frameworks — is just the means to that end.</p>
+
+            <p><em>Write the XYZ statement before you build the feature. You will build a better feature.</em></p>
+        </section>
+
+        <footer class="text-center mt-5">
+            <p><a href="../../index.html">← Back to Portfolio</a></p>
+        </footer>
+    </div>
+</body>
+
+</html>
