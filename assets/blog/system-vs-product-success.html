@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Success vs Product Success: What an AI Chatbot Taught Me About Cost - Rodrigo Ramos</title>
+    <meta name="description"
+        content="A system can work perfectly and still fail as a product. Why OKRs and KPIs define delivery success, why cost must stay under control before you scale, and what shutting down an AI chatbot channel taught me about cost versus benefit.">
+    <link rel="stylesheet" href="../css/meyawo.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 35px;
+            border-bottom: 2px solid #e9e9e9;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: #e8f4fd;
+            border-left: 4px solid #0056b3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .xyz-card {
+            background: #f0f7ff;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .xyz-card .label {
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #0056b3;
+            margin-bottom: 4px;
+        }
+
+        .xyz-card p {
+            margin-bottom: 0;
+        }
+
+        .xyz-tag {
+            display: inline-block;
+            background: #0056b3;
+            color: #fff;
+            font-size: 0.75em;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .xyz-tag.y {
+            background: #17a2b8;
+        }
+
+        .xyz-tag.z {
+            background: #28a745;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #0056b3;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+
+
+
+
+        .byline {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>System Success vs Product Success:<br>What an AI Chatbot Taught Me About Cost</h1>
+            <p class="byline"><em>By Rodrigo Ramos &nbsp;·&nbsp; November 2026</em></p>
+        </header>
+
+        <!-- Section 1 -->
+        <section id="intro">
+            <h2>1. It Worked. So Why Did We Turn It Off?</h2>
+
+            <p>One of the best decisions my team made was to switch off something that worked, and
+                worked well. Our AI chatbot on WhatsApp resolved 93% of conversations in the branch where it started,
+                against 25% before. It cut the support queue by a quarter in one week. By every engineering and
+                customer-service measure, it was a success.</p>
+
+            <p>Then the bill arrived. Three months in, our Google Cloud bill was <strong>ten times</strong> what it
+                had been before the AI started. The system was succeeding; the product, at that cost, was not.</p>
+
+            <p>That gap, between a system that works and a product that pays off, is what this post is about. Engineers
+                are trained to close the first one. Managers and architects are paid to close the second.</p>
+
+            <div class="highlight-box">
+                <strong>The core idea:</strong> a system succeeds when it does what it was built to do. A product
+                succeeds when what it does is <strong>worth more than what it costs</strong>, and keeps being worth it
+                as it grows.
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="difference">
+            <h2>2. System Success and Product Success Are Different Questions</h2>
+
+            <p>Most delivery reviews ask system questions. Did we ship on time? Is it up? Are there bugs? Those
+                questions matter, but they all have the same blind spot: none of them asks whether anyone should have
+                built the thing.</p>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>System success</th>
+                    <th>Product success</th>
+                </tr>
+                <tr>
+                    <td><strong>The question</strong></td>
+                    <td>Does it work?</td>
+                    <td>Is it worth it?</td>
+                </tr>
+                <tr>
+                    <td><strong>Typical measures</strong></td>
+                    <td>Uptime, latency, error rate, test coverage, delivery date</td>
+                    <td>Adoption, problems solved, revenue or savings, cost per outcome</td>
+                </tr>
+                <tr>
+                    <td><strong>Who owns it</strong></td>
+                    <td>The engineering team</td>
+                    <td>Engineering, product and business together</td>
+                </tr>
+                <tr>
+                    <td><strong>When you know</strong></td>
+                    <td>At release</td>
+                    <td>Weeks or months after release</td>
+                </tr>
+                <tr>
+                    <td><strong>How it fails</strong></td>
+                    <td>Loudly: incidents, outages, war-rooms</td>
+                    <td>Quietly: a bill that grows while nothing else does</td>
+                </tr>
+            </table>
+
+            <p>The last row is the dangerous one. A broken system gets fixed because everyone can see it. A product
+                that works but doesn't pay off can run for years, because nothing ever alerts.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="okr">
+            <h2>3. Without OKRs and KPIs, "Done" Means Nothing</h2>
+
+            <p>If the only definition of done is "it's in production", every delivery is a success. That's why
+                <strong>the success of a product delivery has to be defined by a number, agreed before the work
+                    starts</strong>. OKRs and KPIs are how you write that number down.</p>
+
+            <ul>
+                <li><strong>The OKR says why we're building it.</strong> The objective names the change we want in the
+                    business, and the key results say how we'll know it happened. They are set before the first
+                    sprint, not after the launch.</li>
+                <li><strong>The KPIs say whether it's still working.</strong> Once the product is live, KPIs are the
+                    numbers we watch every week: they tell us whether the result holds, and what it costs to keep it.
+                </li>
+            </ul>
+
+            <p>For anything that runs on usage-based infrastructure, and AI is the clearest example, I insist on one
+                rule: <strong>every key result about benefit needs a KPI about cost next to it</strong>. A resolution
+                rate without a cost per resolution is half a measurement.</p>
+
+            <div class="xyz-card">
+                <div class="label">How I write the OKR for an AI feature</div>
+                <p>
+                    <strong>Objective:</strong> customers solve their problem without waiting for a human.<br>
+                    <strong>KR 1:</strong> share of conversations resolved without a human handoff, compared with the
+                    current solution.<br>
+                    <strong>KR 2:</strong> customer satisfaction on resolved conversations stays at or above today's
+                    level.<br>
+                    <strong>KR 3:</strong> cost per resolved conversation is below the cost of the alternative (a
+                    conventional bot or a human agent).
+                </p>
+            </div>
+
+            <p>KR 3 is the one teams leave out, and it's the one that decides whether the product can grow. Notice also
+                that KR 1 is <em>compared with the current solution</em>. A resolution rate on its own says nothing: 93%
+                is impressive against 25%, and much less so against 90%.</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="chatbot">
+            <h2>4. Lesson Learned — The AI Chatbot on WhatsApp</h2>
+
+            <div class="xyz-card">
+                <div class="label">XYZ Statement</div>
+                <p>
+                    <span class="xyz-tag">X</span> Turned an AI copilot for support operators into a WhatsApp chatbot
+                    that solved customers' problems on its own —
+                    <span class="xyz-tag y">Y</span> raising resolution in its first branch from 25% to 93%, then cutting
+                    the queue 25% in one week while serving 200% more customers —
+                    <span class="xyz-tag z">Z</span> by rolling it out one branch of the conversation tree at a time and
+                    letting the AI look up customer data and send self-service tutorials with deep links into the app.
+                </p>
+            </div>
+
+            <h3>The Architecture</h3>
+
+            <p>Customers wrote to us on WhatsApp. Conversations were routed through Salesforce, our customer-service
+                platform, which called Gemini models through Google AI Studio and Vertex AI on Google Cloud. The AI could
+                query our database, so its answers were about the customer's actual account, not generic FAQ text.</p>
+
+            <div class="highlight-box">
+                <strong>The flow:</strong> WhatsApp → Salesforce → Gemini (Google AI Studio + Vertex AI) → our
+                database → an answer, a tutorial or a handoff to a human.
+            </div>
+
+            <h3>From Copilot to Chatbot</h3>
+
+            <p>It didn't start as a chatbot. The first version was a <strong>copilot for our support
+                    operators</strong>: it read the conversation and suggested answers, and a human decided what to
+                send. It got good quickly, and it soon became clear it could answer customers directly.</p>
+
+            <p>That step was the hard part. Letting the model talk to customers meant building
+                <strong>guardrails</strong>: what it may answer, what it must never say, when it has to hand over to a
+                human, which data it may use. Guardrails turned out to be much harder than the AI itself. We spent a lot
+                of time and work tuning them so the bot aimed at the right thing, and not just at a plausible answer.
+            </p>
+
+            <h3>Rolling Out One Branch at a Time</h3>
+
+            <p>Our chatbot already worked as a decision tree: each choice the customer makes leads to a branch. We
+                didn't switch the AI on everywhere. In the first month, we put it in a single branch, "my password is
+                blocked", for only a small share of customers.</p>
+
+            <p>There, the AI looked up the customer's situation in our database and replied with a step-by-step
+                tutorial, with deep links straight to the right screens in the app, so customers could fix the problem
+                themselves. In that branch, <strong>resolution went from 25% to 93%</strong>. And in that first month,
+                the cost was fine.</p>
+
+            <p>So we expanded. Each new branch sat closer to the root of the tree, where more conversations pass. The
+                results kept coming: in one week, <strong>the queue for human agents dropped 25%</strong>, and the
+                number of customers we served <strong>grew 200%</strong>.</p>
+
+            <h3>The Bill</h3>
+
+            <p>Moving toward the root of the tree had a side effect we felt only later. Every step put more
+                conversations through the model, and each of those conversations meant more Gemini calls on Google
+                Cloud. Benefit grew with every branch. So did cost, and cost grew faster.</p>
+
+            <p>By the third month, <strong>our Google Cloud bill was 10 times what it had been in month zero</strong>,
+                before the AI system started. Nothing was broken. The product simply
+                cost more than it was worth at that scale, so we turned the WhatsApp chatbot off.</p>
+
+            <div class="warning-box">
+                <strong>The month-one trap:</strong> in month one the cost was fine because the AI ran in one branch, for
+                a small share of customers. That test proved the benefit. It didn't prove the cost, because cost
+                depends on volume, and the volume was still to come.
+            </div>
+
+            <h3>What I Take From It</h3>
+            <ul>
+                <li><strong>A rollout needs a cost gate, not only a benefit gate.</strong> Before moving the AI one
+                    branch closer to the root, check the cost per resolved conversation as well as the resolution rate.
+                </li>
+                <li><strong>Small pilots prove benefit, not cost.</strong> Estimate the cost at full volume before
+                    expanding, not after the invoice.</li>
+                <li><strong>Guardrails are part of the cost.</strong> They took a large share of the team's time and
+                    work, and that effort belongs in the business case too.</li>
+                <li><strong>Turning it off is a valid result.</strong> The project proved what AI can do for our
+                    customers. Knowing what it costs to do it is just as valuable.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Lesson:</strong> 93% resolution is a system success. Whether it's a product success depends on
+                what each of those resolutions costs. <strong>Measure benefit and cost together at every step of the
+                    rollout, and stop scaling the moment cost grows faster than benefit.</strong>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="cost">
+            <h2>5. Control the Cost Before You Scale, Not After</h2>
+
+            <p>We saw the WhatsApp bill after three months and acted on it. The same mistake at a larger scale, or noticed later, costs far more.</p>
+
+            <p>Traditional software has mostly fixed costs: you pay to build it, and serving one more customer costs
+                almost nothing. AI products don't work like that. Tokens, per-message fees, API calls and inference
+                infrastructure all grow with usage. That changes the arithmetic of growth:</p>
+
+            <div class="xyz-card">
+                <div class="label">The arithmetic of scaling</div>
+                <p>
+                    <strong>Value per conversation − cost per conversation = margin per conversation</strong><br>
+                    Growth multiplies the margin. If the margin is positive, scale makes you money. If it's negative,
+                    scale multiplies the loss.
+                </p>
+            </div>
+
+            <p>That's why <strong>the cost has to be under control before the product scales</strong>. Once a
+                product with a negative margin per conversation is in front of a million customers, there are no good
+                options left: you either keep paying, or you take something away from customers who already depend on
+                it.</p>
+
+            <p>In practice, controlling cost before scaling means:</p>
+            <ul>
+                <li><strong>Know your unit cost.</strong> Cost per conversation, per transaction, per active user.
+                    Whichever unit the product is sold or used by, the cost needs to be in that same unit.</li>
+                <li><strong>Compare with the cheapest option that works.</strong> A conventional bot, a static FAQ, a
+                    form, a human. AI has to beat the alternative, not zero.</li>
+                <li><strong>Put the cost on a dashboard next to the benefit.</strong> If engineering watches the
+                    resolution rate and finance watches the bill, nobody sees the margin.</li>
+                <li><strong>Decide the shutdown rule in advance.</strong> "If cost per resolution stays above X for two
+                    months, we turn it off." It's much easier to agree on that before anyone is attached to the
+                    feature.</li>
+            </ul>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="build-buy">
+            <h2>6. The Same Rule Applied to Build vs. Buy</h2>
+
+            <p>Cost control works in the other direction too: sometimes the right product decision is to stop
+                paying for something.</p>
+
+            <p>We used a paid back-office tool (Retool) and paid for a third-party system to make PIX transfers
+                between our internal accounts. In both cases, we already owned the APIs underneath. The paid tools
+                were mostly an interface on top of endpoints we had built ourselves. With AI-assisted development,
+                building that interface in-house became cheap. We replaced both and saved
+                <strong>about USD 2,000 a month</strong>.</p>
+
+            <p>It's the chatbot lesson again, from the other side. The question was never "does the paid tool
+                work?" It did. The question was whether it was worth what it cost, compared with the cheaper option
+                we now had.</p>
+
+            <div class="highlight-box">
+                <strong>Rule of thumb:</strong> when you already own the APIs, AI makes building cheaper than buying.
+                But count the cost of maintaining what you build, too. A saving that needs a full-time engineer to
+                maintain isn't a saving.
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="checklist">
+            <h2>7. A Checklist Before Scaling Any Product</h2>
+
+            <ol>
+                <li><strong>Is the OKR written down?</strong> An objective and key results, agreed with the business
+                    before development started.</li>
+                <li><strong>Is benefit measured against the alternative?</strong> Not "93% resolved", but "93% resolved
+                    against 25% for what we had before".</li>
+                <li><strong>Is there a cost KPI next to every benefit KPI?</strong> And is it in the same unit:
+                    per conversation, per transaction, per user?</li>
+                <li><strong>Is it measured per segment?</strong> Per channel, per customer type, per region. Averages
+                    hide the losing segment.</li>
+                <li><strong>Is the margin positive at today's volume?</strong> If not, growth makes it worse.</li>
+                <li><strong>Is there an agreed shutdown rule?</strong> Written down before anyone is attached to the
+                    feature.</li>
+            </ol>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="conclusion">
+            <h2>8. Conclusion</h2>
+
+            <p>Engineering teams are very good at answering "does it work?". It's the question we're trained for,
+                and our tools are built around it. But a delivery that works and doesn't pay off is still a bad
+                delivery. It just fails more quietly.</p>
+
+            <p>The AI chatbot taught my team that the most useful number isn't the resolution rate, the uptime or
+                the cycle time. It's the <strong>benefit over the alternative, divided by the cost</strong>. When that
+                number is good, scale. When it isn't, fix it or switch it off, and do it before the product is big
+                enough to make the decision painful.</p>
+
+            <h3>Optimize the System Before You Add AI to It</h3>
+
+            <p>The most valuable thing we did with AI came after we turned the chatbot off. Instead of putting AI in
+                front of customers, we used it to <strong>analyze the results of the AI flow against the human
+                    flow</strong>: where customers got stuck, where they gave up, and which answers actually solved their
+                problem. That showed us where our existing system needed to improve.</p>
+
+            <p>Then we optimized the system itself. We didn't reach the 90%-plus resolution of the AI chatbot, but we
+                reached <strong>70% resolution with an acceptable level of abandonment in the flow</strong>, without
+                paying for a model in every conversation.</p>
+
+            <div class="highlight-box">
+                <strong>The takeaway:</strong> <strong>optimize the current system before you add AI to it.</strong>
+                AI is often worth more as a tool to understand and improve the system, and its costs, than as a layer
+                on top of a flow that was never optimized. Putting AI on an inefficient process means paying a model to
+                work around problems you could fix once.
+            </div>
+
+            <p><em>Define success with a number before you build. Put the cost next to it. Then go back and check
+                    both.</em></p>
+        </section>
+
+        <footer class="text-center mt-5">
+            <p><a href="../../index.html#blog">← Back to Blog</a></p>
+        </footer>
+    </div>
+</body>
+
+</html>
