@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Ramos - Engineering Manager Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            margin: 0 0 10px;
+        }
+
+        h3 {
+            font-size: 1.02em;
+            margin: 0 0 3px;
+        }
+
+        .headline {
+            text-align: center;
+            font-weight: bold;
+            margin: 0 0 8px;
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 0.92em;
+        }
+
+        .contact-info p {
+            margin: 2px 0;
+        }
+
+        .contact-info,
+        .section {
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section ul {
+            margin: 6px 0 0;
+            padding-left: 20px;
+        }
+
+        .section ul li {
+            margin-bottom: 5px;
+        }
+
+        .experience-item,
+        .education-item {
+            margin-bottom: 14px;
+        }
+
+        .meta {
+            margin: 0;
+            font-size: 0.92em;
+            color: #555;
+        }
+
+        .stack {
+            font-size: 0.9em;
+            color: #555;
+            margin: 4px 0 0;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding-left: 0 !important;
+        }
+
+        @page {
+            margin: 10mm 12mm;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                font-size: 9.2pt;
+                line-height: 1.35;
+            }
+
+            .contact-info,
+            .section {
+                margin-bottom: 10px;
+                padding-bottom: 6px;
+            }
+
+            .experience-item,
+            .education-item {
+                margin-bottom: 8px;
+            }
+
+            .section ul li {
+                margin-bottom: 2px;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: none;
+            }
+
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+
+            li,
+            h3 {
+                break-inside: avoid;
+            }
+
+            h2,
+            h3 {
+                break-after: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="contact-info">
+            <h1>Rodrigo Ramos</h1>
+            <p class="headline">Engineering Manager | AI-Native Engineering (Claude Code, Cursor) | Cycle Time &amp;
+                Quality | Fintech Startup</p>
+            <p>Email: rodrigoror@gmail.com | Mobile: +34 622 933 051 | Spain (CET), fully remote</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos"
+                    target="_blank">linkedin.com/in/rodrigo-oliveira-ramos</a> | Portfolio &amp; writing: <a
+                    href="https://rodrigoror.github.io/portifolio/" target="_blank">rodrigoror.github.io/portifolio</a>
+            </p>
+        </header>
+
+        <section class="section summary">
+            <h2>Summary</h2>
+            <p>Engineering manager who got there through the code: senior developer, freelance engineer and technical
+                lead before managing. I lead 16 people in four squads at a Brazilian fintech, where I joined as the 3rd
+                developer in a company of 5 and grew with it, and I own how the teams use AI.</p>
+            <p>My number is cycle time from spec to production. I raised productivity 80% on it by building AI into
+                every stage (spec, Claude Code and Cursor, AI review, spec-based tests), and cut unplanned war-rooms 80%
+                with TDD and quality gates. I've shipped AI features to production, including a Gemini chatbot that read
+                live customer data, and I turned it off when its cost outgrew its value. I write about AI-native
+                engineering and how to measure it.</p>
+        </section>
+
+        <section class="section skills">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li><strong>AI-native engineering:</strong> Claude Code, Cursor, CodeRabbit, custom Claude skills, MCP
+                    servers, RAG agents, agentic workflows, Gemini on Vertex AI, spec-driven development</li>
+                <li><strong>Engineering management:</strong> Cycle-time and delivery metrics, OKRs/KPIs, performance
+                    evaluation, mentoring tech and dev leads, individual growth plans, team structure</li>
+                <li><strong>Quality:</strong> TDD, BDD, code-review standards, SonarQube quality gates, Cypress,
+                    security checks in CI, zero-critical-bug releases</li>
+                <li><strong>Architecture &amp; stack:</strong> Microservices, event-driven (AWS SQS/SNS), multi-tenant
+                    SaaS, GraphQL/REST, Java (Quarkus, Spring), Node.js/TypeScript, MongoDB, PostgreSQL, Flutter, AWS,
+                    Kubernetes</li>
+                <li><strong>Product:</strong> Telemetry-driven prioritization, A/B testing, build-vs-buy decisions,
+                    cost per outcome</li>
+            </ul>
+        </section>
+
+        <section class="section experience">
+            <h2>Experience</h2>
+
+            <div class="experience-item">
+                <h3>Engineering Manager · AI Engineering Strategy</h3>
+                <p class="meta"><strong>alt.bank (now novütech), fintech startup</strong> | Dec 2023 – Present | Remote
+                </p>
+                <ul>
+                    <li>Lead 16 people in four squads (two product squads, SRE and architecture); mentor the tech and dev
+                        leads and built the team's performance evaluation system. Report to the business team and
+                        C-level.</li>
+                    <li><strong>Speed:</strong> raised productivity 80%, measured by cycle time from spec to production.
+                        Agents challenge the spec, Claude Code and Cursor write the code, CodeRabbit and a business-rules
+                        RAG agent review it, and tests come from the spec.</li>
+                    <li><strong>AI playbook:</strong> built Claude skills and MCP servers (database, Grafana,
+                        Kubernetes) so agents work on real systems: standard bug cards, Cypress tests for every customer
+                        journey, SRE checks against known issues.</li>
+                    <li><strong>Quality:</strong> cut unplanned war-rooms 80% with TDD, SonarQube gates in GitLab CI
+                        (80% coverage, no critical security findings) and AI review before human review.</li>
+                    <li><strong>AI in production:</strong> took an operator copilot to a customer-facing WhatsApp chatbot
+                        (Salesforce + Gemini on Vertex AI) that looked up account data and replied with deep-link
+                        tutorials. Resolution in its first branch rose from 25% to 93%; the queue fell 25% in a week.
+                        When cloud cost grew 10x in three months, shut it down and used AI to analyze the flow instead,
+                        reaching 70% resolution without a model in every conversation.</li>
+                    <li>Moved 100,000 credit-card customers between processors with zero downtime and zero refused
+                        transactions, leading 10 engineers and coordinating ~20 people across five partner teams.</li>
+                    <li>Architected a multi-tenant collections platform (400,000+ records a day): revenue tripled, and
+                        partner onboarding went from weeks to days.</li>
+                    <li>Chose build over buy where we owned the APIs: AI-built internal tools replaced two paid
+                        products, saving ~USD 2,000 a month.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Technical Lead · Java, Node.js, Flutter</h3>
+                <p class="meta"><strong>alt.bank, fintech startup</strong> | Sep 2021 – Dec 2023</p>
+                <ul>
+                    <li>Hands-on technical lead of a squad (4–5 developers and a QA) through the company's pivot from
+                        Banking-as-a-Service to its own credit card, integrated with FIS and Visa.</li>
+                    <li>Set the architecture, test-coverage and code-review standards the squads followed: zero
+                        critical bugs in production releases, 99.9% uptime on business-critical integrations.</li>
+                    <li>Rebuilt onboarding as a Camunda workflow and A/B tested a 15+ screen flow, bringing voluntary
+                        drop-off close to zero.</li>
+                    <li>Ran weekly delivery reviews on telemetry and velocity data to find bottlenecks; mentored
+                        developers with individual growth plans.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Full Stack Developer · Java / Flutter</h3>
+                <p class="meta"><strong>alt.bank, fintech startup</strong> | Dec 2018 – Sep 2021 | Remote</p>
+                <ul>
+                    <li>Joined as the 3rd developer in a company of 5: built the banking app and its Java (Quarkus) backend from
+                        scratch and shipped the MVP in 3 months.</li>
+                    <li>Instrumented every screen, flow and error state from the first commit, so prioritization ran on
+                        real usage data from launch week.</li>
+                    <li>Added SonarQube to CI/CD (80% coverage) and cut post-launch issues 30% with automated UI tests
+                        before every deploy.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Fullstack Engineer (Freelance)</h3>
+                <p class="meta"><strong>RRLabs Serviços</strong> | Jan 2012 – Dec 2018 | Remote, alongside full-time
+                    roles</p>
+                <ul>
+                    <li>Ran almost 100 backend and mobile projects end to end (Java/Spring, Flutter), from scope and
+                        estimate to delivery and handover.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Developer</h3>
+                <p class="meta"><strong>As2 Group</strong> (for Johnson &amp; Johnson medical devices) | Aug 2016 – Aug
+                    2018</p>
+                <ul>
+                    <li>Built Java traceability and GS1 labeling systems in a regulated, audited environment; integrated
+                        legacy systems with new production lines with zero downtime.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Systems Analyst</h3>
+                <p class="meta"><strong>Urbam (municipal urban-services company)</strong> | Feb 2011 – May 2016</p>
+                <ul>
+                    <li>Made request processing 30% more efficient through JBoss and JVM tuning; built Java web
+                        applications and Android apps for field workers.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Earlier roles</h3>
+                <p class="meta">Lead Web Developer, Fundação Cultural Cassiano Ricardo (2008–2011) · Co-Founder, Rich
+                    Solutions, a custom-software startup grown from 3 people to 10 employees (2005–2007)</p>
+            </div>
+        </section>
+
+        <section class="section education">
+            <h2>Writing, Education &amp; Certifications</h2>
+            <ul>
+                <li><strong>Writing:</strong> <a
+                        href="https://rodrigoror.github.io/portifolio/assets/blog/system-vs-product-success.html"
+                        target="_blank">System Success vs Product Success</a> (the AI chatbot cost story) · <a
+                        href="https://rodrigoror.github.io/portifolio/assets/blog/xyz-impact-driven-engineering.html"
+                        target="_blank">Impact-Driven Engineering</a></li>
+                <li><strong>Executive MBA – Solutions Architecture</strong>, XP Educação (2023–2024). Capstone: a Clean
+                    Architecture reference guide in Java and Quarkus</li>
+                <li>Technologist in Systems Analysis and Development, Instituto Brasileiro de Tecnologia Avançado
+                    (2004–2006)</li>
+                <li>Anthropic: AI Fluency (2026) · Becoming an AI-First Product Leader (2025) · AI Agents for Product
+                    Leaders (2025) · Qulture.Rocks: Team and Performance Management (2024) · Product School: Product
+                    Roadmapping (2024) · Scrum Master (2017)</li>
+                <li><strong>Languages:</strong> Portuguese (native), English (full professional), Spanish (limited
+                    working)</li>
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>

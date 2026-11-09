@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 20px;
             color: #333;
         }
@@ -30,530 +30,493 @@
 
         h1 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            margin: 0 0 10px;
+        }
+
+        h3 {
+            font-size: 1.02em;
+            margin: 0 0 3px;
+        }
+
+        .headline {
+            text-align: center;
+            font-weight: bold;
+            margin: 0 0 8px;
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 0.92em;
+        }
+
+        .contact-info p {
+            margin: 2px 0;
         }
 
         .contact-info,
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
         }
 
-        .contact-info p,
+        .section:last-child {
+            border-bottom: none;
+        }
+
         .section ul {
-            margin: 5px 0;
-            padding: 0;
-            list-style: none;
+            margin: 6px 0 0;
+            padding-left: 20px;
         }
 
         .section ul li {
-            margin-bottom: 10px;
-        }
-
-        .experience-item,
-        .education-item,
-        .certification-item {
-            margin-bottom: 15px;
-        }
-
-        .experience-item h3,
-        .education-item h3,
-        .certification-item h3 {
             margin-bottom: 5px;
         }
 
-        .experience-item p,
-        .education-item p,
-        .certification-item p {
+        .experience-item,
+        .education-item {
+            margin-bottom: 14px;
+        }
+
+        .intro {
+            margin: 4px 0 0;
+        }
+
+        .meta {
             margin: 0;
+            font-size: 0.92em;
+            color: #555;
+        }
+
+        .stack {
+            font-size: 0.9em;
+            color: #555;
+            margin: 4px 0 0;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding-left: 0 !important;
+        }
+
+        .subhead {
             font-size: 0.95em;
+            color: #555;
+            margin: 16px 0 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
-        .skills ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        @page {
+            margin: 10mm 12mm;
         }
 
-        .skills ul li {
-            background: #e9e9e9;
-            padding: 5px 10px;
-            border-radius: 5px;
+        @media print {
+            body {
+                margin: 0;
+                font-size: 9.2pt;
+                line-height: 1.35;
+            }
+
+            .contact-info,
+            .section {
+                margin-bottom: 10px;
+                padding-bottom: 6px;
+            }
+
+            .experience-item,
+            .education-item {
+                margin-bottom: 8px;
+            }
+
+            .section ul li {
+                margin-bottom: 2px;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: none;
+            }
+
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+
+            li,
+            h3 {
+                break-inside: avoid;
+            }
+
+            h2,
+            h3,
+            .subhead {
+                break-after: avoid;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <header>
+        <header class="contact-info">
             <h1>Rodrigo Ramos</h1>
-            <div class="contact-info">
-                <p><strong>AI Solutions Consultant | Tech Manager | Solutions Architect | Senior Fullstack Engineer |
-                        Java | JavaScript &
-                        TypeScript | AWS | MongoDB | AI-Driven Solutions | Quality Assurance in Fintech/Startup</strong>
-                </p>
-                <p>Email: rodrigoror@gmail.com | Mobile: +34 622 933 051</p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos"
-                        target="_blank">linkedin.com/in/rodrigo-oliveira-ramos</a></p>
-                <p>Portfolio: <a href="https://rodrigoror.github.io/portifolio/"
-                        target="_blank">rodrigoror.github.io/portifolio/</a></p>
-                <p>Location: Spain</p>
-            </div>
+            <p class="headline">Solutions Architect &amp; Engineering Manager | AI Strategy for Engineering Teams |
+                Agentic development, governance and delivery metrics | Fintech | Java · AWS</p>
+            <p>Email: rodrigoror@gmail.com | Mobile: +34 622 933 051 | Based in Spain (CET)</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos"
+                    target="_blank">linkedin.com/in/rodrigo-oliveira-ramos</a> | Portfolio &amp; writing: <a
+                    href="https://rodrigoror.github.io/portifolio/" target="_blank">rodrigoror.github.io/portifolio</a>
+            </p>
         </header>
 
         <section class="section summary">
             <h2>Summary</h2>
-            <p>Highly accomplished AI Consultant, Tech Manager, Solutions Architect and Senior Fullstack Engineer with
-                over 20 years
-                of experience in the software industry. Specializing in designing and implementing scalable, secure, and
-                cost-efficient systems leveraging AWS and multi-cloud platforms. I thrive at the intersection of
-                technical excellence and business strategy, driving innovation by embedding AI-assisted development into
-                the engineering lifecycle to dramatically accelerate delivery speed and code quality.</p>
-            <p>Proven track record in leveraging JavaScript, TypeScript, Node.js, and MongoDB for robust B2B SaaS
-                solutions, data pipelines, GraphQL, and modern frontend (Vue.js/Flutter). Adept at AI-assisted
-                development,
-                fostering high-performing teams, and leading end-to-end product development in fast-paced startup
-                environments. Recognized for leadership in system architecture, mentoring technical teams, and a strong
-                entrepreneurial background, consistently delivering impactful, data-driven solutions with a history of
-                stability and commitment in previous experiences (preferentially cycles above 2 years). Fluent in
-                English, Elementary in Spanish and native in Portuguese.</p>
+            <p>I help engineering organizations turn AI from a pile of tools into a delivery strategy. I'm an
+                Engineering Manager at alt.bank (now novütech), a Brazilian fintech, leading 16 people across product,
+                SRE and architecture squads. I joined as its 3rd developer, when the company had 5 people, and grew with
+                it into tech lead and then manager. I have 20+ years in software and an Executive MBA in Solutions
+                Architecture.</p>
+            <p>I work where solutions architecture meets AI adoption: deciding where agents belong in the engineering
+                lifecycle, how to govern them, and how to tell whether they're paying off. Under the AI work is a solid
+                engineering base: microservices on AWS with Java (Quarkus, Jooby, Spring) and Node.js, JVM tuning, TDD
+                and quality gates, and years of mentoring tech leads. I also co-founded a startup and spent seven years
+                consulting, so I think in cost, risk and business outcomes, not just diagrams.</p>
+            <p><strong>Languages:</strong> Portuguese (native), English (full professional), Spanish (limited working).
+            </p>
         </section>
 
         <section class="section skills">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li><strong>Languages:</strong> JavaScript, TypeScript, Java, Python, Coldfusion, HTML, CSS</li>
-                <li><strong>Frontend:</strong> Vue.js, Flutter (Android/iOS), Android (Native/MVVM), Java Primefaces
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li><strong>AI-native engineering:</strong> Claude Code, Cursor, CodeRabbit, custom Claude skills, MCP
+                    servers, RAG agents, agentic workflows, spec-driven development, Gemini on Vertex AI, AI cost
+                    control</li>
+                <li><strong>Solutions architecture:</strong> Microservices, event-driven architecture (AWS SQS/SNS),
+                    multi-tenant SaaS, GraphQL and REST API design, systems integration, data migration, build-vs-buy
+                    decisions, Clean Architecture, DDD, C4, TOGAF, observability (OpenTelemetry, Prometheus, Grafana)
                 </li>
-                <li><strong>Backend:</strong> Node.js, Java (Quarkus, Jooby, Spring Boot, Spring Framework),
-                    GraphQL, Cold Fusion Components</li>
-                <li><strong>Databases:</strong> MongoDB, Oracle, MySQL, MSSQL, Redis, DynamoDB, Postgres in AWS RDS</li>
-                <li><strong>Cloud & DevOps:</strong> AWS (SQS, SNS, Lambda, Cognito, S3, EC2, RDS), GCP (Conceptual),
-                    SonarQube,
-                    CI/CD, DevSecOps, Gitlab and Github Actions</li>
-                <li><strong>Tools & Methodologies:</strong> System Design, Architecture (Strategy Pattern, Clean
-                    Architecture), TOGAF, TDD / BDD / ATDD / DDD, Code Reviews, Code Quality, Agile (Scrum, Kanban, XP),
-                    Microservices, LLM Agents, AI-assisted
-                    development, Cursor, Code Rabbit, Cypress Testing Framework, Cucumber, UML, Develop Management,
-                    Process
-                    Excellence, Lean Process, ITIL V2, Web Services
-                </li>
-                <li><strong>Management & Business:</strong> B2B SaaS, Analytics, Financial Systems, API Design,
-                    Mentorship, Team Leadership, Product
-                    Ownership, Observability, Data-driven Strategies, Quality Assurance, Industry 4.0, GS1 Labeling,
-                    Digital Transformation, Business Growth, Operational KPIs
-                </li>
+                <li><strong>Stack:</strong> Java (Quarkus, Jooby, Spring Boot), Node.js/TypeScript, Python, Flutter,
+                    Android, Vue.js, MongoDB, PostgreSQL, Oracle, MySQL, MSSQL, Redis, DynamoDB, AWS (Lambda, Cognito,
+                    S3, EC2, RDS, SQS, SNS), Kubernetes, Docker, GitLab CI, GitHub Actions</li>
+                <li><strong>Quality:</strong> TDD, BDD, ATDD, code-review standards, SonarQube quality gates, Cypress,
+                    Cucumber, Sikuli, security checks in CI (DevSecOps)</li>
+                <li><strong>Leadership &amp; product:</strong> Engineering management, OKRs and KPIs, cycle-time
+                    metrics, performance evaluation, mentoring tech and dev leads, telemetry-driven prioritization, A/B
+                    testing, Scrum, Kanban, XP</li>
+                <li><strong>Earlier experience:</strong> ColdFusion, Flash/ActionScript, VB6, Java PrimeFaces, Vaadin,
+                    Demoiselle, JBoss/WildFly, WordPress, Joomla, GS1 labeling, Industry 4.0, ITIL V2, Lean and Process
+                    Excellence</li>
             </ul>
-        </section>
-
-        <section class="section certifications">
-            <h2>Certifications</h2>
-            <div class="certification-item">
-                <h3>Anthropic - AI Fluency: Framework & Foundations (2026)</h3>
-                <p>Anthropic has partnered with academic experts Prof. Joseph Feller (University College Cork) and Prof.
-                    Rick Dakan (Ringling College) to launch an AI fluency course that teaches practical skills for
-                    effective, efficient, ethical, and safe AI interaction.
-                    This course has something for everyone, whether you're new to Claude or a seasoned AI practitioner.
-                </p>
-            </div>
-            <div class="certification-item">
-                <h3>Santander - Cibersegurança (2025)</h3>
-                <p>Discover first-hand the strategic mindset and essential skills of a hacker to anticipate threats and
-                    strengthen the security of your systems.
-                    Learn the most advanced cybersecurity concepts with Santander and get ready to identify
-                    vulnerabilities, apply penetration testing techniques, explore social engineering practices,
-                    understand the dynamics of the deep web, digital anonymity, and the foundations of ethical hacking.
-                </p>
-            </div>
-            <div class="certification-item">
-                <h3>Becoming an AI-First Product Leader (2025)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>AI Agents for Product Leaders (2025)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>Qulture.Rocks - Team Management and Performance Management (2024)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>Product School - Product Roadmapping Micro-Certification (PRC) (2024)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>Alura - Java Project Architecture and Design, Managing OKRs, Management 3.0, Gestão de pessoas 4.0,
-                    Certificação Java SE Programer 1, BDD e Java, SOLID Java, Design Patterns, Maven, TDD Java
-                    (2020-2024)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>Season Training - Scrum Master (2017)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>University of Southampton - Secure Android App Development (2017)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>University of Toronto - Introduction To Swift Programming by University of Toronto on Coursera
-                    (2015)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>University of Maryland - Programming Mobile Applications for Android Handheld Systems: Part 1 by
-                    University of Maryland, College Park on Coursera (2015)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>Universidade Corporativa do SERPRO - Framework Demoiselle 2 (2014)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>ITA - Aeronautics Institute of Technology (AIT) - CE-230 - Qualidade, Confiabilidade e Segurança
-                    (Safety) de Software (2011)</h3>
-            </div>
-            <div class="certification-item">
-                <h3>FGV Online - Management of IT: Strategy and Concepts.</h3>
-            </div>
-            <div class="certification-item">
-                <h3>SC Soluções - ITIL V2 Fundamentals.</h3>
-            </div>
-            <div class="certification-item">
-                <h3>BRConnection - BRMA Certified Professional.</h3>
-            </div>
-            <div class="certification-item">
-                <h3>NextG Intel - Web Services, Convergence and ERP.</h3>
-            </div>
-            <div class="certification-item">
-                <h3>Johnson&Johnson - Quality Information Systems (QIS) and Process Excellence.</h3>
-            </div>
-            <div class="certification-item">
-                <h3>Rich Solutions - UML, Develop Management, ColdFusion, Rich Internet App, Action Script 3, Scrum and
-                    Kanban Dashboard.</h3>
-            </div>
         </section>
 
         <section class="section experience">
             <h2>Experience</h2>
 
             <div class="experience-item">
-                <h3>Tech Manager - Collections, Chatbot, AI, QA</h3>
-                <p><strong>alt.bank</strong> | December 2023 - Present (+2 years) | São Paulo / SP, Brazil</p>
+                <h3>Engineering Manager · AI Engineering Strategy</h3>
+                <p class="meta"><strong>alt.bank (now novütech), fintech</strong> | Dec 2023 – Present | São Paulo,
+                    Brazil · Remote</p>
+                <p class="intro">I lead 16 people in four squads (two product squads, SRE and architecture) behind the
+                    collections and chatbot products, and I own how our teams use AI. I report to the business team and
+                    C-level.</p>
                 <ul>
-                    <li><strong>Delivered 80% productivity boost:</strong> Pioneered AI-native workflows using Cursor,
-                        Code Rabbit, and LLM Agents, transforming engineering cycles and enabling faster, more robust
-                        project execution across AWS and multi-cloud environments.</li>
-                    <li><strong>Achieved 3x revenue increase:</strong> Led end-to-end development of B2C collections
-                        product (Wolfe platform) scaling to B2B, implementing AI-assisted automated testing pipelines
-                        that reduced operational costs while tripling revenue, with B2B launch scheduled for Q1 2026.
+                    <li><strong>AI engineering strategy:</strong> raised productivity 80%, measured by cycle time from
+                        spec to production. Agents challenge the spec, Claude Code and Cursor write the code, CodeRabbit
+                        and a business-rules RAG agent review it, and tests come from the spec.</li>
+                    <li><strong>AI playbook:</strong> built Claude skills and MCP servers (database, Grafana,
+                        Kubernetes) so agents work on real systems: standard bug cards, Cypress tests for every customer
+                        journey, SRE checks against known issues.</li>
+                    <li><strong>AI in production:</strong> led the AI POCs that became our WhatsApp chatbot (Salesforce
+                        + Gemini on Google AI Studio and Vertex AI). It started as a copilot for support operators, then
+                        answered customers directly, looking up account data and replying with deep-link tutorials.
+                        Resolution in its first branch rose from 25% to 93%; the human queue fell 25% in a week and
+                        customers served grew 200%. When the cloud bill grew 10x in three months, shut it down and used
+                        AI to analyze the flow instead, reaching 70% resolution without a model in every conversation.
                     </li>
-                    <li><strong>Led successful credit card processor migration:</strong> Orchestrated a seamless
-                        transition from FIS to Pismo within Q2, realizing gains by the second half of the year. The
-                        migration served 100,000 customers with zero noticeable downtime and no refused transactions,
-                        overcoming complex technical data discrepancies through a custom-engineered migration
-                        application.</li>
-                    <li><strong>Architected high-performance system:</strong> Designed and delivered scalable
-                        microservices architecture using Node.js/TypeScript backend, MongoDB handling 400k+ daily
-                        records, GraphQL integration, Vue.js frontend with AWS Cognito, and Python data pipelines,
-                        ensuring seamless client interactions and optimal performance.</li>
-                    <li><strong>Reduced war-rooms by 80%:</strong> Established TDD practices and AI-enhanced code
-                        reviews, implemented SonarQube CI/CD pipelines achieving 80% code coverage across frontend and
-                        backend, dramatically improving software reliability and reducing production incidents.</li>
-                    <li><strong>Built high-performing teams:</strong> Mentored Tech and Devs through structured
-                        skill development, leveraging AI tools for accelerated learning and accountability, resulting in
-                        engaged teams that consistently exceed delivery targets.</li>
-                    <li><strong>Drove data-driven decisions:</strong> Implemented comprehensive BI dashboards and
-                        observability solutions (OpenTracing, Prometheus, Grafana), enabling real-time performance
-                        monitoring and strategic decision-making that enhanced operational outcomes.</li>
-                    <li><strong>Stack:</strong> Node.js, TypeScript, MongoDB, GraphQL, Vue.js, AWS Cognito, Python,
-                        SonarQube, CI/CD, GitLab, Agile, Scrum, Kanban, TDD, BDD, DDD, Clean Architecture, MVVM, MVC,
-                        Bloc</li>
+                    <li><strong>Processor migration:</strong> moved 100,000 credit-card customers from FIS to Pismo with
+                        zero downtime and zero refused transactions. Led 10 people (8 devs, 2 QAs) and coordinated ~20
+                        from Security, DevOps, Pismo, Dock, Celcoin and Unico. Designed the migration app: field mapping,
+                        shadow-mode reconciliation, rollback at every stage.</li>
+                    <li><strong>Collections platform:</strong> architected the multi-tenant Wolfe platform (Node.js/
+                        TypeScript, GraphQL, MongoDB, AWS Cognito, Vue.js, Python data pipelines): 400,000+ records a
+                        day, four tenants, three of them external. Revenue tripled; GraphQL cut partner onboarding from
+                        weeks to days.</li>
+                    <li><strong>Build vs buy:</strong> where we already owned the APIs, AI-built internal tools replaced
+                        Retool and a paid PIX transfer system, saving ~USD 2,000 a month.</li>
+                    <li><strong>Integration:</strong> integrated Celcoin's BaaS and LaaS APIs: 20 customer journeys in
+                        one week, 80% passing the first automated run.</li>
+                    <li><strong>Quality:</strong> cut unplanned war-rooms 80% with TDD, SonarQube gates in GitLab CI
+                        (80% coverage, no critical security findings) and AI review before human review.</li>
+                    <li><strong>Leadership:</strong> mentor the tech and dev leads; built the team's performance
+                        evaluation system; track delivery and operations on BI dashboards and observability (Prometheus,
+                        Grafana).</li>
                 </ul>
+                <p class="stack"><em>Stack:</em> Node.js, TypeScript, Java (Quarkus), MongoDB, GraphQL, Vue.js, Python,
+                    AWS, Kubernetes, Salesforce, Gemini/Vertex AI, Claude Code, Cursor, CodeRabbit, SonarQube, GitLab
+                    CI, Cypress</p>
             </div>
 
             <div class="experience-item">
-                <h3>Senior Technical Lead - Java, NodeJS, Flutter</h3>
-                <p><strong>alt.bank</strong> | September 2021 - December 2023 (2 years) | São Paulo / SP, Brazil</p>
+                <h3>Senior Technical Lead · Java, Node.js, Flutter</h3>
+                <p class="meta"><strong>alt.bank, fintech</strong> | Sep 2021 – Dec 2023 | São Paulo, Brazil</p>
+                <p class="intro">Technical lead of a squad (4–5 developers and a QA) building the banking app and
+                    backend during the company's pivot from Banking-as-a-Service to its own credit card. I owned
+                    architecture standards, code quality and releases across Java, Node.js and Flutter.</p>
                 <ul>
-                    <li><strong>Led strategic pivot to Credit:</strong> Orchestrated the transition from BaaS
-                        (Conductor/Dock) to a proprietary Credit Card model integrated with FIS and Visa, launching a
-                        new app that accelerated delivery and profitability through credit scaling, while implementing
-                        real-time transaction processing and continuous risk evaluation.</li>
-                    <li><strong>Scaled high-seniority teams:</strong> Led engineering teams managing concurrent support,
-                        telemetry data analysis, and expert-level technical strategy for future implementations,
-                        fostering a high-performance culture.</li>
-                    <li><strong>Optimized onboarding conversion:</strong> Implemented Camunda (BPMN) to reduce delivery
-                        friction and executed A/B testing across a 15+ screen onboarding flow, achieving near-zero
-                        voluntary drop-off and maximizing customer conversion.</li>
-                    <li><strong>Elevated code quality standards:</strong> Established comprehensive test coverage and
-                        AI-assisted code review processes across Java, Node.js, and Flutter stacks, ensuring consistent
-                        quality and reducing technical debt across all deliverables.</li>
-                    <li><strong>Accelerated team delivery:</strong> Implemented weekly performance monitoring and
-                        bottleneck identification processes, leveraging data-driven insights to optimize team workflows
-                        and consistently meet sprint commitments.</li>
-                    <li><strong>Ensured seamless integrations:</strong> Oversaw third-party API and SDK implementations,
-                        maintaining 99.9% uptime and ensuring reliable integrations that supported critical business
-                        operations.</li>
-                    <li><strong>Delivered successful releases:</strong> Led cross-functional coordination ensuring
-                        timely delivery of features, maintaining strict adherence to architecture standards, and
-                        achieving zero critical bugs in production releases.</li>
-                    <li><strong>Built technical excellence:</strong> Mentored development teams through hands-on
-                        guidance and progressive skill development, resulting in improved code quality metrics and
-                        enhanced team capabilities.</li>
-                    <li><strong>Stack:</strong> Java, Quarkus, BPMN, Flutter, Android, Sikuli, SonarQube, CI/CD, GitLab,
-                        Agile, Scrum, Kanban, TDD, BDD, DDD, Clean Architecture, MVVM, MVC, Bloc </li>
+                    <li>Led the technical side of the move from BaaS (Conductor/Dock) to a proprietary credit card
+                        integrated with FIS and Visa: a new app, real-time transaction processing and continuous risk
+                        evaluation. The credit product became the base of the business.</li>
+                    <li>Rebuilt onboarding as a Camunda (BPMN) workflow and ran A/B tests across a 15+ screen flow,
+                        bringing voluntary drop-off close to zero.</li>
+                    <li>Owned third-party API and SDK integrations at 99.9% uptime for the business-critical flows.</li>
+                    <li>Set the architecture standards, test coverage rules and code-review practices the squads
+                        followed, with zero critical bugs in production releases.</li>
+                    <li>Ran weekly delivery reviews on telemetry and velocity data to find bottlenecks, and mentored
+                        developers with individual growth plans.</li>
                 </ul>
+                <p class="stack"><em>Stack:</em> Java, Quarkus, Node.js, Camunda/BPMN, Flutter, Android, Sikuli,
+                    SonarQube, GitLab CI, TDD, BDD, DDD, Clean Architecture</p>
             </div>
 
             <div class="experience-item">
-                <h3>Full Stack Engineer - Java, Quarkus, Android/Flutter</h3>
-                <p><strong>alt.bank</strong> | December 2018 - September 2021 (2 years) | São Paulo / SP, Brazil</p>
+                <h3>Full Stack Developer · Java / Flutter</h3>
+                <p class="meta"><strong>alt.bank, fintech</strong> | Dec 2018 – Sep 2021 | Remote</p>
+                <p class="intro">Joined alt.bank as the 3rd developer in a company of 5, building the banking app and its
+                    backend from scratch: from the first digital account to the credit card with dynamic limits. I grew
+                    with the company from developer to technical lead to engineering manager.</p>
                 <ul>
-                    <li><strong>Accelerated MVP launch:</strong> Spearheaded the end-to-end analysis and development of
-                        a banking application as a core startup developer, delivering a high-quality MVP in just 3
-                        months while leveraging telemetry and data-driven insights to prioritize features and optimize
-                        time-to-market.</li>
-                    <li><strong>Delivered high-performance mobile apps:</strong> Architected and developed Android
-                        applications using Flutter with MVC and Bloc patterns, resulting in enhanced app performance and
-                        seamless user experiences across finance sector platforms.</li>
-                    <li><strong>Reduced production issues by 30%:</strong> Implemented comprehensive QA processes using
-                        Sikuli testing framework and AI-assisted test automation, dramatically improving product
-                        reliability and user satisfaction.</li>
-                    <li><strong>Achieved 80% code coverage:</strong> Established SonarQube CI/CD pipelines across
-                        frontend and backend, ensuring high-quality code standards and maintainability while reducing
-                        technical debt.</li>
-                    <li><strong>Optimized microservices architecture:</strong> Leveraged Quarkus and Jooby micro
-                        frameworks for Java development, creating scalable, efficient backend services that supported
-                        rapid feature delivery and system growth.</li>
-                    <li><strong>Drove end-to-end product success:</strong> Led cross-functional collaboration from
-                        ideation through MVP rollout, ensuring alignment between technical implementation and business
-                        objectives, resulting in successful product launches.</li>
-                    <li><strong>Stack:</strong> Java, Quarkus, Jooby, Flutter, Android, Sikuli, SonarQube, CI/CD, Git,
-                        Agile, Scrum, Kanban, Tests, TDD, BDD, DDD, Clean Architecture, MVVM, MVC, Bloc </li>
+                    <li>Delivered the banking app MVP in 3 months with Flutter and Clean Architecture (Bloc/MVC).
+                        Instrumented every screen, flow and error state from the first commit, so prioritization ran on
+                        real usage data from launch week.</li>
+                    <li>Designed the app so major backend changes, including a full credit-card integration, landed
+                        without rewriting the core.</li>
+                    <li>Built Java backend services with Quarkus and Jooby.</li>
+                    <li>Added SonarQube to the CI/CD pipeline and reached 80% code coverage on frontend and backend.</li>
+                    <li>Cut post-launch issues 30% with automated UI tests (Sikuli) that caught regressions before each
+                        production deploy.</li>
+                    <li>Worked from idea to MVP rollout with product, design and business.</li>
                 </ul>
+                <p class="stack"><em>Stack:</em> Java, Quarkus, Jooby, Flutter, Android, Sikuli, SonarQube, CI/CD, Git,
+                    TDD, BDD, DDD, Clean Architecture, MVVM, MVC, Bloc</p>
             </div>
 
             <div class="experience-item">
-                <h3>Full Stack Engineer - Freelancer</h3>
-                <p><strong>RRLabs Serviços</strong> | January 2012 - December 2018 (7 years) | São Paulo / SP, Brazil
-                </p>
+                <h3>Senior Fullstack Engineer (Freelance / Consultant)</h3>
+                <p class="meta"><strong>RRLabs Serviços</strong> | Jan 2012 – Dec 2018 | Remote, alongside full-time
+                    roles</p>
+                <p class="intro">Freelance consultancy I ran for seven years: almost 100 mobile and backend projects of
+                    many kinds, for clients including Fullture (education), ContaPaga (finance) and the 1º Cartório de
+                    São José dos Campos (notary services).</p>
                 <ul>
-                    <li><strong>Delivered innovative mobile solutions:</strong> Architected and developed cutting-edge
-                        mobile applications using Flutter with Bloc, MVC, and MVU patterns, delivering scalable
-                        solutions that enhanced user engagement and business outcomes.</li>
-                    <li><strong>Improved code maintainability by 30%:</strong> Pioneered Clean Architecture
-                        implementation across multiple projects, establishing architectural patterns that reduced
-                        technical debt and accelerated future development cycles.</li>
-                    <li><strong>Achieved 100% on-time delivery:</strong> Successfully managed fullstack projects using
-                        Vaadin, Spring Framework, and Oracle/MySQL, consistently meeting deadlines and exceeding client
-                        expectations, resulting in increased client satisfaction and repeat engagements.</li>
-                    <li><strong>Optimized system performance:</strong> Enhanced server configurations and database
-                        queries, improving application efficiency and reliability, ensuring optimal performance for end
-                        users across diverse client environments.</li>
+                    <li>Built cross-platform mobile apps in Flutter (Bloc, MVC, MVU), from architecture to store release.
+                    </li>
+                    <li>Moved client codebases to Clean Architecture so features could be added without touching the
+                        core.</li>
+                    <li>Built and tuned full-stack systems with Vaadin, Spring and Oracle/MySQL, including server and
+                        query tuning for performance.</li>
+                    <li>Ran each engagement end to end: scope, estimate, delivery and handover.</li>
                 </ul>
+                <p class="stack"><em>Stack:</em> Flutter, Java, Spring Framework, Vaadin, Oracle, MySQL</p>
             </div>
 
             <div class="experience-item">
                 <h3>Senior Developer</h3>
-                <p><strong>As2 Group</strong> | August 2016 - August 2018 (2 years) | São José dos Campos / SP,
-                    Brazil</p>
+                <p class="meta"><strong>As2 Group</strong> | Aug 2016 – Aug 2018 | São José dos Campos, Brazil ·
+                    On-site</p>
+                <p class="intro">Embedded in the Quality Assurance area of Johnson &amp; Johnson's medical-device plant,
+                    building the traceability and regulatory-compliance systems behind its production lines.</p>
                 <ul>
-                    <li><strong>Delivered Industry 4.0 solutions:</strong> Architected and developed advanced web
-                        systems for Industry 4.0 and GS1 labeling, enabling seamless integration with modern production
-                        lines and enhancing supply chain traceability.</li>
-                    <li><strong>Modernized legacy systems:</strong> Successfully integrated legacy VB6 systems and MSSQL
-                        databases with new production infrastructure, improving operational efficiency and
-                        reducing maintenance costs while ensuring zero downtime during migration.</li>
-                    <li><strong>Increased user engagement by 30%:</strong> Designed and implemented intuitive user
-                        interfaces using Java Primefaces, Spring Boot, and MySQL, resulting in improved user adoption
-                        rates and enhanced productivity across manufacturing operations.</li>
-                    <li><strong>Stack:</strong> Java, Spring Boot, Primefaces, MySQL, MSSQL, VB6/VBA, JBoss Wildfly
-                        Server, Agile, Scrum, Kanban, UAT, labeling, GS1, traceability </li>
+                    <li>Built Industry 4.0 web systems for GS1 labeling, so products met global regulatory labeling
+                        requirements.</li>
+                    <li>Integrated legacy VB6 and MSSQL systems with new production lines for end-to-end traceability,
+                        with zero downtime during the cutover.</li>
+                    <li>Built front and back ends with Java (PrimeFaces, Spring Boot), MySQL and JBoss WildFly.</li>
+                    <li>Ran UAT with quality and production teams in a regulated, audited environment.</li>
                 </ul>
+                <p class="stack"><em>Stack:</em> Java, Spring Boot, PrimeFaces, MySQL, MSSQL, VB6/VBA, JBoss WildFly,
+                    GS1</p>
             </div>
 
             <div class="experience-item">
-                <h3>System Analyst</h3>
-                <p><strong>Urbam (Urbanizadora Municipal S.A.)</strong> | February 2011 - May 2016 (+5 years) |
-                    São José dos Campos, Brazil</p>
+                <h3>Systems Analyst</h3>
+                <p class="meta"><strong>Urbam (Urbanizadora Municipal S.A.)</strong> | Feb 2011 – May 2016 | São José
+                    dos Campos, Brazil</p>
+                <p class="intro">Systems analyst at a Brazilian municipal company (urban services), building the web and
+                    mobile systems its staff used daily.</p>
                 <ul>
-                    <li><strong>Enhanced application efficiency by 30%:</strong> Optimized JBoss Wildfly Server
-                        configurations and JVM performance tuning, delivering significant performance improvements that
-                        reduced response times and improved user experience across enterprise applications.</li>
-                    <li><strong>Expanded mobile capabilities:</strong> Developed native Android applications using MVVM
-                        architecture, establishing the company's mobile presence and enabling field workers to access
-                        critical systems remotely, improving operational accessibility.</li>
-                    <li><strong>Accelerated project delivery:</strong> Implemented Agile methodologies (Scrum, Kanban),
-                        transforming team collaboration and reducing project delivery timelines, resulting in faster
-                        time-to-market for new features and improvements.</li>
-                    <li><strong>Delivered robust web solutions:</strong> Maintained and enhanced web Java applications
-                        using Demoiselle Framework and Spring with Oracle databases, ensuring high availability and
-                        continuous improvement of user experience and functionality.</li>
-                    <li><strong>Stack:</strong> Java, Spring Boot, Demoiselle Framework, Primefaces, MySQL, Oracle,
-                        JBoss Wildfly Server, Android/IOS, MVVM, Agile, Scrum, Kanban.</li>
+                    <li>Made request processing 30% more efficient by tuning JBoss/WildFly and the JVM: less garbage
+                        collection, and database access only when needed.</li>
+                    <li>Built native Android apps (MVVM) that gave field workers remote access to company systems.</li>
+                    <li>Developed and maintained Java web applications (Demoiselle, Spring, Oracle).</li>
+                    <li>Introduced Scrum and Kanban to the development team.</li>
                 </ul>
+                <p class="stack"><em>Stack:</em> Java, Spring, Demoiselle, PrimeFaces, Oracle, MySQL, JBoss WildFly,
+                    Android</p>
             </div>
 
             <div class="experience-item">
-                <h3>Web Developer Leader</h3>
-                <p><strong>Fundação Cultural Cassiano Ricardo</strong> | April 2008 - February 2011 (+-3 years)
-                    | São José dos Campos / SP, Brazil</p>
+                <h3>Lead Web Developer</h3>
+                <p class="meta"><strong>Fundação Cultural Cassiano Ricardo</strong> | Apr 2008 – Feb 2011 | São José dos
+                    Campos, Brazil · On-site</p>
+                <p class="intro">Led the web team that digitized the key operations of São José dos Campos' municipal
+                    cultural foundation.</p>
                 <ul>
-                    <li><strong>Reduced operational costs by 45%:</strong> Delivered comprehensive intranet (WordPress)
-                        and portal (Joomla) solutions, streamlining content creation workflows and significantly
-                        reducing administrative overhead while improving content management efficiency.</li>
-                    <li><strong>Accelerated project delivery by 30%:</strong> Transformed production cycles by
-                        implementing Kanban and XP methodologies, optimizing team workflows and reducing project
-                        turnaround time, enabling faster delivery of cultural programs and initiatives.</li>
-                    <li><strong>Enhanced community engagement:</strong> Designed and implemented workshop management
-                        software using Joomla, T5 Framework, and HTML/CSS, enabling better coordination of cultural
-                        activities and positively impacting community participation in São José dos Campos.</li>
-                    <li><strong>Built high-performing teams:</strong> Led web development teams using Scrum
-                        methodologies, fostering collaboration and improving project efficiency, resulting in consistent
-                        on-time delivery and high-quality outcomes.</li>
-                    <li><strong>Stack:</strong> Joomla, T5 Framework, HTML, CSS, MySQL, Windows Server, Linux,
-                        WordPress. BRMA Linux Firewall, VPS</li>
+                    <li>Cut content-production costs 45% by moving content to a WordPress intranet and a Joomla public
+                        portal.</li>
+                    <li>Built the system that runs the city's cultural workshops (Joomla, T5 Framework).</li>
+                    <li>Led the team with Scrum, Kanban and XP, and mentored interns who went on to lead their own
+                        projects.</li>
+                    <li>Ran the foundation's web infrastructure: Windows and Linux servers, a BRMA Linux firewall and
+                        VPS hosting.</li>
                 </ul>
+                <p class="stack"><em>Stack:</em> Joomla, WordPress, T5 Framework, HTML, CSS, MySQL, Windows Server,
+                    Linux</p>
             </div>
 
             <div class="experience-item">
-                <h3>IT Support</h3>
-                <p><strong>Prefeitura Municipal de São José dos Campos</strong> | April 2007 - April 2008 (1 year)</p>
+                <h3>IT Support Assistant</h3>
+                <p class="meta"><strong>Prefeitura Municipal de São José dos Campos</strong> (city hall) | Apr 2007 –
+                    Apr 2008 | São José dos Campos, Brazil</p>
                 <ul>
-                    <li><strong>Ensured high system availability:</strong> Delivered comprehensive technical support and
-                        maintenance services, maintaining high uptime for municipal systems and ensuring minimal
-                        disruption to daily operations.</li>
-                    <li><strong>Streamlined IT operations:</strong> Performed efficient computer formatting,
-                        configuration, and hardware/software installations, reducing setup time and improving system
-                        reliability across municipal departments.</li>
-                    <li><strong>Maintained critical infrastructure:</strong> Configured and maintained TrixTec
-                        electronic time clocks and related systems, ensuring accurate time tracking and compliance with
-                        municipal workforce management requirements.</li>
-                    <li><strong>Stack:</strong> Hardware and Software Troubleshooting, Network Configuration, Remote
-                        Support, Onsite Support, Windows XP, Windows Vista, Microsoft Office, TrixTec, TCP/IP.</li>
+                    <li>Gave on-site and phone support to municipal staff on Windows systems.</li>
+                    <li>Formatted and configured computers (partitioning, ISO images) and installed hardware and
+                        software across departments.</li>
+                    <li>Configured, maintained and replaced the TrixTec electronic time clocks used for staff time
+                        tracking.</li>
                 </ul>
             </div>
 
             <div class="experience-item">
                 <h3>Co-Founder</h3>
-                <p><strong>Rich Solutions</strong> | January 2005 - April 2007 (+2 years) | São José dos Campos / SP,
-                    Brazil</p>
+                <p class="meta"><strong>Rich Solutions</strong> | Jan 2005 – Apr 2007 | São José dos Campos, Brazil</p>
+                <p class="intro">Co-founded a software startup that built custom systems for regional businesses, growing
+                    it from 3 people to 10 employees.</p>
                 <ul>
-                    <li><strong>Built successful startup from ground up:</strong> Co-founded and scaled Rich Solutions,
-                        establishing strategic vision and driving innovation in a competitive market, delivering custom
-                        solutions that addressed critical business needs across multiple industries.</li>
-                    <li><strong>Transformed notary operations:</strong> Led complete digitization of workflows for
-                        regional notary office using Coldfusion, Flash, CFC, and Action Script, significantly reducing
-                        service processing time and improving customer satisfaction.</li>
-                    <li><strong>Enhanced aerospace manufacturing:</strong> Automated production lines for aircraft parts
-                        company, integrating Coldfusion-based systems that enhanced productivity, improved traceability,
-                        and streamlined supply chain operations.</li>
-                    <li><strong>Optimized inventory management:</strong> Delivered comprehensive inventory management
-                        solution for t-shirt company using HTML, Coldfusion, CSS, and Flash/Action Script, providing
-                        real-time visibility and optimizing cost management processes.</li>
-                    <li><strong>Stack:</strong> Coldfusion, Flash, CFC, Action Script, HTML, CSS, MySQL, Windows Server,
-                        Linux.</li>
+                    <li>Digitized the workflows of the 1º Cartório de São José dos Campos (notary and registry office),
+                        cutting service time.</li>
+                    <li>Automated production-line systems for Betel, an aerospace parts manufacturer.</li>
+                    <li>Built inventory and cost management for Artrock, a clothing maker.</li>
                 </ul>
-            </div>
-
-            <div class="experience-item">
-                <h3>Network Engineer / Technical Support</h3>
-                <p><strong>Entrepreneur</strong> | January 2005 - December 2005 (1 year)</p>
-                <ul>
-                    <li><strong>Founded and managed independent IT consultancy:</strong> Established a technical support
-                        venture delivering remote diagnostics and onsite solutions, effectively addressing critical
-                        hardware and software challenges for a diverse client base.</li>
-                    <li><strong>Optimized system lifecycle and performance:</strong> Executed strategic hardware
-                        upgrades (storage, memory, processing) and comprehensive system tuning, significantly extending
-                        equipment lifespan and enhancing operational efficiency.</li>
-                    <li><strong>Delivered customer-centric technical solutions:</strong> Built a loyal client base
-                        through high-response support and rapid problem resolution, ensuring peak system performance and
-                        generating sustained business growth through referrals.</li>
-                    <li><strong>Stack:</strong> Cabling, Hardware and Software Troubleshooting, Network Configuration,
-                        Remote Support, Onsite Support.</li>
-                </ul>
+                <p class="stack"><em>Stack:</em> ColdFusion (CFC), Flash/ActionScript, HTML, CSS, MySQL, Windows Server,
+                    Linux</p>
             </div>
 
             <div class="experience-item">
                 <h3>Administrative Assistant</h3>
-                <p><strong>Johnson &amp; Johnson Professionals</strong> | January 2004 - June 2005 (1 year 5 months) |
-                    São José dos Campos - SP</p>
+                <p class="meta"><strong>Johnson &amp; Johnson Professionals</strong> | Jan 2004 – Jun 2005 | São José dos
+                    Campos, Brazil</p>
+                <p class="intro">My first paid role, in the medical products line. It taught me quality control,
+                    information traceability and how audits work.</p>
                 <ul>
-                    <li><strong>Achieved flawless audit record:</strong> Maintained zero strikes in internal audits and
-                        received only one recommendation in international audit, demonstrating exceptional attention to
-                        quality standards and process compliance in medical products operations.</li>
-                    <li><strong>Optimized operational workflows:</strong> Participated in "Lean Process" and "Process
-                        Excellence" programs, applying quality control and data analysis techniques that improved
-                        efficiency and reduced waste in medical products line management.</li>
-                    <li><strong>Ensured quality excellence:</strong> Managed operations using MicroSiga Protheus system,
-                        maintaining high-quality standards and efficient workflows while ensuring complete information
-                        traceability critical for medical product compliance.</li>
-                    <li><strong>Drove continuous improvement:</strong> Leveraged internal methodologies and custom
-                        applications to enhance quality management processes, contributing to systematic improvements
-                        that supported organizational excellence goals.</li>
-
+                    <li>Took part in the Lean Process and Process Excellence programs: quality control, data analysis and
+                        process improvement.</li>
+                    <li>Managed the line's operations in the MicroSiga Protheus ERP, keeping information traceable for
+                        medical-product compliance.</li>
+                    <li>Through quarterly audits, the team kept a clean record: zero strikes in internal audits and a
+                        single recommendation in the international audit.</li>
                 </ul>
             </div>
+
             <div class="experience-item">
                 <h3>Information Technology Teacher</h3>
-                <p><strong>Information Technology Teacher</strong> | January 2001 - January 2004 (+3 years)</p>
+                <p class="meta"><strong>Self-employed</strong> | Jan 2001 – Jan 2004</p>
                 <ul>
-                    <li><strong>Enabled successful tech transitions:</strong> Delivered personalized IT training
-                        programs for business owners and employees transitioning to tech sector, providing flexible
-                        scheduling that accommodated busy professionals and ensured high completion rates.</li>
-                    <li><strong>Equipped professionals with practical skills:</strong> Taught comprehensive courses on
-                        Windows, Microsoft Office, OpenOffice, Adobe Suite, internet tools, and Corel Suite, enabling
-                        participants to immediately apply learned skills in their professional environments.</li>
-                    <li><strong>Delivered customized learning experiences:</strong> Adapted training methodologies to
-                        client schedules and learning needs, maximizing effectiveness and ensuring participants achieved
-                        their professional development goals.</li>
-
+                    <li>Trained business owners and employees of companies moving into technology, in sessions scheduled
+                        around their working hours.</li>
+                    <li>Taught Windows, Microsoft Office, OpenOffice, Adobe and Corel suites and internet tools, focused
+                        on the tasks they did every day.</li>
                 </ul>
             </div>
+
+            <div class="experience-item">
+                <h3>Technical Support</h3>
+                <p class="meta"><strong>Self-employed</strong> | Jan 2000 – Dec 2005</p>
+                <ul>
+                    <li>Ran a home-based IT support and helpdesk service, remote and on-site.</li>
+                    <li>Upgraded clients' machines (memory, storage, processing) and tuned hardware and software for
+                        speed; set up cabling and home networks.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section writing">
+            <h2>Writing</h2>
+            <ul>
+                <li><a href="https://rodrigoror.github.io/portifolio/assets/blog/system-vs-product-success.html"
+                        target="_blank">System Success vs Product Success: What an AI Chatbot Taught Me About Cost</a>
+                </li>
+                <li><a href="https://rodrigoror.github.io/portifolio/assets/blog/xyz-impact-driven-engineering.html"
+                        target="_blank">Impact-Driven Engineering: How I Learned to Measure Everything</a></li>
+                <li>More on AI-native engineering and architecture at <a
+                        href="https://rodrigoror.github.io/portifolio/#blog"
+                        target="_blank">rodrigoror.github.io/portifolio</a></li>
+            </ul>
         </section>
 
         <section class="section education">
             <h2>Education</h2>
 
             <div class="education-item">
-                <h3>Executive MBA - Solutions Architecture</h3>
-                <p><strong>XP Educação</strong> | September 2023 - August 2024</p>
-                <p><em>Capstone Project:</em> Developed comprehensive Clean Architecture Reference Guide (Java/Quarkus)
-                    - A practical, interactive learning platform emphasizing observability and software quality,
-                    demonstrating mastery of Clean Architecture principles, C4 modeling, and enterprise software design
-                    patterns. <a href="https://github.com/rodrigoror/pa-igti-guia-de-referencia" target="_blank">View
-                        Project</a></p>
-                <p><em>Stack:</em> Java, Quarkus, Prometheus, OpenTelemetry, PostgreSQL, Docker, Kubernetes, Terraform,
-                    AWS, Azure, GitHub, Jenkins, SonarQube, Confluence, Trello</p>
+                <h3>Executive MBA – Solutions Architecture</h3>
+                <p class="meta"><strong>XP Educação</strong> | Sep 2023 – Aug 2024</p>
+                <p class="intro">Capstone: a Clean Architecture reference guide in Java and Quarkus, an interactive
+                    learning platform focused on observability and software quality, with C4 models. <a
+                        href="https://github.com/rodrigoror/pa-igti-guia-de-referencia" target="_blank">View
+                        project</a></p>
+                <p class="stack"><em>Stack:</em> Java, Quarkus, Prometheus, OpenTelemetry, PostgreSQL, Docker,
+                    Kubernetes, Terraform, AWS, Azure, GitHub, Jenkins, SonarQube</p>
             </div>
 
             <div class="education-item">
-                <h3>Specialization, Computer Science - Mobile Applications for Android</h3>
-                <p><strong>University of Maryland College Park</strong> | 2015 - 2015</p>
+                <h3>Technologist in Systems Analysis and Development (B.Tech.)</h3>
+                <p class="meta"><strong>Instituto Brasileiro de Tecnologia Avançado</strong> | 2004 – 2006</p>
+                <p class="intro">Capstone: Feeders, an RSS search system that aggregated news titles and descriptions to
+                    cut reading time (ColdFusion, MySQL, ActionScript).</p>
             </div>
 
             <div class="education-item">
-                <h3>Introduction To Swift Programming, IOS with Swift</h3>
-                <p><strong>University of Toronto</strong> | 2015 - 2015</p>
+                <h3>Specialization, Computer Science – Mobile Applications for Android</h3>
+                <p class="meta"><strong>University of Maryland, College Park</strong> (Coursera) | 2015</p>
             </div>
 
             <div class="education-item">
-                <h3>Technologist Analysis and Systems Development (B.Tech.), Gestão de Sistemas de Informação</h3>
-                <p><strong>Instituto Brasileiro de Tecnologia Avançado</strong> | 2004 - 2006</p>
-                <p><em>Capstone Project:</em>
-                    Developed a Feeders platform focused in reduce the time to read the news and agreggate small
-                    portions of characters of the title and description of the news.
-                    Título: Feeders - Sistema de Busca de Feeds (RSS) Orientador: Esther Luna Colombini
-                    <em>Stack:</em> Coldfusion, CFC, MySQL, Action Script
-                </p>
+                <h3>Introduction to Swift Programming (iOS)</h3>
+                <p class="meta"><strong>University of Toronto</strong> (Coursera) | 2015</p>
             </div>
+
             <div class="education-item">
-                <h3>Diploma of Technician in IT, Information Technology</h3>
-                <p><strong>Escola Técnica Estadual (ETEC) Machado de Assis</strong> | 2002 - 2003</p>
-                <p><em>Capstone Project:</em>
-                    Developed a system to reduce the time to find a dental doctor or clinic in the city of São José dos
-                    Campos, Caçapava and Jacareí.
-                    Título: SystemClin - Sistema de Clínicas Odontológicas e Dentistas
-                    Orientador: Pedro Henrique de Oliveira Santos
-                    <em>Stack:</em> VB6, ASP, MySQL, HTML, CSS, JavaScript
-                </p>
+                <h3>Technician Diplomas: Information Technology; Telecommunications</h3>
+                <p class="meta"><strong>ETEC Machado de Assis</strong>; <strong>Centro de Educação Profissional Hélio
+                        Augusto de Souza</strong> | 2002 – 2003</p>
+                <p class="intro">IT capstone: SystemClin, a directory of dental clinics in São José dos Campos, Caçapava
+                    and Jacareí (VB6, ASP, MySQL).</p>
             </div>
-            <div class="education-item">
-                <h3>Diploma of Technician in Telecommunications, Tecnologia em Telecomunicações</h3>
-                <p><strong>Centro de Educação Profissional Hélio Augusto de Souza</strong> | 2002 - 2003</p>
-            </div>
+        </section>
+
+        <section class="section certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li><strong>AI &amp; product:</strong> Anthropic – AI Fluency: Framework &amp; Foundations (2026) ·
+                    Becoming an AI-First Product Leader (2025) · AI Agents for Product Leaders (2025) · Product School –
+                    Product Roadmapping Micro-Certification (2024)</li>
+                <li><strong>Leadership:</strong> Qulture.Rocks – Team Management and Performance Management (2024) ·
+                    Alura – Managing OKRs, Management 3.0, People Management 4.0 · Season Training – Scrum Master (2017)
+                </li>
+                <li><strong>Security:</strong> Santander – Cybersecurity (2025) · University of Southampton – Secure
+                    Android App Development (2017) · ITA – Software Quality, Reliability and Safety (CE-230, 2011)</li>
+                <li><strong>Engineering:</strong> Alura – Java Project Architecture and Design, Java SE Programmer 1,
+                    SOLID, Design Patterns, BDD, TDD, Maven (2020–2024) · SERPRO – Demoiselle Framework 2 (2014)</li>
+                <li><strong>Earlier:</strong> FGV Online – IT Management: Strategy and Concepts · ITIL V2 Fundamentals ·
+                    BRConnection – BRMA Certified Professional · NextG Intel – Web Services, Convergence and ERP ·
+                    Johnson &amp; Johnson – Quality Information Systems and Process Excellence · Rich Solutions (internal) – UML, Development Management, ColdFusion, Rich Internet Apps, ActionScript 3, Scrum and Kanban</li>
+            </ul>
         </section>
     </div>
 </body>
