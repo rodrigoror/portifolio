@@ -3,491 +3,1195 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rodrigo Ramos · Solutions Architect &amp; Engineering Manager</title>
     <meta name="description"
-        content="Rodrigo Ramos - Tech Manager, Solutions Architect, Senior Fullstack Engineer portfolio.">
+        content="Rodrigo Ramos, Solutions Architect and Engineering Manager. I help engineering teams ship faster with AI and prove it pays off. 20+ years in software, fintech, based in Spain.">
     <meta name="author" content="Rodrigo Ramos">
-    <title>Rodrigo's Portifolio</title>
-    <!-- font icons -->
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
-    <!-- Bootstrap + Meyawo main styles -->
-    <link rel="stylesheet" href="assets/css/meyawo.css">
+    <meta property="og:title" content="Rodrigo Ramos · Solutions Architect & Engineering Manager">
+    <meta property="og:description"
+        content="AI strategy for engineering teams: faster delivery, sound architecture and costs under control.">
+    <meta property="og:image" content="https://rodrigoror.github.io/portifolio/assets/imgs/portrait.jpg">
+    <meta property="og:url" content="https://rodrigoror.github.io/portifolio/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0f1b2d;
+            --navy-2: #172a45;
+            --teal: #2bb3a3;
+            --teal-dark: #1d8a7d;
+            --amber: #f2a33a;
+            --ink: #1c2533;
+            --muted: #5b6676;
+            --line: #e3e8ef;
+            --bg: #ffffff;
+            --bg-soft: #f5f7fa;
+            --radius: 14px;
+        }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 72px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--teal-dark);
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* nav */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(15, 27, 45, 0.96);
+            backdrop-filter: blur(6px);
+        }
+
+        .nav .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .brand {
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 26px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav ul a {
+            color: #c9d3e0;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .nav ul a:hover {
+            color: #fff;
+        }
+
+        .nav .cta-sm {
+            background: var(--teal);
+            color: var(--navy);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        .nav .cta-sm:hover {
+            color: var(--navy);
+            background: #46c9b9;
+        }
+
+        /* buttons */
+        .btn {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.98rem;
+            transition: transform .15s ease, background .15s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: #46c9b9;
+        }
+
+        .btn-ghost {
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            color: #fff;
+        }
+
+        .btn-ghost:hover {
+            border-color: #fff;
+        }
+
+        .btn-dark {
+            background: var(--navy);
+            color: #fff;
+        }
+
+        /* hero */
+        .hero {
+            background: radial-gradient(1200px 500px at 85% -10%, rgba(43, 179, 163, 0.22), transparent 60%), var(--navy);
+            color: #fff;
+            padding: 84px 0 96px;
+        }
+
+        .hero .wrap {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--teal);
+            margin: 0 0 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.1rem, 4.4vw, 3.3rem);
+            line-height: 1.12;
+            letter-spacing: -0.025em;
+            margin: 0 0 22px;
+            font-weight: 800;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--teal);
+        }
+
+        .hero .lead {
+            color: #c9d3e0;
+            font-size: 1.12rem;
+            max-width: 600px;
+            margin: 0 0 32px;
+        }
+
+        .hero .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .hero .meta {
+            margin-top: 28px;
+            font-size: 0.9rem;
+            color: #8fa0b5;
+        }
+
+        .portrait {
+            justify-self: center;
+            position: relative;
+        }
+
+        .portrait img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid rgba(255, 255, 255, 0.08);
+            display: block;
+        }
+
+        .badge {
+            position: absolute;
+            left: -18px;
+            bottom: 18px;
+            background: #fff;
+            color: var(--ink);
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            line-height: 1.35;
+        }
+
+        .badge strong {
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        /* sections */
+        section {
+            padding: 88px 0;
+        }
+
+        .soft {
+            background: var(--bg-soft);
+        }
+
+        .section-head {
+            max-width: 720px;
+            margin-bottom: 44px;
+        }
+
+        .section-head .eyebrow {
+            color: var(--teal-dark);
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 3vw, 2.3rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin: 0 0 14px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin: 0;
+        }
+
+        /* impact */
+        .impact {
+            margin-top: -48px;
+            padding: 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: 0 18px 50px rgba(15, 27, 45, 0.12);
+            overflow: hidden;
+        }
+
+        .stat {
+            padding: 28px 28px 26px;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .stat:nth-child(3n) {
+            border-right: none;
+        }
+
+        .stat:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+
+        .stat .num {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--navy);
+            line-height: 1.1;
+        }
+
+        .stat .num span {
+            color: var(--teal-dark);
+        }
+
+        .stat p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* services */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 30px;
+        }
+
+        .card .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(43, 179, 163, 0.12);
+            color: var(--teal-dark);
+            display: grid;
+            place-items: center;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            margin: 0 0 14px;
+            color: var(--muted);
+        }
+
+        .card ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+
+        .card li {
+            margin-bottom: 6px;
+        }
+
+        /* cases */
+        .cases {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .case {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal-dark);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .case h3 {
+            margin: 0 0 12px;
+            font-size: 1.25rem;
+            line-height: 1.3;
+        }
+
+        .case dl {
+            margin: 0 0 18px;
+            font-size: 0.95rem;
+        }
+
+        .case dt {
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .case dd {
+            margin: 2px 0 0;
+            color: var(--muted);
+        }
+
+        .result {
+            margin-top: auto;
+            background: var(--bg-soft);
+            border-left: 4px solid var(--teal);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .case .more {
+            margin-top: 14px;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        /* career */
+        .career {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 48px;
+        }
+
+        .timeline {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-left: 2px solid var(--line);
+        }
+
+        .timeline li {
+            position: relative;
+            padding: 0 0 24px 24px;
+        }
+
+        .timeline li::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--teal);
+        }
+
+        .timeline li.now::before {
+            background: var(--teal);
+        }
+
+        .timeline .when {
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .timeline .role {
+            font-weight: 700;
+        }
+
+        .timeline .what {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .side h3 {
+            font-size: 1.05rem;
+            margin: 0 0 12px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .chip {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 0.86rem;
+        }
+
+        .side p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin: 0 0 8px;
+        }
+
+        /* products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .product {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color .15s ease, transform .15s ease;
+        }
+
+        .product:hover {
+            border-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        .product h3 {
+            margin: 0 0 6px;
+            font-size: 1.02rem;
+        }
+
+        .product p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* writing */
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .post {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-decoration: none;
+            color: var(--ink);
+            display: flex;
+            flex-direction: column;
+            transition: border-color .15s ease, transform .15s ease;
+        }
+
+        .post:hover {
+            border-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        .post .topic {
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal-dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .post h3 {
+            font-size: 1.05rem;
+            margin: 0 0 8px;
+            line-height: 1.35;
+        }
+
+        .post p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .post.featured {
+            grid-column: span 3;
+            background: var(--navy);
+            color: #fff;
+            border: none;
+            padding: 32px;
+        }
+
+        .post.featured h3 {
+            font-size: 1.4rem;
+        }
+
+        .post.featured p {
+            color: #c9d3e0;
+            max-width: 760px;
+        }
+
+        .post.featured .topic {
+            color: var(--teal);
+        }
+
+        .comics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .comic {
+            border: 1px dashed #c3ccd8;
+            border-radius: 12px;
+            padding: 18px;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .comic span {
+            display: block;
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 0.82rem;
+            margin-top: 4px;
+        }
+
+        .comic:hover {
+            border-color: var(--teal);
+        }
+
+        /* contact */
+        .contact {
+            background: var(--navy);
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            max-width: 760px;
+            margin: 0 auto 16px;
+        }
+
+        .contact p {
+            color: #c9d3e0;
+            max-width: 640px;
+            margin: 0 auto 32px;
+            font-size: 1.08rem;
+        }
+
+        .contact .actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            background: #0a1320;
+            color: #8fa0b5;
+            font-size: 0.88rem;
+            padding: 24px 0;
+        }
+
+        footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: #c9d3e0;
+            text-decoration: none;
+            margin-left: 18px;
+        }
+
+        footer a:first-child {
+            margin-left: 0;
+        }
+
+        /* responsive */
+        @media (max-width: 960px) {
+            .hero .wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .portrait {
+                order: -1;
+                justify-self: start;
+            }
+
+            .portrait img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .badge {
+                display: none;
+            }
+
+            .grid-3,
+            .posts {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .post.featured {
+                grid-column: span 2;
+            }
+
+            .products,
+            .comics {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .career {
+                grid-template-columns: 1fr;
+            }
+
+            .nav ul li.hide-sm {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .wrap {
+                padding: 0 16px;
+            }
+
+            section {
+                padding: 64px 0;
+            }
+
+            .hero {
+                padding: 48px 0 80px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat {
+                padding: 20px 18px;
+                border-right: 1px solid var(--line) !important;
+                border-bottom: 1px solid var(--line) !important;
+            }
+
+            .stat:nth-child(2n) {
+                border-right: none !important;
+            }
+
+            .stat .num {
+                font-size: 1.6rem;
+            }
+
+            .grid-3,
+            .cases,
+            .posts,
+            .products,
+            .comics {
+                grid-template-columns: 1fr;
+            }
+
+            .post.featured {
+                grid-column: span 1;
+            }
+
+            .nav ul {
+                gap: 14px;
+            }
+
+            .nav ul li:not(.keep) {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+<body>
 
-    <!-- Page Navbar -->
-    <nav class="custom-navbar">
-        <div class="container">
-            <a class="logo" href="#">Rodrigo Ramos</a>
-            <ul class="nav" id="main-nav">
-                <li class="item">
-                    <a class="link" href="#home">Home</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#about">About</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#comic">Comics</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#testimonial">Testimonial</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#blog">Blog</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#contact">Contact</a>
-                </li>
+    <nav class="nav">
+        <div class="wrap">
+            <a class="brand" href="#top">Rodrigo Ramos</a>
+            <ul>
+                <li class="hide-sm"><a href="#services">What I do</a></li>
+                <li class="hide-sm"><a href="#work">Case studies</a></li>
+                <li class="hide-sm"><a href="#career">Career</a></li>
+                <li class="hide-sm"><a href="#blog">Writing</a></li>
+                <li class="keep"><a href="assets/resume/rodrigo_ramos_complete_resume.html">Resume</a></li>
+                <li class="keep"><a class="cta-sm" href="#contact">Contact</a></li>
             </ul>
-            <button type="button" id="nav-toggle" class="hamburger hamburger--elastic"
-                    aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </button>
         </div>
-    </nav><!-- End of Page Navbar -->
+    </nav>
 
-    <!-- page header -->
-    <header id="home" class="header">
-        <div class="overlay"></div>
-        <div class="header-content container">
-            <h1 class="header-title">
-                <span class="up">Solutions Architect</span>
-                <span class="down">Management, Software, Data</span>
-            </h1>
-            <p class="header-subtitle"></p>
-
-            <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos/"><button class="btn btn-primary">My
-                    Linkedin</button></a>
+    <!-- hero -->
+    <header class="hero" id="top">
+        <div class="wrap">
+            <div>
+                <p class="eyebrow">Solutions Architect · Engineering Manager · AI Strategy</p>
+                <h1>I help engineering teams ship faster with AI, <em>and prove it pays off.</em></h1>
+                <p class="lead">Engineering Manager at alt.bank (now novütech), a Brazilian fintech, leading 16 people
+                    across product, SRE and architecture. I joined as its 3rd developer. 20+ years in software and an
+                    Executive MBA in Solutions Architecture.</p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="#contact">Let's talk</a>
+                    <a class="btn btn-ghost" href="assets/resume/rodrigo_ramos_complete_resume.html">View resume</a>
+                </div>
+                <p class="meta">Based in Spain (CET) · Portuguese, English, Spanish</p>
+            </div>
+            <div class="portrait">
+                <img src="assets/imgs/portrait.jpg" alt="Rodrigo Ramos">
+                <div class="badge"><strong>7+ years</strong>at alt.bank: developer → tech lead → manager</div>
+            </div>
         </div>
-    </header><!-- end of page header -->
+    </header>
 
-    <!-- about section -->
-    <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
-            <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                    <img src="assets/imgs/man2.jpg" class="about-img" alt="Rodrigo Ramos professional portrait">
+    <!-- impact -->
+    <section class="impact" id="impact" aria-label="Impact in numbers">
+        <div class="wrap">
+            <div class="stats">
+                <div class="stat">
+                    <div class="num">80<span>%</span></div>
+                    <p>higher productivity, measured by cycle time from spec to production</p>
                 </div>
-                <div class="about-caption">
-                    <p class="section-subtitle">Who Am I ?</p>
-                    <h2 class="section-title mb-3">About Me</h2>
-                    <p>
-                        With over two decades immersed in software development, I've cultivated a journey from
-                        foundational IT support to becoming a Tech Manager and Solutions Architect. My career is defined
-                        by a passion for building robust, scalable systems and fostering high-performing teams. I
-                        specialize in designing cloud-native solutions, leveraging technologies like Node.js,
-                        TypeScript, and MongoDB, and driving innovation through AI-assisted development.
-                        <br>My experience spans diverse domains, from optimizing JVM performance and leading mobile app
-                        development to pioneering B2B SaaS solutions and integrating complex financial data. As an
-                        entrepreneurial leader, I thrive on connecting technical excellence with business strategy,
-                        always focused on delivering impactful products from conception to successful deployment and
-                        beyond.
-                    </p>
-                    <a href="assets/resume/rodrigo_ramos_complete_resume.html">
-                        <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
-                    </a>
+                <div class="stat">
+                    <div class="num">100<span>k</span></div>
+                    <p>credit-card customers migrated with zero downtime and zero refused transactions</p>
                 </div>
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
-
-    <!-- comic section -->
-    <section class="section" id="comic">
-        <div class="container text-center">
-            <p class="section-subtitle">Visualizing Complexity</p>
-            <h6 class="section-title mb-6">Architectural Design Comics</h6>
-
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/pencil-case.svg" alt="Architecture Comic Icon" class="icon">
-                            <h6 class="title">System Versus Solution Architecture</h6>
-                            <p class="subtitle">
-                                Architecture isn't just about boxes and arrows; it's about storytelling.
-                                In this exclusive comic, I explore the nuanced differences between
-                                <strong>System Architecture</strong> and <strong>Solution Architecture</strong>.
-                                Dive into a visual journey that demystifies complex concepts, making them accessible
-                                and engaging for engineers, stakeholders, and curious minds alike.
-                            </p>
-                            <a href="assets/comic/System_Versus_Solution_Architecture.pdf" target="_blank"
-                                class="btn btn-primary mt-4">
-                                Read the Comic (PDF)
-                            </a>
-                        </div>
-                    </div>
+                <div class="stat">
+                    <div class="num">3<span>x</span></div>
+                    <p>revenue on the multi-tenant collections platform I architected</p>
                 </div>
-                <!-- New comic entry -->
-                <div class="col-md-10 col-lg-8 mt-4">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/pencil-case.svg" alt="Architecture Comic Icon" class="icon">
-                            <h6 class="title">Reliability Is The Feature</h6>
-                            <p class="subtitle">
-                                In this comic, I delve into why reliability isn't just a non-functional requirement
-                                but a core feature of any successful system. See how architectural decisions
-                                directly impact system stability and user trust.
-                            </p>
-                            <a href="assets/comic/Reliability_Is_The_Feature.pdf" target="_blank"
-                                class="btn btn-primary mt-4">
-                                Read the Comic (PDF)
-                            </a>
-                        </div>
-                    </div>
+                <div class="stat">
+                    <div class="num">80<span>%</span></div>
+                    <p>fewer unplanned production war-rooms, with TDD and quality gates</p>
                 </div>
-                <!-- New comic entry -->
-                <div class="col-md-10 col-lg-8 mt-4">
-                    <div class="service-card">
-                        <div class="body">
-                            <img src="assets/imgs/pencil-case.svg" alt="Architecture Comic Icon" class="icon">
-                            <h6 class="title">Escaping the Microservices Maze</h6>
-                            <p class="subtitle">
-                                Microservices promise agility, but often lead to complexity. In this comic, I explore
-                                the common traps teams fall into when adopting microservices and how to navigate the
-                                maze to build truly scalable and maintainable systems.
-                            </p>
-                            <a href="assets/comic/Escaping_the_Microservices_Maze.pdf" target="_blank"
-                                class="btn btn-primary mt-4">
-                                Read the Comic (PDF)
-                            </a>
-                        </div>
-                    </div>
+                <div class="stat">
+                    <div class="num"><span>~</span>$2k<span>/mo</span></div>
+                    <p>saved by replacing two paid tools with AI-built internal ones</p>
+                </div>
+                <div class="stat">
+                    <div class="num">16</div>
+                    <p>people led across four squads: two product, SRE and architecture</p>
                 </div>
             </div>
         </div>
-    </section><!-- end of comic section -->
+    </section>
 
-    <!-- portfolio section -->
-    <section class="section" id="portfolio">
-        <div class="container text-center">
-            <p class="section-subtitle">What I Did ?</p>
-            <h6 class="section-title mb-6">Portfolio</h6>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://github.com/rodrigoror/pa-igti-guia-de-referencia" target="_blank"
-                        class="portfolio-card">
-                        <img src="assets/imgs/folio-1.jpg" class="portfolio-card-img"
-                            alt="MBA Conclusion Project: Clean Architecture Reference Guide">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Clean Architecture Reference Guide</h4>
-                                <p class="font-weight-normal">Category: MBA Conclusion Project | Technologies: Java,
-                                    Quarkus, Clean Architecture</p>
-                            </span>
-                        </span>
-                    </a>
+    <!-- services -->
+    <section id="services">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">What I do</p>
+                <h2>Where solutions architecture meets AI adoption</h2>
+                <p>I decide where agents belong in the engineering lifecycle, how to govern them, and how to tell
+                    whether they're paying off. Underneath is a solid engineering base: microservices on AWS, Java and
+                    Node.js, and teams that ship with quality.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z" />
+                            <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" />
+                        </svg></div>
+                    <h3>AI engineering strategy</h3>
+                    <p>AI in every delivery stage, with guardrails and a number that proves it works.</p>
+                    <ul>
+                        <li>Spec, code, review and tests with Claude Code, Cursor and CodeRabbit</li>
+                        <li>Custom Claude skills and MCP servers on real systems</li>
+                        <li>Cost per outcome, not just "it's in production"</li>
+                    </ul>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://play.google.com/store/search?q=novucard&c=apps" target="_blank"
-                        class="portfolio-card">
-                        <img class="portfolio-card-img img-responsive rounded" src="assets/imgs/folio-2.jpg"
-                            alt="Finance Sector Mobile Application">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Finance Sector Mobile App</h4>
-                                <p class="font-weight-normal">Category: Finance Sector | Technologies: Flutter, Quarkus
-                                    Java</p>
-                            </span>
-                        </span>
-                    </a>
+                <div class="card">
+                    <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                            <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                            <rect x="8.5" y="14" width="7" height="7" rx="1.5" />
+                            <path d="M6.5 10v2h11v-2M12 12v2" />
+                        </svg></div>
+                    <h3>Solutions architecture</h3>
+                    <p>Systems that scale, integrate cleanly and survive high-risk changes.</p>
+                    <ul>
+                        <li>Microservices and event-driven design on AWS</li>
+                        <li>Multi-tenant SaaS, GraphQL and REST APIs</li>
+                        <li>Zero-downtime migrations and build-vs-buy calls</li>
+                    </ul>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://altbank.ai/en/" target="_blank" class="portfolio-card">
-                        <img class="portfolio-card-img img-responsive rounded" src="assets/imgs/folio-3.jpg"
-                            alt="B2B Banking Platform">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>B2B Banking Platform</h4>
-                                <p class="font-weight-normal">Category: B2B Sector | Role: Development Management</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <a href="https://www.wolfe.altbank.ai/" target="_blank" class="portfolio-card">
-                        <img class="portfolio-card-img img-responsive rounded" src="assets/imgs/folio-1.jpg"
-                            alt="Collections Environment Platform">
-                        <span class="portfolio-card-overlay">
-                            <span class="portfolio-card-caption">
-                                <h4>Collections Environment Platform</h4>
-                                <p class="font-weight-normal">Category: Collections | Role: E2E Development & Team
-                                    Management</p>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-            </div><!-- end of row -->
-        </div><!-- end of container -->
-    </section> <!-- end of portfolio section -->
-    <!-- section -->
-    <section class="section-sm bg-primary">
-        <!-- container -->
-        <div class="container text-center text-sm-left">
-            <!-- row -->
-            <div class="row align-items-center">
-                <div class="col-sm offset-md-1 mb-4 mb-md-0">
-                    <h6 class="title text-light">Want to work with me?</h6>
-                    <p class="m-0 text-light">Always feel Free to Contact & Hire me</p>
-                </div>
-                <div class="col-sm offset-sm-2 offset-md-3">
-                    <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos"
-                        class="btn btn-lg my-font btn-light rounded">Hire Me</a>
-                </div>
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </section> <!-- end of section -->
-
-    <!-- testimonial section -->
-    <section class="section" id="testimonial">
-        <div class="container text-center">
-            <p class="section-subtitle">What Do Clients Think About Me?</p>
-            <h6 class="section-title mb-6">Testimonial</h6>
-
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                            <img src="assets/imgs/avatar2.jpg" class="testimonial-card-img" alt="Client Testimonial">
-                        </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">"I thought my project was doomed, but then our solution
-                                architect swooped in like a superhero! He turned chaos into order faster than I could
-                                say 'debugging'. Now, my only problem is deciding which coffee shop to celebrate in!"
-                            </p>
-                            <h6 class="testimonial-card-title">Happy Client #1</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-img-holder">
-                            <img src="assets/imgs/avatar3.jpg" class="testimonial-card-img" alt="Client Testimonial">
-                        </div>
-                        <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">"When I said I needed a miracle, I didn't expect a
-                                solution architect to show up with a cape! He fixed my tech mess and even made it look
-                                easy. Now, I just sit back and enjoy the smooth sailing!"</p>
-                            <h6 class="testimonial-card-title">Satisfied Client #2</h6>
-                        </div>
-                    </div>
+                <div class="card">
+                    <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="9" cy="8" r="3.2" />
+                            <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+                            <circle cx="17.5" cy="9" r="2.4" />
+                            <path d="M16 14.2c2.9.3 5 2.6 5 5.8" />
+                        </svg></div>
+                    <h3>Engineering leadership</h3>
+                    <p>Teams that deliver fast and safely, measured by outcomes.</p>
+                    <ul>
+                        <li>Leading tech leads, squads and partner teams</li>
+                        <li>TDD, SonarQube gates and AI-first code review</li>
+                        <li>OKRs, delivery metrics and performance systems</li>
+                    </ul>
                 </div>
             </div>
-        </div> <!-- end of container -->
-    </section> <!-- end of testimonial section -->
-    <!-- blog section -->
-    <section class="section" id="blog">
-        <!-- container -->
-        <div class="container text-center">
-            <p class="section-subtitle">Latest Insights</p>
-            <h6 class="section-title mb-6">Blog</h6>
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/shipped.svg" class="blog-card-img"
-                        alt="Blog post image: System success vs product success">
+        </div>
+    </section>
+
+    <!-- case studies -->
+    <section class="soft" id="work">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Case studies</p>
+                <h2>Results I can walk you through</h2>
+                <p>Four projects from alt.bank, each with the problem, what I did and how we measured it.</p>
+            </div>
+            <div class="cases">
+                <article class="case">
+                    <div class="tag">Migration · Data integration</div>
+                    <h3>Moving 100,000 card customers between processors without anyone noticing</h3>
+                    <dl>
+                        <dt>Challenge</dt>
+                        <dd>Migrate every credit-card customer from FIS to Pismo, with no room for downtime or refused
+                            transactions.</dd>
+                        <dt>What I did</dt>
+                        <dd>Led 10 people and coordinated ~20 more from Security, DevOps and five partners. Designed the
+                            migration app: field mapping, shadow-mode reconciliation and rollback at every stage.</dd>
+                    </dl>
+                    <div class="result">Zero downtime. Zero refused transactions.</div>
+                    <a class="more" href="assets/blog/xyz-impact-driven-engineering.html">How we measured it →</a>
+                </article>
+
+                <article class="case">
+                    <div class="tag">Architecture · Multi-tenant SaaS</div>
+                    <h3>A collections platform that became a B2B product</h3>
+                    <dl>
+                        <dt>Challenge</dt>
+                        <dd>Turn an internal collections product into a platform partners could use.</dd>
+                        <dt>What I did</dt>
+                        <dd>Architected the multi-tenant Wolfe platform: Node.js/TypeScript, GraphQL, MongoDB and AWS
+                            Cognito, processing 400,000+ records a day for four tenants, three of them external.</dd>
+                    </dl>
+                    <div class="result">Revenue tripled. Partner onboarding went from weeks to days.</div>
+                    <a class="more" href="assets/blog/graphql-vs-rest.html">Why GraphQL made the difference →</a>
+                </article>
+
+                <article class="case">
+                    <div class="tag">AI-native engineering</div>
+                    <h3>Building AI into every stage of delivery</h3>
+                    <dl>
+                        <dt>Challenge</dt>
+                        <dd>Ship faster without trading away quality in a regulated fintech.</dd>
+                        <dt>What I did</dt>
+                        <dd>Agents challenge the spec, Claude Code and Cursor write the code, CodeRabbit and a
+                            business-rules RAG agent review it, and tests come from the spec. Built Claude skills and MCP
+                            servers (database, Grafana, Kubernetes) so agents work on real systems.</dd>
+                    </dl>
+                    <div class="result">80% higher productivity (cycle time). 80% fewer production war-rooms.</div>
+                    <a class="more" href="assets/blog/ai-productivity.html">The playbook →</a>
+                </article>
+
+                <article class="case">
+                    <div class="tag">AI in production · Cost</div>
+                    <h3>The AI chatbot that worked, and why we turned it off</h3>
+                    <dl>
+                        <dt>Challenge</dt>
+                        <dd>Reduce the support queue with a WhatsApp chatbot (Salesforce + Gemini on Vertex AI).</dd>
+                        <dt>What I did</dt>
+                        <dd>Took it from operator copilot to customer-facing, branch by branch. When the cloud bill grew
+                            10x in three months, I shut it down and used AI to fix the flow itself.</dd>
+                    </dl>
+                    <div class="result">Resolution 25% → 93%. Then 70% without a model in every conversation.</div>
+                    <a class="more" href="assets/blog/system-vs-product-success.html">Read the full story →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- career -->
+    <section id="career">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Career</p>
+                <h2>From the code to the strategy</h2>
+                <p>I've been the developer, the tech lead, the consultant and the founder. That's why I can talk
+                    architecture with engineers and cost with the business.</p>
+            </div>
+            <div class="career">
+                <ol class="timeline">
+                    <li class="now">
+                        <div class="when">2023 – Present</div>
+                        <div class="role">Engineering Manager · AI Engineering Strategy, alt.bank</div>
+                        <div class="what">16 people in four squads. Owns how the teams use AI. Reports to the business
+                            and C-level.</div>
+                    </li>
+                    <li>
+                        <div class="when">2021 – 2023</div>
+                        <div class="role">Senior Technical Lead, alt.bank</div>
+                        <div class="what">Led the technical pivot from Banking-as-a-Service to a proprietary credit card
+                            (FIS, Visa).</div>
+                    </li>
+                    <li>
+                        <div class="when">2018 – 2021</div>
+                        <div class="role">Full Stack Developer, alt.bank</div>
+                        <div class="what">Joined as the 3rd developer in a company of 5. Shipped the banking app MVP in 3
+                            months.</div>
+                    </li>
+                    <li>
+                        <div class="when">2012 – 2018</div>
+                        <div class="role">Senior Fullstack Engineer (Freelance), RRLabs</div>
+                        <div class="what">Almost 100 mobile and backend projects, alongside full-time roles.</div>
+                    </li>
+                    <li>
+                        <div class="when">2016 – 2018</div>
+                        <div class="role">Senior Developer, As2 Group</div>
+                        <div class="what">Traceability and GS1 labeling systems for Johnson &amp; Johnson's
+                            medical-device plant.</div>
+                    </li>
+                    <li>
+                        <div class="when">2008 – 2016</div>
+                        <div class="role">Systems Analyst, Urbam · Lead Web Developer, Fundação Cultural</div>
+                        <div class="what">JVM tuning, Android apps for field workers, and a web team in the public
+                            sector.</div>
+                    </li>
+                    <li>
+                        <div class="when">2005 – 2007</div>
+                        <div class="role">Co-Founder, Rich Solutions</div>
+                        <div class="what">Grew a custom-software startup from 3 people to 10 employees.</div>
+                    </li>
+                </ol>
+                <div class="side">
+                    <h3>Toolkit</h3>
+                    <div class="chips">
+                        <span class="chip">Claude Code</span><span class="chip">Cursor</span><span
+                            class="chip">CodeRabbit</span><span class="chip">MCP servers</span><span class="chip">RAG
+                            agents</span><span class="chip">Vertex AI</span><span class="chip">AWS</span><span
+                            class="chip">Kubernetes</span><span class="chip">Java · Quarkus</span><span
+                            class="chip">Spring</span><span class="chip">Node.js · TypeScript</span><span
+                            class="chip">GraphQL</span><span class="chip">MongoDB</span><span
+                            class="chip">PostgreSQL</span><span class="chip">Flutter</span><span
+                            class="chip">SonarQube</span><span class="chip">TDD</span><span class="chip">Clean
+                            Architecture</span>
+                    </div>
+                    <h3>Education</h3>
+                    <p><strong>Executive MBA, Solutions Architecture</strong><br>XP Educação, 2024 · <a
+                            href="https://github.com/rodrigoror/pa-igti-guia-de-referencia" target="_blank"
+                            rel="noopener">Capstone on GitHub</a></p>
+                    <p><strong>B.Tech, Systems Analysis and Development</strong><br>Instituto Brasileiro de Tecnologia
+                        Avançado, 2006</p>
+                    <p><strong>Recent certifications</strong><br>Anthropic AI Fluency (2026) · AI-First Product Leader ·
+                        AI Agents for Product Leaders · Santander Cybersecurity (2025)</p>
                 </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">System Success vs Product Success: What an AI Chatbot Taught Me About Cost</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/system-vs-product-success.html">By: Rodrigo Ramos</a>
-                    </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- products -->
+    <section class="soft" id="portfolio">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Products</p>
+                <h2>Things I helped build that you can open today</h2>
+            </div>
+            <div class="products">
+                <a class="product" href="https://play.google.com/store/search?q=novucard&c=apps" target="_blank"
+                    rel="noopener">
+                    <h3>novücard banking app</h3>
+                    <p>Flutter app and Java (Quarkus) backend, built from the first commit.</p>
+                </a>
+                <a class="product" href="https://www.wolfe.altbank.ai/" target="_blank" rel="noopener">
+                    <h3>Wolfe collections platform</h3>
+                    <p>Multi-tenant B2B platform, 400,000+ records a day.</p>
+                </a>
+                <a class="product" href="https://altbank.ai/en/" target="_blank" rel="noopener">
+                    <h3>B2B banking platform</h3>
+                    <p>The infrastructure alt.bank now offers to other companies.</p>
+                </a>
+                <a class="product" href="https://github.com/rodrigoror/pa-igti-guia-de-referencia" target="_blank"
+                    rel="noopener">
+                    <h3>Clean Architecture guide</h3>
+                    <p>MBA capstone in Java and Quarkus, with observability built in.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!--
+    Recommendations: add real quotes here once they're on LinkedIn (with the person's
+    permission, name and role). Never use placeholder or made-up testimonials.
+    -->
+
+    <!-- writing -->
+    <section id="blog">
+        <div class="wrap">
+            <div class="section-head">
+                <p class="eyebrow">Writing</p>
+                <h2>How I think about AI, architecture and delivery</h2>
+                <p>Lessons from real projects, including the ones that didn't go to plan.</p>
+            </div>
+            <div class="posts">
+                <a class="post featured" href="assets/blog/system-vs-product-success.html">
+                    <div class="topic">Latest · AI strategy</div>
+                    <h3>System Success vs Product Success: What an AI Chatbot Taught Me About Cost</h3>
                     <p>A system can work perfectly and still fail as a product. Why OKRs and KPIs define delivery
-                        success, why cost must be under control before you scale, and why we switched off an AI
-                        chatbot channel that worked.</p>
-                    <a href="assets/blog/system-vs-product-success.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/startup.svg" class="blog-card-img"
-                        alt="Blog post image: Impact-Driven Engineering with Google XYZ">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Impact-Driven Engineering: How I Learned to Measure Everything</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/xyz-impact-driven-engineering.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>Real engineering stories structured with the Google XYZ framework — from zero-downtime migrations
-                        to tripling revenue — and how thinking in outcomes changes the way you build products and teams.</p>
-                    <a href="assets/blog/xyz-impact-driven-engineering.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/data-refinery.png" class="blog-card-img" alt="Blog post image: Data Refinery">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Databases: The Refineries of the New Petrol (Data) in the AI Era</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/databases-new-petrol.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>Explore how to build modern data refineries by combining Pentaho, n8n, and Databricks, and how Claude acts as the ultimate catalyst for high-volume data engineering.</p>
-                    <a href="assets/blog/databases-new-petrol.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/analytics.svg" class="blog-card-img" alt="Blog post image: TOGAF and AI">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Synergizing TOGAF and AI: The Future of Software Engineering</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/togaf-ai-connection.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>Discover how integrating Artificial Intelligence into the TOGAF Architecture Development Method
-                         (ADM) is creating a new paradigm of Cognitive Enterprise Architecture.</p>
-                    <a href="assets/blog/togaf-ai-connection.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/img-1.jpg" class="blog-card-img"
-                        alt="Blog post image: AI-Assisted Development">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Embedding AI-Assisted Development for an 80% Productivity Boost</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/ai-productivity.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>Learn how integrating AI tools like Cursor, Code Rabbit, and LLM Agents can drive an 80%
-                        improvement in developer productivity and accelerate delivery speed and code quality.</p>
-                    <a href="assets/blog/ai-productivity.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/img-2.jpg" class="blog-card-img"
-                        alt="Blog post image: Fullstack Microservices">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Designing Scalable Fullstack Microservices with Node.js, TypeScript, and
-                        MongoDB</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/fullstack-microservices.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>Explore architectural principles and implementations for building robust, high-performance
-                        microservices using Node.js, TypeScript, and MongoDB, capable of handling immense data volumes.
-                    </p>
-                    <a href="assets/blog/fullstack-microservices.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/startup.svg" class="blog-card-img"
-                        alt="Blog post image: Product Development and Architecture">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">From Strategy to Implementation: Leading End-to-End Product Development
-                        and Architecture</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/product-architecture.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>Understand the holistic approach to product creation, from strategic discussions and system
-                        design to deployment and post-launch optimization, emphasizing leadership and impact.</p>
-                    <a href="assets/blog/product-architecture.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/toolbox.svg" class="blog-card-img"
-                        alt="Blog post image: Modernization with Cursor, Refactoring, and TDD">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Modernization with Cursor: Refactoring and Cross-Line TDD</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/modernization-cursor-tdd.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>Explore how Cursor enhances refactoring and Test-Driven Development, particularly for complex,
-                        multi-line code changes, to accelerate software modernization and improve code quality.</p>
-                    <a href="assets/blog/modernization-cursor-tdd.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/analytics.svg" class="blog-card-img" alt="Blog post image: GraphQL vs REST">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">GraphQL vs REST: When I Choose Which (And Why)</h5>
-                    <p class="blog-card-caption">
-                        <a href="assets/blog/graphql-vs-rest.html">By: Rodrigo Ramos</a>
-                    </p>
-                    <p>A deep dive into when REST falls short and GraphQL delivers results — from B2B partner
-                        integration and cost reduction at scale, to the real pitfalls you need to watch out for.</p>
-                    <a href="assets/blog/graphql-vs-rest.html" class="blog-card-link">Read more <i
-                            class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
-
-        </div><!-- end of container -->
-    </section><!-- end of blog section -->
-
-    <!-- contact section -->
-    <section class="section" id="contact">
-        <div class="container text-center">
-            <p class="section-subtitle">How can you communicate?</p>
-            <h6 class="section-title mb-5">Contact Me</h6>
-            <!-- contact form -->
-            <a href="mailto:rodrigoror@gmail.com" class="btn btn-outline-primary rounded btn-lg">Send me an email</a>
-        </div><!-- end of container -->
-    </section><!-- end of contact section -->
-
-    <!-- footer -->
-    <div class="container">
-        <footer class="footer">
-            <p class="mb-0">Copyright
-                <script>document.write(new Date().getFullYear())</script> &copy; <a
-                    href="https://rodrigoror.github.io/portifolio/">Rodrigo Ramos</a>
-            </p>
-            <div class="social-links text-right m-auto ml-sm-auto">
-                <a href="https://github.com/rodrigoror" class="link"><i class="ti-github"></i></a>
-                <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos" class="link"><i
-                        class="ti-linkedin"></i></a>
-                <a href="https://www.instagram.com/rodrigoror/" class="link"><i class="ti-instagram"></i></a>
+                        success, why cost must be under control before you scale, and why we switched off an AI chatbot
+                        that worked.</p>
+                </a>
+                <a class="post" href="assets/blog/xyz-impact-driven-engineering.html">
+                    <div class="topic">Leadership</div>
+                    <h3>Impact-Driven Engineering: How I Learned to Measure Everything</h3>
+                    <p>Engineering stories told with the Google XYZ formula, from zero-downtime migrations to tripled
+                        revenue.</p>
+                </a>
+                <a class="post" href="assets/blog/ai-productivity.html">
+                    <div class="topic">AI-native engineering</div>
+                    <h3>Embedding AI-Assisted Development for an 80% Productivity Boost</h3>
+                    <p>How Cursor, CodeRabbit and LLM agents changed the way the team delivers.</p>
+                </a>
+                <a class="post" href="assets/blog/graphql-vs-rest.html">
+                    <div class="topic">Architecture</div>
+                    <h3>GraphQL vs REST: When I Choose Which (And Why)</h3>
+                    <p>From B2B partner integration to cost at scale, and the pitfalls to watch for.</p>
+                </a>
+                <a class="post" href="assets/blog/databases-new-petrol.html">
+                    <div class="topic">Data</div>
+                    <h3>Databases: The Refineries of the New Petrol (Data) in the AI Era</h3>
+                    <p>Pentaho, n8n, Databricks and Claude in a modern data pipeline.</p>
+                </a>
+                <a class="post" href="assets/blog/togaf-ai-connection.html">
+                    <div class="topic">Enterprise architecture</div>
+                    <h3>Synergizing TOGAF and AI</h3>
+                    <p>Bringing AI into the TOGAF Architecture Development Method.</p>
+                </a>
+                <a class="post" href="assets/blog/modernization-cursor-tdd.html">
+                    <div class="topic">AI-native engineering</div>
+                    <h3>Modernization with Cursor: Refactoring and Cross-Line TDD</h3>
+                    <p>Using Cursor and TDD to modernize complex code safely.</p>
+                </a>
+                <a class="post" href="assets/blog/fullstack-microservices.html">
+                    <div class="topic">Architecture</div>
+                    <h3>Designing Scalable Fullstack Microservices</h3>
+                    <p>Node.js, TypeScript and MongoDB for high data volumes.</p>
+                </a>
+                <a class="post" href="assets/blog/product-architecture.html">
+                    <div class="topic">Product</div>
+                    <h3>From Strategy to Implementation</h3>
+                    <p>Leading product development and architecture end to end.</p>
+                </a>
             </div>
-        </footer>
-    </div> <!-- end of page footer -->
 
-    <!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.7.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+            <div class="comics" id="comic">
+                <a class="comic" href="assets/comic/System_Versus_Solution_Architecture.pdf" target="_blank">System
+                    Versus Solution Architecture<span>Architecture comic (PDF)</span></a>
+                <a class="comic" href="assets/comic/Reliability_Is_The_Feature.pdf" target="_blank">Reliability Is The
+                    Feature<span>Architecture comic (PDF)</span></a>
+                <a class="comic" href="assets/comic/Escaping_the_Microservices_Maze.pdf" target="_blank">Escaping the
+                    Microservices Maze<span>Architecture comic (PDF)</span></a>
+                <a class="comic" href="assets/comic/The_Velocity_Trap.pdf" target="_blank">The Velocity
+                    Trap<span>Architecture comic (PDF)</span></a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Meyawo js -->
-    <script src="assets/js/meyawo.js"></script>
+    <!-- contact -->
+    <section class="contact" id="contact">
+        <div class="wrap">
+            <p class="eyebrow">Contact</p>
+            <h2>Need someone to make AI pay off in your engineering team?</h2>
+            <p>I'm happy to talk about Solutions Architect and Engineering Manager roles, or about how your team uses
+                AI today.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="mailto:rodrigoror@gmail.com?subject=Let%27s%20talk">Email me</a>
+                <a class="btn btn-ghost" href="https://www.linkedin.com/in/rodrigo-oliveira-ramos" target="_blank"
+                    rel="noopener">Connect on LinkedIn</a>
+                <a class="btn btn-ghost" href="assets/resume/rodrigo_ramos_complete_resume.html">Read my resume</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <span>© <script>document.write(new Date().getFullYear())</script> Rodrigo Ramos</span>
+            <span>
+                <a href="https://github.com/rodrigoror" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos" target="_blank"
+                    rel="noopener">LinkedIn</a>
+                <a href="mailto:rodrigoror@gmail.com">Email</a>
+            </span>
+        </div>
+    </footer>
 
 </body>
 
