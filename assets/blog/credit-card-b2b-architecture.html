@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From One Card to Many Clients: Turning a Credit Card Platform into a B2B Product - Rodrigo Ramos</title>
+    <meta name="description"
+        content="What changes when a consumer credit card platform becomes a B2B product serving several companies. The architectural decisions, trade-offs and tools behind a multi-client platform for 200,000+ customers and 500,000+ transactions a day.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="wrap">
+            <a class="brand" href="../../index.html">Rodrigo Ramos</a>
+            <ul>
+                <li class="hide-sm"><a href="../../index.html#work">Case studies</a></li>
+                <li><a href="../../index.html#blog">Writing</a></li>
+                <li class="hide-sm"><a href="../resume/rodrigo_ramos_complete_resume.html">Resume</a></li>
+                <li><a class="cta-sm" href="../../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <div class="inner">
+            <a class="back" href="../../index.html#blog">← Back to Blog</a>
+            <p class="eyebrow">Architecture</p>
+            <h1>From One Card to Many Clients:<br>Turning a Credit Card Platform into a B2B Product</h1>
+            <div class="author"><img src="../imgs/portrait.jpg" alt="">
+                <span><strong>Rodrigo Ramos</strong> · November 2026</span></div>
+        </div>
+    </header>
+
+    <main class="article">
+
+        <!-- Section 1 -->
+        <section id="intro">
+            <h2>1. The Day Our Customer Became a Company</h2>
+
+            <p>For years, our credit card platform had one customer that mattered: the person holding the card. Every
+                architecture decision assumed one brand, one app, one set of rules and one company paying the bills.
+                Then the business changed direction. The same infrastructure would be offered to other companies, so
+                they could launch and run their own card products on top of it.</p>
+
+            <p>Today the platform runs <strong>four clients on a shared environment</strong>, serving
+                <strong>more than 200,000 cardholders</strong> and processing <strong>more than 500,000 transactions a
+                    day</strong>. Getting there wasn't about rewriting the platform. It was about answering, one by one,
+                a set of questions that a single-brand system never had to ask.</p>
+
+            <div class="highlight-box">
+                <strong>The core idea:</strong> in B2C, the system serves the cardholder. In B2B, it serves
+                <strong>companies that serve cardholders</strong>. Every component now needs to know which client it is
+                working for, and every client expects to be treated as if it were the only one.
+            </div>
+
+            <p>This post covers the decisions that shaped that transformation, the trade-offs behind them, and the tools
+                we used. Most of them apply to any platform moving from one brand to many.</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="what-changes">
+            <h2>2. What Actually Changes in B2B</h2>
+
+            <p>The transactions look the same: a purchase, an authorization, an invoice, a payment. What changes is
+                everything around them.</p>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Consumer platform (B2C)</th>
+                    <th>B2B platform</th>
+                </tr>
+                <tr>
+                    <td><strong>Who you serve</strong></td>
+                    <td>One brand, its cardholders</td>
+                    <td>Several clients, each with its own cardholders</td>
+                </tr>
+                <tr>
+                    <td><strong>Business rules</strong></td>
+                    <td>One set, often in code</td>
+                    <td>One set per client: fees, limits, billing cycles, collection rules</td>
+                </tr>
+                <tr>
+                    <td><strong>Data</strong></td>
+                    <td>One database, one owner</td>
+                    <td>Each client's data must be isolated and provably so</td>
+                </tr>
+                <tr>
+                    <td><strong>Incidents</strong></td>
+                    <td>Affect your customers</td>
+                    <td>Can affect every client at once, or one client because of another</td>
+                </tr>
+                <tr>
+                    <td><strong>Success metric</strong></td>
+                    <td>Cardholder experience</td>
+                    <td>Cardholder experience <em>and</em> each client's contract (SLAs, reports, invoices)</td>
+                </tr>
+                <tr>
+                    <td><strong>New business</strong></td>
+                    <td>A marketing campaign</td>
+                    <td>A pre-sales process, an integration project and an onboarding</td>
+                </tr>
+            </table>
+
+            <p>Each row became a decision. The rest of this post walks through them.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="tenancy">
+            <h2>3. Decision 1: How Much Do Clients Share?</h2>
+
+            <p>The first and most expensive decision is the tenancy model: how much infrastructure each client shares
+                with the others. There are three classic options, and none of them is free.</p>
+
+            <table>
+                <tr>
+                    <th>Model</th>
+                    <th>What it means</th>
+                    <th>Good at</th>
+                    <th>Costs you</th>
+                </tr>
+                <tr>
+                    <td><strong>Silo</strong></td>
+                    <td>A full stack per client</td>
+                    <td>Strong isolation, simple compliance story</td>
+                    <td>Infrastructure and operations multiply with every client</td>
+                </tr>
+                <tr>
+                    <td><strong>Pool</strong></td>
+                    <td>Everything shared, data tagged by client</td>
+                    <td>Lowest cost, fastest onboarding</td>
+                    <td>Isolation depends on discipline in every query and every service</td>
+                </tr>
+                <tr>
+                    <td><strong>Bridge</strong></td>
+                    <td>Shared services, isolated data or critical parts</td>
+                    <td>Balance of cost and isolation</td>
+                    <td>More design work up front</td>
+                </tr>
+            </table>
+
+            <p>For a card platform, the bridge model is usually the right answer: <strong>share the compute, isolate
+                    what is sensitive</strong>. Authorization, billing and collection services run once for everyone,
+                while cardholder data, credentials and client configuration are separated per client. It keeps the cost
+                of a new client low without making isolation depend on every developer remembering a
+                <code>WHERE client_id = ?</code>.</p>
+
+            <div class="warning-box">
+                <strong>The retrofit trap:</strong> adding tenancy to a system that was built for one brand touches
+                every table, every event and every log line. It is the most expensive kind of change there is. If there
+                is any chance your product will serve other companies one day, design for it from the start. It costs
+                little early and a lot later.
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="context">
+            <h2>4. Decision 2: Every Request Knows Its Client</h2>
+
+            <p>Once clients share services, the most important rule is simple: <strong>the client context travels with
+                    every request, every event and every log</strong>.</p>
+
+            <ul>
+                <li><strong>Identity carries the client.</strong> Authentication (we use AWS Cognito) issues tokens that
+                    include which client the user or system belongs to. Services read the client from the token, never
+                    from a parameter the caller could change.</li>
+                <li><strong>Events carry the client.</strong> Every message on the queues (AWS SQS and SNS) has the
+                    client in its metadata, so asynchronous work can't lose track of whom it belongs to.</li>
+                <li><strong>Logs, metrics and traces carry the client.</strong> When something goes wrong, the first
+                    question is "which client?", and the answer has to be one filter away.</li>
+                <li><strong>Data access enforces the client.</strong> Isolation is checked in a shared data-access layer,
+                    not left to each query.</li>
+            </ul>
+
+            <p>This is unglamorous work, and it is what makes everything else possible: per-client billing, per-client
+                monitoring, per-client limits and per-client audits all depend on it.</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="configuration">
+            <h2>5. Decision 3: Configuration, Not Code</h2>
+
+            <p>In a single-brand platform, business rules tend to live in code. That stops working the moment a second
+                client wants a different billing cycle. If every client difference becomes an <code>if</code> in the
+                code, the fifth client turns the platform into a maze.</p>
+
+            <p>The answer is to treat each client's product as <strong>configuration</strong>: fees, interest rates,
+                credit limits, billing cycles, due dates, notification templates, collection rules and the client's
+                branding. New clients get a new configuration, not a new branch.</p>
+
+            <div class="xyz-card">
+                <div class="label">Example: collections as configuration</div>
+                <p>
+                    Our collections platform was built multi-tenant from day one. Each client defines its own collection
+                    flow, with segments by days overdue, amount and risk, and reminder steps over email, SMS and
+                    WhatsApp, as configuration on a shared engine. It processes <strong>400,000+ records a
+                        day</strong>, and with its GraphQL API, onboarding a new partner went from
+                    <strong>weeks to days</strong>.
+                </p>
+            </div>
+
+            <p>The rule I use: <strong>if two clients could reasonably want different values, it's configuration</strong>.
+                If no client will ever want it different, it's code. When in doubt, ask in pre-sales: clients will tell
+                you exactly what they need to change.</p>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="volume">
+            <h2>6. Decision 4: Design for the Peak, Not the Average</h2>
+
+            <p>500,000 transactions a day sounds big. Divided by the seconds in a day, it's about
+                <strong>six transactions per second</strong>. That average is almost useless, and it's the number that
+                misleads teams most often.</p>
+
+            <p>Card traffic is not flat. It peaks at lunchtime, on paydays, on Friday nights and around shopping dates,
+                and when several clients share a platform, their peaks add up. Card authorizations also have a hard time
+                limit: the network expects an answer in a fraction of a second, every time.</p>
+
+            <p>That led to a few standard decisions:</p>
+            <ul>
+                <li><strong>Keep the authorization path short and synchronous.</strong> Only what is needed to say yes
+                    or no runs while the cardholder waits.</li>
+                <li><strong>Move everything else to events.</strong> Notifications, ledger updates, reporting, fraud
+                    analytics and billing run asynchronously over queues (SQS and SNS), so a slow consumer never slows a
+                    purchase.</li>
+                <li><strong>Make every operation idempotent.</strong> Messages get delivered twice, networks retry and
+                    processors resend. Every transaction has a unique key, and processing it twice must give the same
+                    result as processing it once.</li>
+                <li><strong>Scale horizontally.</strong> Services run on Kubernetes and scale with load; the database
+                    choice follows the access pattern (relational where you need transactions, document stores where
+                    you need flexible, high-volume records).</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Rule of thumb:</strong> size for the busiest minute of the busiest day of your biggest client,
+                plus the others at the same time. Then load-test it before a client does it for you.
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="noisy-neighbor">
+            <h2>7. Decision 5: One Client Can't Hurt the Others</h2>
+
+            <p>Shared infrastructure brings a new kind of incident: the <strong>noisy neighbor</strong>. One client runs
+                a big campaign, imports a large batch or has a bug in its integration, and every other client feels it.
+            </p>
+
+            <p>The defenses are well known, and all of them depend on the client context from Decision 2:</p>
+            <ul>
+                <li><strong>Rate limits and quotas per client</strong> on APIs and batch jobs.</li>
+                <li><strong>Separate queues or priorities</strong> for heavy, non-urgent work such as imports and
+                    reports, so they never compete with authorizations.</li>
+                <li><strong>Per-client alerts</strong>, so you see one client's traffic growing before it becomes
+                    everyone's problem.</li>
+                <li><strong>Agreed limits in the contract.</strong> Technical limits work better when the client
+                    already knows about them.</li>
+            </ul>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="security">
+            <h2>8. Decision 6: Security and Compliance as a Product Feature</h2>
+
+            <p>In B2C, security protects your customers. In B2B, it is also part of what you sell. Every prospective
+                client asks the same questions in pre-sales: how is our data separated, who can access it, and how can
+                you prove it?</p>
+
+            <ul>
+                <li><strong>Isolation you can demonstrate</strong>, not just describe: per-client encryption keys and
+                    access policies where the data is sensitive.</li>
+                <li><strong>Card data handled to card-industry standards</strong> (PCI DSS) and personal data handled
+                    under Brazil's data-protection law (LGPD).</li>
+                <li><strong>Security in the pipeline</strong>: security checks and SonarQube quality gates in GitLab CI,
+                    so no critical finding reaches production.</li>
+                <li><strong>The CISO in the architecture decisions</strong>, not just in the audit. On our platform, every
+                    major decision is reviewed by a committee that includes the CISO.</li>
+            </ul>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="observability">
+            <h2>9. Decision 7: Observe Each Client Separately</h2>
+
+            <p>A platform-wide dashboard that is green can hide one client having a terrible day. In B2B, averages lie
+                in a new way: a 99.9% success rate overall can mean one client at 95%.</p>
+
+            <ul>
+                <li><strong>Metrics, traces and dashboards per client</strong> with OpenTelemetry, Prometheus and
+                    Grafana.</li>
+                <li><strong>Errors and crashes per client</strong> with Sentry for services and Firebase Crashlytics for
+                    the mobile apps.</li>
+                <li><strong>Service-level objectives per client</strong> for what matters most: authorization success
+                    rate, latency and invoice generation on time.</li>
+                <li><strong>AI to connect the dots.</strong> We built an SRE agent that cross-checks Grafana, Sentry and
+                    Crashlytics through MCP servers, to flag customer-facing errors before cardholders complain to
+                    support.</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>Watch out:</strong> your clients have their own support teams and their own customers. If they
+                learn about an incident from their cardholders before they hear it from you, you've lost more than
+                uptime. Per-client monitoring is also per-client communication.
+            </div>
+        </section>
+
+        <!-- Section 10 -->
+        <section id="decisions">
+            <h2>10. How We Make These Decisions</h2>
+
+            <p>None of the decisions above has a single right answer. Each one trades cost against isolation, speed
+                against safety, or flexibility against simplicity. What matters is making those trade-offs explicitly,
+                and being able to explain them a year later.</p>
+
+            <ul>
+                <li><strong>C4 models</strong> describe the platform at every level, from the context a client sees to
+                    the components inside each service. They are the common language between engineering, security and
+                    the business.</li>
+                <li><strong>Every decision writes down its trade-off.</strong> What we chose, what we rejected and why.
+                </li>
+                <li><strong>A review committee</strong>, with another architect, the CISO and two engineering managers,
+                    checks each major decision before it is final. It slows decisions down a little and stops many
+                    mistakes from reaching production.</li>
+                <li><strong>Pre-sales feeds the architecture.</strong> I join pre-sales meetings with prospective
+                    clients, and the most useful thing I do there is listen: understanding the client's position and
+                    real needs before proposing anything. Many of the configuration options above started as a question
+                    from a client.</li>
+            </ul>
+        </section>
+
+        <!-- Section 11 -->
+        <section id="toolbox">
+            <h2>11. The Toolbox</h2>
+
+            <table>
+                <tr>
+                    <th>Need</th>
+                    <th>Tools</th>
+                </tr>
+                <tr>
+                    <td><strong>Services</strong></td>
+                    <td>Java (Quarkus), Node.js/TypeScript, Python for data pipelines</td>
+                </tr>
+                <tr>
+                    <td><strong>APIs for clients</strong></td>
+                    <td>REST and GraphQL</td>
+                </tr>
+                <tr>
+                    <td><strong>Events and messaging</strong></td>
+                    <td>AWS SQS and SNS</td>
+                </tr>
+                <tr>
+                    <td><strong>Identity</strong></td>
+                    <td>AWS Cognito</td>
+                </tr>
+                <tr>
+                    <td><strong>Data</strong></td>
+                    <td>PostgreSQL, MongoDB, DynamoDB, Redis</td>
+                </tr>
+                <tr>
+                    <td><strong>Runtime</strong></td>
+                    <td>AWS, Kubernetes, Docker</td>
+                </tr>
+                <tr>
+                    <td><strong>Quality and security</strong></td>
+                    <td>GitLab CI, SonarQube quality gates, TDD, Cypress, CodeRabbit</td>
+                </tr>
+                <tr>
+                    <td><strong>Observability</strong></td>
+                    <td>OpenTelemetry, Prometheus, Grafana, Sentry, Firebase Crashlytics</td>
+                </tr>
+                <tr>
+                    <td><strong>Architecture</strong></td>
+                    <td>C4 models, documented trade-offs, review committee</td>
+                </tr>
+            </table>
+
+            <p>The tools matter less than the decisions. Each of these could be swapped for an equivalent. Skipping the
+                client context or the per-client monitoring can't be fixed with a better tool.</p>
+        </section>
+
+        <!-- Section 12 -->
+        <section id="checklist">
+            <h2>12. A Checklist Before Your Platform Goes B2B</h2>
+
+            <ol>
+                <li><strong>Have you chosen a tenancy model on purpose?</strong> Silo, pool or bridge, with the trade-off
+                    written down.</li>
+                <li><strong>Does every request, event and log carry the client?</strong> From the token, not from a
+                    parameter.</li>
+                <li><strong>Are client differences configuration?</strong> Fees, cycles, limits, rules and branding.
+                </li>
+                <li><strong>Are you sized for the peak?</strong> All clients' peaks at once, load-tested.</li>
+                <li><strong>Can one client hurt the others?</strong> Rate limits, separate queues and per-client alerts.
+                </li>
+                <li><strong>Can you prove isolation to a client's security team?</strong> Not just explain it.</li>
+                <li><strong>Can you see each client's health on its own?</strong> Per-client dashboards and SLOs.</li>
+                <li><strong>Are decisions reviewed and recorded?</strong> With security at the table.</li>
+            </ol>
+        </section>
+
+        <!-- Section 13 -->
+        <section id="conclusion">
+            <h2>13. Conclusion</h2>
+
+            <p>Turning a credit card platform into a B2B product didn't need a new platform. It needed a new question
+                at every layer: <strong>"for which client?"</strong>. Once identity, events, data, configuration and
+                monitoring could answer it, adding a client stopped being a project and started being an onboarding.
+            </p>
+
+            <p>The hardest part wasn't technical. It was accepting that a B2B platform has two kinds of customers, the
+                companies and their cardholders, and that both judge you every day. The architecture has to make it
+                easy to keep both happy, and to know quickly when one of them isn't.</p>
+
+            <div class="highlight-box">
+                <strong>The takeaway:</strong> design for many clients before you have them. Tenancy, client context and
+                configuration are cheap on day one and very expensive on day one thousand.
+            </div>
+
+            <p><em>Share the compute. Isolate what's sensitive. And make sure every part of the system knows who it's
+                    working for.</em></p>
+        </section>
+    </main>
+
+    <aside class="author-card">
+        <div class="box">
+            <img src="../imgs/portrait.jpg" alt="Rodrigo Ramos">
+            <div>
+                <h3>Rodrigo Ramos</h3>
+                <p>Solutions Architect and Engineering Manager. I help engineering teams ship faster with AI, and prove
+                    it pays off. Based in Spain.</p>
+                <a class="btn btn-primary" href="../../index.html#contact">Let's talk</a>
+                <a class="btn btn-outline" href="https://www.linkedin.com/in/rodrigo-oliveira-ramos" target="_blank"
+                    rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </aside>
+
+    <p class="more-posts"><a href="../../index.html#blog">← All posts</a></p>
+
+    <footer class="site">
+        <div class="wrap">
+            <span>© <script>document.write(new Date().getFullYear())</script> Rodrigo Ramos</span>
+            <span>
+                <a href="https://github.com/rodrigoror" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:rodrigoror@gmail.com">Email</a>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>
