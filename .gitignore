@@ -1,5 +1,6 @@
-### git ignore ###
+### git ignore folders ###
 .vscode/
 tailored/
-job_tracker.json
 pipeline/
+### files ###
+/assets/resume/pipeline/job_tracker.json
