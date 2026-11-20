@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration Is About People: Eight Years of Fintech Partners, From Dock to Celcoin - Rodrigo Ramos</title>
+    <meta name="description"
+        content="Dock, FIS, Pismo and Celcoin: what eight years of fintech partner integrations taught me as an architect and product manager. From silent contract breaks in 2019 to AI-generated connectors, and why the hardest part of every integration is the people.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="wrap">
+            <a class="brand" href="../../index.html">Rodrigo Ramos</a>
+            <ul>
+                <li class="hide-sm"><a href="../../index.html#work">Case studies</a></li>
+                <li><a href="../../index.html#blog">Writing</a></li>
+                <li class="hide-sm"><a href="../resume/rodrigo_ramos_complete_resume.html">Resume</a></li>
+                <li><a class="cta-sm" href="../../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <div class="inner">
+            <a class="back" href="../../index.html#blog">← Back to Blog</a>
+            <p class="eyebrow">Architecture · Product</p>
+            <h1>Integration Is About People:<br>Eight Years of Fintech Partners, From Dock to Celcoin</h1>
+            <div class="author"><img src="../imgs/portrait.jpg" alt="">
+                <span><strong>Rodrigo Ramos</strong> · November 2026</span></div>
+        </div>
+    </header>
+
+    <main class="article">
+
+        <!-- Section 1 -->
+        <section id="intro">
+            <h2>1. A Bank Is a Set of Integrations</h2>
+
+            <p>When I joined alt.bank's founding team at the end of 2018, I thought I was going to build a banking app.
+                What I actually spent the next eight years doing was <strong>integrating</strong>. A digital bank
+                doesn't issue cards, hold accounts, print boletos or lend money on its own. Partners do those things,
+                and the bank connects them into one experience the customer can trust.</p>
+
+            <p>Over those years I worked with four partners: <strong>Dock</strong>, <strong>FIS</strong>,
+                <strong>Pismo</strong> and <strong>Celcoin</strong>. I worked with them first as a developer, then as
+                a tech lead, and later as the engineering manager and architect responsible for the
+                product. Each one taught me something different. This isn't a ranking. Each partner was the right
+                choice for the moment the company was in, and each integration shaped the next one.</p>
+
+            <p>I'll tell the story from two points of view at once: the <strong>architect</strong>, who asks
+                "how does this fail, and what happens then?", and the <strong>product manager</strong>, who asks "what
+                does the customer feel, and what does it cost us?". Every integration needs both questions.</p>
+
+            <div class="highlight-box">
+                <strong>The core idea:</strong> the code in an integration is the easy part, and with AI it's getting
+                easier every year. The hard part is aligning people from different companies, with different
+                incentives, around one contract and one definition of "correct".
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="dock">
+            <h2>2. Dock, 2019: Learning to Distrust a 200 OK</h2>
+
+            <p>Our first card ran on Dock's Banking-as-a-Service platform. It was a debit card that worked
+                almost like a prepaid credit card: the customer loaded the account and spent from it, and Dock
+                processed it all.</p>
+
+            <p>It was 2019, with no AI assistant to read the documentation for us. I read it myself, end to end. Then I
+                tested <strong>every endpoint and every combination</strong> of the integration, because the
+                documentation tells you what should happen and only a test tells you what does.</p>
+
+            <h3>The Errors That Don't Look Like Errors</h3>
+
+            <p>Every monitoring setup catches a 401 or a 5xx, and those were never our problem. The problem was the
+                <strong>200 OK that was wrong</strong>: a status value we had never mapped, a field that changed format,
+                a contract that shifted without any notice in the response. The HTTP layer said "success", and the
+                business was quietly getting the wrong answer.</p>
+
+            <p>So we built monitoring for meaning, not for transport. In Prometheus, we created events that counted
+                the responses our code <em>couldn't interpret</em>: unknown values, missing fields, responses that
+                broke the contract we had agreed. We grouped them by endpoint and field, and alerted on them like
+                errors, because they were errors.</p>
+
+            <pre><code># Illustrative: count what the HTTP status can't tell you
+partner_response_unmapped_total{endpoint="card_status", field="status"}
+partner_response_contract_violation_total{endpoint="transactions", reason="missing_field"}</code></pre>
+
+            <p>Those metrics changed how I design integrations. Every response from a partner gets validated
+                against the contract before it reaches the domain. Anything we don't recognize falls into an explicit
+                "unknown" path that is logged, counted and safe, instead of crashing or, worse, being treated as
+                valid.</p>
+
+            <div class="xyz-card">
+                <div class="label">Two points of view</div>
+                <p>
+                    <strong>Architect:</strong> a partner's response is input, and input gets validated. Design every
+                    adapter to fail safe on what it doesn't understand.<br>
+                    <strong>Product manager:</strong> a silent wrong answer is worse than an outage. An outage
+                    generates a ticket; a wrong balance generates a customer who stops trusting the bank.
+                </p>
+            </div>
+
+            <p>It was a hard time, and it taught me more about resilience than anything else in my career. Since
+                then, I start every integration by assuming it will fail, and I prepare the system for that.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="fis">
+            <h2>3. FIS: Learning How Billing Really Works</h2>
+
+            <p>The next step was the company's biggest bet: our own credit card. The world already knew how to run
+                credit cards, so we didn't reinvent the processor. We integrated with FIS and Visa, and I led the
+                technical side of the move from Banking-as-a-Service to our own card.</p>
+
+            <p>FIS brought decades of card processing. Its integration model came from a different era of banking,
+                though, built on <strong>file exchange</strong>, not real-time APIs. To get from a transaction to a
+                paid bill, we wrote file readers for every step: the invoice, the boleto, the barcode. Much of
+                the exchange ran on <strong>CNAB files</strong>, the Brazilian banking standard for batch files.</p>
+
+            <h3>When the Contract Is a File</h3>
+
+            <p>File-based integration has a different failure profile from APIs. A file can arrive late, arrive
+                incomplete, or not arrive at all, and you find out hours after the fact. Reconciling in real time was
+                very hard, because the source of truth only showed up in batches.</p>
+
+            <p>That's where I learned how billing customers really works: cycles, invoices, due dates, payment
+                slips, payment confirmations. Most of all, I learned how to <strong>keep collecting even when the files
+                    fail or arrive late</strong>: what the system does while it waits, what it tells the customer,
+                and how it catches up without charging twice or missing a payment.</p>
+
+            <div class="warning-box">
+                <strong>The batch trap:</strong> a customer lives in real time. If the payment they made this morning
+                only shows up after tomorrow's file, your product has a gap the customer can see. Design for the
+                gap explicitly, or your support team will do it for you, one ticket at a time.
+            </div>
+
+            <div class="xyz-card">
+                <div class="label">Two points of view</div>
+                <p>
+                    <strong>Architect:</strong> with batch partners, idempotency and reconciliation are part of the
+                    design from day one. Every file must be safe to process twice and easy to compare.<br>
+                    <strong>Product manager:</strong> learn the business process behind the integration (billing,
+                    collection, chargebacks) before you design the screens. The integration model limits the
+                    product you can offer.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="pismo">
+            <h2>4. Pismo: Migrating the Engine</h2>
+
+            <p>The file-based model worked, but it didn't let us grow the way we wanted. Every new product idea ran
+                into the same batch cycle. So we decided to migrate the card processing to Pismo.</p>
+
+            <p>The hard part was moving the <strong>engine</strong>: collection, billing and customer transactions,
+                the processes that run every day and that customers feel immediately when they break.</p>
+
+            <p>We moved <strong>100,000 credit-card customers with zero downtime and zero refused
+                    transactions</strong>. I led 10 people (8 developers and 2 QAs) and coordinated around 20 more from
+                Security, DevOps, Pismo, Dock, Celcoin and Unico. The migration app was designed for doubt: field
+                mapping, reconciliation in shadow mode, and a rollback at every stage.</p>
+
+            <p>Pismo made a hard project easier. Its interface was clear, its documentation was good, and its team
+                was genuinely able and willing to help. When a partner's engineers sit at the same table as yours,
+                problems get solved in a call instead of a ticket queue.</p>
+
+            <p>The work was split across people as much as across systems. The architect I paired with owned the
+                systems integration; I owned the data integration. Neither half would have worked without the
+                other, and neither of us could have done it without the partner teams.</p>
+
+            <div class="xyz-card">
+                <div class="label">Two points of view</div>
+                <p>
+                    <strong>Architect:</strong> in a migration, run the old and new paths side by side and compare
+                    them before you switch. Rollback is a feature you build, not a hope.<br>
+                    <strong>Product manager:</strong> the success criterion is what the customer <em>doesn't</em>
+                    notice. Zero refused transactions was the real requirement; everything else served it.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="celcoin">
+            <h2>5. Celcoin: The First AI-First Integration</h2>
+
+            <p>When our contract with Dock ended, the accounts moved to Celcoin. This was the first integration we
+                did <strong>AI-first</strong>, with Claude in place from the start.</p>
+
+            <p>The work that took me weeks in 2019 changed shape. Claude read the documentation and generated
+                the new connection interface. That didn't remove the engineering; it moved it. Our job became
+                <strong>tests, tests and more tests</strong>. When code is generated, validation is the key: you're no
+                longer checking whether someone typed it right, you're checking whether it does what the contract and
+                the business need.</p>
+
+            <p>We integrated Celcoin's BaaS and LaaS APIs: <strong>20 customer journeys in one week, with 80%
+                    passing the first automated run</strong>.</p>
+
+            <h3>LaaS: When Code Is Generated, Not Written</h3>
+
+            <p>The latest integration was lending-as-a-service: Celcoin's LaaS, with QI Tech's LaaS alongside it as
+                a complement, both integrated with AI. It was the easiest integration I've done. Claude did the
+                analysis, and a well-built MCP server gave it access to what it needed. All the
+                information was in the context. Every formula was defined before the first line of code. The code was
+                <strong>generated, not coded</strong>. The resilience unit tests were there from the start, and so
+                were the abstractions.</p>
+
+            <p>That last point is the Dock lesson paying off years later. One rule I hold to: <strong>the partner's
+                    name doesn't go into our database</strong>. Our domain talks about accounts, cards, loans and
+                payments, not about a vendor. The partner name lives only in the adapter, or in a service whose only
+                job is to integrate with that partner.</p>
+
+            <pre><code># Illustrative
+loan.provider_reference      -- our domain: a loan, with an external reference
+celcoin_loan_id              -- avoid: the vendor leaks into the model</code></pre>
+
+            <p>It isn't about any specific partner. It's what makes it possible to change partners, or add a
+                second one, without rewriting the core. It's also why AI could generate the new connectors so quickly:
+                the abstraction was already there, waiting for an implementation.</p>
+
+            <div class="xyz-card">
+                <div class="label">Two points of view</div>
+                <p>
+                    <strong>Architect:</strong> AI makes connectors cheap, so the value moves to the contract, the
+                    abstraction and the tests. Invest there.<br>
+                    <strong>Product manager:</strong> faster integration means the partner choice becomes a business
+                    decision again, not a technical lock-in. That's leverage in every negotiation.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="pattern">
+            <h2>6. What Changed and What Didn't</h2>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Dock (2019)</th>
+                    <th>FIS</th>
+                    <th>Pismo</th>
+                    <th>Celcoin and QI Tech</th>
+                </tr>
+                <tr>
+                    <td><strong>What we integrated</strong></td>
+                    <td>BaaS debit card</td>
+                    <td>Own credit card: billing, boleto, barcode</td>
+                    <td>Card processing: collection, billing, transactions</td>
+                    <td>Accounts and lending (Celcoin BaaS and LaaS), with QI Tech LaaS as a complement</td>
+                </tr>
+                <tr>
+                    <td><strong>Contract style</strong></td>
+                    <td>APIs</td>
+                    <td>Files (CNAB)</td>
+                    <td>APIs</td>
+                    <td>APIs</td>
+                </tr>
+                <tr>
+                    <td><strong>How we built it</strong></td>
+                    <td>Read every page, test every endpoint</td>
+                    <td>File readers and reconciliation</td>
+                    <td>Migration app, shadow mode, rollback</td>
+                    <td>AI-generated connectors, test-heavy validation</td>
+                </tr>
+                <tr>
+                    <td><strong>The main lesson</strong></td>
+                    <td>A 200 can be wrong</td>
+                    <td>Keep collecting when files fail</td>
+                    <td>Move the engine without stopping it</td>
+                    <td>Validation is the work</td>
+                </tr>
+            </table>
+
+            <p>The tools changed completely in eight years. In 2019, every integration started with me reading
+                documentation. Today it starts with an agent reading it. What didn't change is what decides whether an
+                integration succeeds in production:</p>
+            <ul>
+                <li><strong>An explicit contract</strong>, validated on every response.</li>
+                <li><strong>A domain that belongs to us</strong>, with partners behind adapters.</li>
+                <li><strong>Monitoring for meaning</strong>, not just for status codes.</li>
+                <li><strong>A plan for failure</strong>: late files, unknown values, rollbacks.</li>
+                <li><strong>People who trust each other</strong> on both sides of the contract.</li>
+            </ul>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="people">
+            <h2>7. Integration Is Between People</h2>
+
+            <p>Looking back at all four, the clearest lesson is that the work of a developer, an architect or a
+                product manager isn't really about code. It's about <strong>integration</strong>, and integration
+                happens between people before it happens between systems.</p>
+
+            <p>Every person we talked to and worked with left something in the code we delivered: the partner
+                engineer who explained what a field really meant, the security team that changed a flow, the
+                operations analyst who knew which file always arrived late, the QA who found the case nobody had
+                mapped. No single person wrote those integrations, and that's exactly why they worked.</p>
+
+            <p>Each side of an integration has its own interests. The partner wants a stable contract and
+                predictable volume. Security wants control. Operations wants fewer surprises. Business wants the
+                launch date. The customer wants none of it to be visible. Managing an integration means making those
+                interests explicit and finding the design where they line up:</p>
+            <ul>
+                <li><strong>Agree on what "correct" means</strong>, in writing, before anyone builds. Most integration
+                    bugs are two companies with two definitions of the same word.</li>
+                <li><strong>Share the monitoring.</strong> When both sides see the same contract violations, the
+                    conversation moves from blame to fixing.</li>
+                <li><strong>Bring partner engineers into the room.</strong> The best moments of every integration I've
+                    done were the ones where their people and ours worked as one team.</li>
+                <li><strong>Protect the customer from the seams.</strong> Whatever happens between companies, the
+                    customer should see one bank.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>The takeaway:</strong> AI now writes most of the connector. What it can't do is align four
+                companies on one definition of a successful transaction. <strong>That alignment is the real job of the
+                    architect and the product manager</strong>, and it's what puts a high-quality system in
+                production.
+            </div>
+
+            <p><em>Assume the system will fail. Keep your domain your own. And remember that every integration is a
+                    relationship before it's an API.</em></p>
+        </section>
+    </main>
+
+    <aside class="author-card">
+        <div class="box">
+            <img src="../imgs/portrait.jpg" alt="Rodrigo Ramos">
+            <div>
+                <h3>Rodrigo Ramos</h3>
+                <p>Solutions Architect and Engineering Manager. I help engineering teams ship faster with AI, and prove
+                    it pays off. Based in Spain.</p>
+                <a class="btn btn-primary" href="../../index.html#contact">Let's talk</a>
+                <a class="btn btn-outline" href="https://www.linkedin.com/in/rodrigo-oliveira-ramos" target="_blank"
+                    rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </aside>
+
+    <p class="more-posts"><a href="../../index.html#blog">← All posts</a></p>
+
+    <footer class="site">
+        <div class="wrap">
+            <span>© <script>document.write(new Date().getFullYear())</script> Rodrigo Ramos</span>
+            <span>
+                <a href="https://github.com/rodrigoror" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/rodrigo-oliveira-ramos" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:rodrigoror@gmail.com">Email</a>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>
